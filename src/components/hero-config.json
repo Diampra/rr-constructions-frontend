@@ -1,0 +1,149 @@
+{
+  "transforms": {
+    "1": {
+      "scale": 1.48,
+      "x": 0,
+      "y": 139,
+      "kenBurns": false,
+      "kenBurnsScale": 1.06
+    },
+    "2": {
+      "scale": 1.25,
+      "x": -289,
+      "y": 89,
+      "kenBurns": false,
+      "kenBurnsScale": 1.06
+    },
+    "3": {
+      "scale": 1.6,
+      "x": -28,
+      "y": 217,
+      "kenBurns": false,
+      "kenBurnsScale": 1.06
+    },
+    "4": {
+      "scale": 1.29,
+      "x": -242,
+      "y": 124,
+      "kenBurns": false,
+      "kenBurnsScale": 1.06
+    },
+    "5": {
+      "scale": 1.64,
+      "x": -161,
+      "y": 115,
+      "kenBurns": false,
+      "kenBurnsScale": 1.06,
+      "originY": 67,
+      "originX": 0
+    },
+    "6": {
+      "scale": 1.41,
+      "x": -242,
+      "y": 129,
+      "kenBurns": false,
+      "kenBurnsScale": 1.06,
+      "entrance": "fade"
+    }
+  },
+  "bgConfigs": {
+    "1": {
+      "opacity": 3,
+      "fontSize": 19.5,
+      "topPct": 5,
+      "letterSpacing": -0.01,
+      "entrance": "fade"
+    },
+    "2": {
+      "opacity": 3,
+      "fontSize": 19.5,
+      "topPct": 5,
+      "letterSpacing": -0.01,
+      "entrance": "fade"
+    },
+    "3": {
+      "opacity": 3,
+      "fontSize": 19.5,
+      "topPct": 5,
+      "letterSpacing": -0.01,
+      "entrance": "fade"
+    },
+    "4": {
+      "opacity": 3,
+      "fontSize": 19.5,
+      "topPct": 5,
+      "letterSpacing": -0.01,
+      "entrance": "fade"
+    },
+    "5": {
+      "opacity": 3,
+      "fontSize": 19.5,
+      "topPct": 5,
+      "letterSpacing": -0.01,
+      "entrance": "fade"
+    },
+    "6": {
+      "opacity": 3,
+      "fontSize": 19.5,
+      "topPct": 5,
+      "letterSpacing": -0.01,
+      "entrance": "fade"
+    }
+  },
+  "cardConfigs": {
+    "1": {
+      "x": 0,
+      "y": 66,
+      "titleSize": 36,
+      "descSize": 17,
+      "width": 740,
+      "shadowAlpha": 100
+    },
+    "2": {
+      "x": 0,
+      "y": 66,
+      "titleSize": 36,
+      "descSize": 17,
+      "width": 740,
+      "shadowAlpha": 100
+    },
+    "3": {
+      "x": 0,
+      "y": 66,
+      "titleSize": 36,
+      "descSize": 17,
+      "width": 740,
+      "shadowAlpha": 100
+    },
+    "4": {
+      "x": 0,
+      "y": 66,
+      "titleSize": 36,
+      "descSize": 17,
+      "width": 740,
+      "shadowAlpha": 100
+    },
+    "5": {
+      "x": 0,
+      "y": 66,
+      "titleSize": 36,
+      "descSize": 17,
+      "width": 740,
+      "shadowAlpha": 100
+    },
+    "6": {
+      "x": 0,
+      "y": 66,
+      "titleSize": 36,
+      "descSize": 17,
+      "shadowAlpha": 100,
+      "width": 740
+    }
+  },
+  "bottomBarConfig": {
+    "statsValueSize": 28,
+    "statsLabelSize": 14,
+    "paddingBottom": 21,
+    "paddingX": 59
+  }
+}
