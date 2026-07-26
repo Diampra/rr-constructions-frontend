@@ -1,25 +1,26 @@
-import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { Building2 } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { t } = useLanguage();
 
   const quickLinks = [
-    { name: t.interiorDesigning, href: "/services" },
-    { name: t.templeDesign, href: "/temple" },
-    { name: t.customFurniture, href: "/services" },
-    { name: t.wpcPanels, href: "/services" },
-    { name: t.cncCutting, href: "/services" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#leadership" },
+    { name: "Services", href: "/services" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
   ];
 
-  const companyLinks = [
-    { name: t.aboutUs, href: "#" },
-    { name: t.portfolio, href: "/portfolio" },
-    { name: t.process, href: "#" },
-    { name: t.testimonials, href: "#" },
-    { name: t.contact, href: "/contact" },
+  const sectors = [
+    { name: "Commercial Buildings", href: "/services" },
+    { name: "Residential Projects", href: "/services" },
+    { name: "Hospital Buildings", href: "/services" },
+    { name: "Educational Institutions", href: "/services" },
+    { name: "Industrial Buildings", href: "/services" },
+    { name: "Resorts & Hospitality", href: "/services" },
   ];
 
   const socialLinks = [
@@ -30,24 +31,26 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-foreground text-primary-foreground">
+    <footer className="bg-rr-navy-deep text-rr-cream">
       <div className="container mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-6">
-<img src="/logo-transparent.png" alt="Dancing Drills Designs" className="h-12 md:h-16" />
+              <div className="w-10 h-10 bg-rr-gold text-rr-navy-deep rounded-lg flex items-center justify-center font-bold shadow-lg">
+                <Building2 className="w-6 h-6" />
+              </div>
               <div>
-                <span className="font-serif text-xl font-semibold tracking-tight text-primary-foreground">
-                  {t.studioName}
+                <span className="font-serif text-xl font-bold tracking-tight text-rr-cream">
+                  RR INFRA
                 </span>
-                <span className="block text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">
-                  {t.studioTagline}
+                <span className="block text-[10px] uppercase tracking-[0.2em] text-rr-cream/60">
+                  Constructions & Development
                 </span>
               </div>
             </Link>
-            <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
-              {t.footerDescription}
+            <p className="text-rr-cream/60 text-sm leading-relaxed mb-6">
+              40+ years of excellence in commercial, residential, healthcare, educational, industrial, and hospitality infrastructure across Karnataka.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -55,7 +58,7 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 bg-primary-foreground/10 flex items-center justify-center hover:bg-gold hover:text-foreground transition-all duration-300"
+                  className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-rr-gold hover:text-rr-navy-deep transition-all duration-300 rounded-lg"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -63,15 +66,15 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Quick Links */}
           <div>
-            <h4 className="font-serif text-lg text-primary-foreground mb-6">{t.ourServices}</h4>
+            <h4 className="font-serif text-lg text-rr-cream mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-primary-foreground/70 text-sm hover:text-gold transition-colors"
+                    className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -80,56 +83,62 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Sectors */}
           <div>
-            <h4 className="font-serif text-lg text-primary-foreground mb-6">{t.company}</h4>
+            <h4 className="font-serif text-lg text-rr-cream mb-6">Our Sectors</h4>
             <ul className="space-y-3">
-              {companyLinks.map((link) => (
-                <li key={link.name}>
+              {sectors.map((sector) => (
+                <li key={sector.name}>
                   <Link
-                    to={link.href}
-                    className="text-primary-foreground/70 text-sm hover:text-gold transition-colors"
+                    to={sector.href}
+                    className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors"
                   >
-                    {link.name}
+                    {sector.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Contact Info */}
           <div>
-            <h4 className="font-serif text-lg text-primary-foreground mb-6">{t.stayInspired}</h4>
-            <p className="text-primary-foreground/70 text-sm mb-4">
-              {t.subscribeText}
-            </p>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder={t.emailAddress}
-                className="flex-1 px-4 py-3 bg-primary-foreground/10 border-0 text-primary-foreground placeholder:text-primary-foreground/50 text-sm focus:ring-2 focus:ring-gold outline-none"
-              />
-              <button
-                type="submit"
-                className="px-4 py-3 bg-gold text-foreground text-sm font-medium hover:bg-gold-light transition-colors"
-              >
-                {t.join}
-              </button>
-            </form>
+            <h4 className="font-serif text-lg text-rr-cream mb-6">Contact Us</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-rr-gold shrink-0 mt-0.5" />
+                <span className="text-rr-cream/60 text-sm">
+                  #18, 2nd Floor, 3rd Cross,<br />
+                  Sanjeevappa Layout,<br />
+                  Kolar, Karnataka 563101
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-rr-gold shrink-0" />
+                <a href="tel:+919448085212" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors">
+                  +91 94480 85212
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-rr-gold shrink-0" />
+                <a href="mailto:info@rrinfra.co.in" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors">
+                  info@rrinfra.co.in
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-primary-foreground/50 text-sm">
-            © {currentYear} {t.studioName} {t.studioTagline}. {t.allRightsReserved}
+        <div className="mt-16 pt-8 border-t border-rr-cream/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-rr-cream/60 text-sm">
+            © {currentYear} RR Constructions & RR Infra. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-primary-foreground/50 text-sm hover:text-gold transition-colors">
-              {t.privacyPolicy}
+            <a href="#" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors">
+              Privacy Policy
             </a>
-            <a href="#" className="text-primary-foreground/50 text-sm hover:text-gold transition-colors">
-              {t.termsOfService}
+            <a href="#" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors">
+              Terms of Service
             </a>
           </div>
         </div>

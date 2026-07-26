@@ -23,6 +23,27 @@ const staticTestimonials = [
     content: "Over 40 years of civil engineering experience truly shows in their execution. Exceptional structural quality and transparent project management from start to finish.",
     rating: 5,
   },
+  {
+    id: "4",
+    name: "Educational Trust",
+    role: "Karnataka",
+    content: "They delivered our campus expansion ahead of schedule while maintaining the highest standards of safety and structural integrity. Highly recommended.",
+    rating: 5,
+  },
+  {
+    id: "5",
+    name: "Industrial Unit Owner",
+    role: "Karnataka",
+    content: "The warehouse and manufacturing unit they built for us handles heavy loads with zero structural issues. Their team understands industrial requirements deeply.",
+    rating: 5,
+  },
+  {
+    id: "6",
+    name: "Resort Developer",
+    role: "Karnataka",
+    content: "From landscape integration to structural durability, RR Constructions brought our vision for a premium hospitality project to life beyond expectations.",
+    rating: 5,
+  },
 ];
 
 export default function Testimonials() {

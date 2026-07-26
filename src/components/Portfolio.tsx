@@ -1,65 +1,17 @@
-import { MapPin, Maximize2, CheckCircle2, ArrowRight } from "lucide-react";
+import { MapPin, Maximize2, CheckCircle2, ArrowRight, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-
-const featuredProjectsData = [
-  {
-    id: "1",
-    title: "R L Jalappa Hospital & Research Center",
-    category: "Healthcare Infrastructure",
-    location: "Kolar, Karnataka",
-    area: "2,20,000+ Sq. Ft.",
-    description: "State-of-the-art multi-specialty hospital and medical research facility offering world-class infrastructure.",
-    badge: "Flagship Landmark"
-  },
-  {
-    id: "2",
-    title: "AHS Building",
-    category: "Commercial Building",
-    location: "Kolar, Karnataka",
-    area: "75,000+ Sq. Ft.",
-    description: "Modern commercial building constructed for business operations and corporate workspace.",
-    badge: "Commercial"
-  },
-  {
-    id: "3",
-    title: "JP Apartment",
-    category: "Residential Building",
-    location: "Kolar, Karnataka",
-    area: "60,000+ Sq. Ft.",
-    description: "Premium residential building featuring modern apartments engineered for comfort and sustainable living.",
-    badge: "Residential"
-  },
-  {
-    id: "4",
-    title: "Commercial Complex",
-    category: "Commercial Complex",
-    location: "Kolar, Karnataka",
-    area: "45,000+ Sq. Ft.",
-    description: "High-grade commercial complex built to accommodate office units and retail centers.",
-    badge: "Commercial"
-  },
-  {
-    id: "5",
-    title: "Resort Project",
-    category: "Hospitality & Resort",
-    location: "Karnataka",
-    area: "35,000+ Sq. Ft.",
-    description: "Luxury resort development combining scenic aesthetics, structural durability, and guest comfort.",
-    badge: "Hospitality"
-  },
-  {
-    id: "6",
-    title: "Educational Building",
-    category: "Educational Institution",
-    location: "Karnataka",
-    area: "40,000+ Sq. Ft.",
-    description: "Educational institution complex featuring spacious classrooms, laboratories, and student facilities.",
-    badge: "Educational"
-  }
-];
+import { projects } from "@/data/projects";
 
 const Portfolio = () => {
+  const featuredProjects = projects.slice(0, 6);
+
+  const openLightbox = (images: Array<{ src: string; alt: string }>, index: number) => {
+    // This would need lightbox context or we can use a simpler approach
+    // For now, link to the portfolio page with the project
+    window.location.href = `/portfolio#project-${images[index]?.src?.split("/").pop()?.split(".")[0]}`;
+  };
+
   return (
     <section id="portfolio" className="py-24 bg-muted/20">
       <div className="container mx-auto px-6">
@@ -81,42 +33,71 @@ const Portfolio = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {featuredProjectsData.map((project) => (
-            <div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+          {featuredProjects.map((project) => (
+            <article
               key={project.id}
-              className="bg-card border border-gold/20 rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+              className="group bg-card border border-gold/20 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
             >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold uppercase text-gold tracking-wider">
-                    {project.category}
-                  </span>
-                  <span className="text-[10px] font-bold uppercase bg-gold/10 text-gold px-2.5 py-1 rounded-full border border-gold/20">
-                    {project.badge}
-                  </span>
-                </div>
-
-                <h3 className="font-serif text-2xl font-bold mb-3 text-foreground">
-                  {project.title}
-                </h3>
-
-                <p className="text-muted-foreground text-xs leading-relaxed mb-6">
-                  {project.description}
-                </p>
+              {/* Image */}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                {project.thumbnail ? (
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-muted/50 flex items-center justify-center">
+                    <span className="text-gold/50 text-4xl">🏗</span>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {project.images.length > 0 && (
+                  <button
+                    onClick={() => window.location.href = `/portfolio#${project.id}`}
+                    className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/90 text-foreground hover:bg-white flex items-center justify-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                    aria-label={`View ${project.title} gallery`}
+                  >
+                    <Search className="w-5 h-5" />
+                  </button>
+                )}
               </div>
 
-              <div className="pt-4 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-foreground">
-                <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <MapPin className="w-3.5 h-3.5 text-gold shrink-0" />
-                  <span>{project.location}</span>
+              {/* Content */}
+              <div className="p-5 md:p-6 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-bold uppercase text-gold tracking-wider">
+                      {project.type}
+                    </span>
+                    <span className="text-[10px] font-semibold bg-gold/10 text-gold px-2.5 py-0.5 rounded-full border border-gold/20">
+                      {project.status}
+                    </span>
+                  </div>
+
+                  <h3 className="font-serif text-xl font-bold mb-2 text-foreground line-clamp-2">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-muted-foreground text-xs leading-relaxed mb-4 line-clamp-3">
+                    {project.description}
+                  </p>
                 </div>
-                <div className="flex items-center gap-1.5 text-gold">
-                  <Maximize2 className="w-3.5 h-3.5 shrink-0" />
-                  <span>{project.area}</span>
+
+                <div className="pt-4 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-foreground">
+                  <div className="flex items-center gap-1.5 text-muted-foreground">
+                    <MapPin className="w-3.5 h-3.5 text-gold shrink-0" />
+                    <span>{project.location}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-gold">
+                    <Maximize2 className="w-3.5 h-3.5 shrink-0" />
+                    <span>{project.builtUpArea}</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 

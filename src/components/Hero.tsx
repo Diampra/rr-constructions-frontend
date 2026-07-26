@@ -107,6 +107,13 @@ const Hero = () => {
   const [editMode, setEditMode] = useState(false);
   const [editTab, setEditTab] = useState<"image" | "bg" | "card" | "bottomBar">("image");
   const [copied, setCopied] = useState(false);
+  const [copyPrompt, setCopyPrompt] = useState<{
+    isOpen: boolean;
+    tab: "image" | "bg" | "card" | "bottomBar" | null;
+    propertyKey: string;
+    value: any;
+    inputStr: string;
+  }>({ isOpen: false, tab: null, propertyKey: "", value: null, inputStr: "all" });
 
   // Per-slide image transform state
   const [transforms, setTransforms] = useState(() => layoutConfig.transforms);
@@ -140,50 +147,52 @@ const Hero = () => {
     }));
   };
 
-  const handleCopyProperty = (tab: "image" | "bg" | "card", propertyKey: string, value: any) => {
-    const input = window.prompt(
-      `Apply '${propertyKey}' value to which slides?\n\nEnter comma-separated numbers (1-${slides.length}) or type 'all':`,
-      "all"
-    );
-    if (!input) return;
+  const handleCopyProperty = (tab: "image" | "bg" | "card" | "bottomBar", propertyKey: string, value: any) => {
+    setCopyPrompt({ isOpen: true, tab, propertyKey, value, inputStr: "all" });
+  };
+
+  const executeCopyProperty = () => {
+    const { tab, propertyKey, value, inputStr } = copyPrompt;
+    if (!tab) return;
 
     let targetIds: string[] = [];
-    if (input.trim().toLowerCase() === "all") {
+    if (inputStr.trim().toLowerCase() === "all") {
       targetIds = slides.map((s) => s.id).filter(id => id !== slide.id);
     } else {
-      targetIds = input
+      targetIds = inputStr
         .split(",")
         .map((n) => n.trim())
         .filter((n) => slides.some((s) => s.id === n) && n !== slide.id);
     }
 
-    if (targetIds.length === 0) return;
-
-    if (tab === "image") {
-      setTransforms((prev) => {
-        const next = { ...prev };
-        targetIds.forEach((id) => {
-          if (next[id]) next[id] = { ...next[id], [propertyKey]: value };
+    if (targetIds.length > 0) {
+      if (tab === "image") {
+        setTransforms((prev) => {
+          const next = { ...prev };
+          targetIds.forEach((id) => {
+            if (next[id]) next[id] = { ...next[id], [propertyKey]: value };
+          });
+          return next;
         });
-        return next;
-      });
-    } else if (tab === "bg") {
-      setBgConfigs((prev) => {
-        const next = { ...prev };
-        targetIds.forEach((id) => {
-          if (next[id]) next[id] = { ...next[id], [propertyKey]: value };
+      } else if (tab === "bg") {
+        setBgConfigs((prev) => {
+          const next = { ...prev };
+          targetIds.forEach((id) => {
+            if (next[id]) next[id] = { ...next[id], [propertyKey]: value };
+          });
+          return next;
         });
-        return next;
-      });
-    } else if (tab === "card") {
-      setCardConfigs((prev) => {
-        const next = { ...prev };
-        targetIds.forEach((id) => {
-          if (next[id]) next[id] = { ...next[id], [propertyKey]: value };
+      } else if (tab === "card") {
+        setCardConfigs((prev) => {
+          const next = { ...prev };
+          targetIds.forEach((id) => {
+            if (next[id]) next[id] = { ...next[id], [propertyKey]: value };
+          });
+          return next;
         });
-        return next;
-      });
+      }
     }
+    setCopyPrompt(prev => ({ ...prev, isOpen: false }));
   };
 
   const resetTransform = () => {
@@ -241,7 +250,7 @@ const Hero = () => {
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
-      className="relative w-full overflow-hidden bg-[#0A1B33] text-[#F5F1E8] transition-colors duration-500"
+      className="relative w-full overflow-hidden bg-rr-navy-deep text-rr-cream transition-colors duration-500"
       style={{ height: "100svh", minHeight: "640px", paddingTop: "56px" }}
     >
       {/* Ambient depth — replaces the flat grid + gradient with a single
@@ -265,9 +274,9 @@ const Hero = () => {
       </div>
 
       {/* Eyebrow — top left, quiet metadata, clear of the image entirely */}
-      <div className="absolute top-6 left-4 md:left-6 z-10 font-mono text-[11px] tracking-[0.25em] text-[#8FA3C2]">
+      <div className="absolute top-6 left-4 md:left-6 z-10 font-mono text-[11px] tracking-[0.25em] text-rr-cream/60">
         {String(currentSlide + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
-        <span className="ml-2 text-[#C99A46]">{slide.sectorTag}</span>
+        <span className="ml-2 text-rr-gold">{slide.sectorTag}</span>
       </div>
 
       {/* LAYER 1 — the sector name, big and solid, sitting BEHIND the
@@ -294,7 +303,7 @@ const Hero = () => {
         }}
       >
         <span
-          className="font-serif font-black uppercase leading-[0.85] tracking-tight text-[#F5F1E8]"
+          className="font-serif font-black uppercase leading-[0.85] tracking-tight text-rr-cream"
           style={{
             fontSize: `clamp(52px, ${bg.fontSize}vw, 1000px)`,
             letterSpacing: `${bg.letterSpacing}em`,
@@ -371,9 +380,9 @@ const Hero = () => {
           zIndex: 25,
         }}
       >
-        <div className="pl-3.5 border-l-2 border-[#C99A46]">
+        <div className="pl-3.5 border-l-2 border-rr-gold">
           <h2
-            className="font-serif font-bold uppercase leading-tight text-[#F5F1E8]"
+            className="font-serif font-bold uppercase leading-tight text-rr-cream"
             style={{
               textShadow: `0 2px 14px rgba(0,0,0,${(card.shadowAlpha ?? 65) / 100})`,
               letterSpacing: "0.04em",
@@ -383,7 +392,7 @@ const Hero = () => {
             {slide.title}
           </h2>
           <p
-            className="mt-2 font-barlow leading-relaxed text-[#D7DEEA] font-normal"
+            className="mt-2 font-barlow leading-relaxed text-rr-cream/80 font-normal"
             style={{
               textShadow: `0 2px 10px rgba(0,0,0,${(card.shadowAlpha ?? 65) / 100})`,
               fontSize: `${card.descSize}px`,
@@ -395,7 +404,7 @@ const Hero = () => {
             {slide.highlights.map((item) => (
               <span
                 key={item}
-                className="font-serif text-[11px] font-semibold uppercase tracking-widest text-[#E8C077]"
+                className="font-serif text-[11px] font-semibold uppercase tracking-widest text-rr-gold-bright"
                 style={{ textShadow: `0 1px 8px rgba(0,0,0,${Math.min(1, ((card.shadowAlpha ?? 65) + 5) / 100)})`, letterSpacing: "0.12em" }}
               >
                 {item}
@@ -437,7 +446,7 @@ const Hero = () => {
                 style={{
                   width: currentSlide === idx ? "18px" : "6px",
                   height: "3px",
-                  background: currentSlide === idx ? "#E8B85C" : "rgba(245,241,232,0.3)",
+                   background: currentSlide === idx ? "var(--rr-gold-bright)" : "rgba(245,241,232,0.3)",
                 }}
               />
             ))}
@@ -450,15 +459,15 @@ const Hero = () => {
               { v: "5M+", l: "Sq. Ft." },
             ].map((s, i) => (
               <div key={s.l} className={i > 0 ? "border-l border-white/15 pl-4" : ""}>
-                <span className="block font-bold text-[#E8B85C] leading-none" style={{ fontSize: `${bottomBarConfig.statsValueSize}px` }}>{s.v}</span>
-                <span className="uppercase tracking-wider text-[#7C8CA8]" style={{ fontSize: `${bottomBarConfig.statsLabelSize}px` }}>{s.l}</span>
+                 <span className="block font-bold text-rr-gold-bright leading-none" style={{ fontSize: `${bottomBarConfig.statsValueSize}px` }}>{s.v}</span>
+                 <span className="uppercase tracking-wider text-muted-foreground" style={{ fontSize: `${bottomBarConfig.statsLabelSize}px` }}>{s.l}</span>
               </div>
             ))}
           </div>
 
           <div className="flex items-center gap-2.5">
             <Link to="/portfolio">
-              <Button className="bg-[#C99A46] hover:bg-[#E8B85C] text-[#0A1B33] font-bold text-xs tracking-wide rounded-[3px] px-4 py-2.5 h-auto">
+              <Button className="bg-rr-gold hover:bg-rr-gold-bright text-rr-navy-deep font-bold text-xs tracking-wide rounded-[3px] px-4 py-2.5 h-auto">
                 Explore Projects
                 <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
               </Button>
@@ -466,7 +475,7 @@ const Hero = () => {
             <Link to="/contact">
               <Button
                 variant="outline"
-                className="border-white/20 bg-transparent hover:bg-white/[0.06] text-[#F5F1E8] text-xs font-semibold tracking-wide rounded-[3px] px-4 py-2.5 h-auto"
+                className="border-rr-cream/20 bg-transparent hover:bg-rr-cream/10 text-rr-cream text-xs font-semibold tracking-wide rounded-[3px] px-4 py-2.5 h-auto"
               >
                 Contact Us
               </Button>
@@ -487,7 +496,7 @@ const Hero = () => {
         <button
           onClick={handlePrev}
           aria-label="Previous sector"
-          className="mb-2 w-7 h-7 rounded-full flex items-center justify-center text-[#8FA3C2] hover:text-[#F5F1E8] transition-colors"
+          className="mb-2 w-7 h-7 rounded-full flex items-center justify-center text-rr-cream/60 hover:text-rr-cream transition-colors"
         >
           <ChevronUp className="w-4 h-4" />
         </button>
@@ -506,8 +515,8 @@ const Hero = () => {
               <span
                 className={`text-[10px] font-semibold tracking-wide whitespace-nowrap transition-all duration-300 ${
                   active
-                    ? "opacity-100 text-[#F5F1E8] translate-x-0"
-                    : "opacity-0 -translate-x-1 text-[#8FA3C2] group-hover:opacity-70"
+                    ? "opacity-100 text-rr-cream translate-x-0"
+                    : "opacity-0 -translate-x-1 text-rr-cream/60 group-hover:opacity-70"
                 }`}
               >
                 {s.sectorTag}
@@ -523,7 +532,7 @@ const Hero = () => {
                 {active && !prefersReducedMotion && (
                   <span
                     key={`fill-${slide.id}-${paused}`}
-                    className="absolute inset-y-0 left-0 bg-[#E8B85C]"
+                    className="absolute inset-y-0 left-0 bg-rr-gold-bright"
                     style={{
                       animation: paused
                         ? "none"
@@ -533,7 +542,7 @@ const Hero = () => {
                   />
                 )}
                 {active && prefersReducedMotion && (
-                  <span className="absolute inset-0 bg-[#E8B85C]" />
+                  <span className="absolute inset-0 bg-rr-gold-bright" />
                 )}
               </span>
             </button>
@@ -543,7 +552,7 @@ const Hero = () => {
         <button
           onClick={handleNext}
           aria-label="Next sector"
-          className="mt-2 w-7 h-7 rounded-full flex items-center justify-center text-[#8FA3C2] hover:text-[#F5F1E8] transition-colors"
+          className="mt-2 w-7 h-7 rounded-full flex items-center justify-center text-rr-cream/60 hover:text-rr-cream transition-colors"
         >
           <ChevronDown className="w-4 h-4" />
         </button>
@@ -564,19 +573,19 @@ const Hero = () => {
         aria-label="Toggle image adjustment panel"
         className="absolute bottom-4 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 z-40 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
         style={{
-          background: editMode ? "#C99A46" : "rgba(255,255,255,0.08)",
+          background: editMode ? "var(--rr-gold)" : "rgba(255,255,255,0.08)",
           border: "1px solid rgba(255,255,255,0.2)",
-          color: editMode ? "#0A1B33" : "#8FA3C2",
+          color: editMode ? "var(--rr-navy-deep)" : "rgba(245,241,232,0.6)",
         }}
       >
         <Settings2 className="w-4 h-4" />
       </button>
 
-      {editMode && (
+      {import.meta.env.DEV && editMode && (
         <div
           className="absolute z-40 bottom-16 left-4 w-[300px] pointer-events-auto"
           style={{
-            background: "#0C1A2E",
+            background: "var(--rr-navy-mid)",
             border: "1px solid rgba(201,154,70,0.35)",
             borderRadius: "8px",
             boxShadow: "0 24px 56px rgba(0,0,0,0.6)",
@@ -589,24 +598,24 @@ const Hero = () => {
               <select
                 value={currentSlide}
                 onChange={(e) => goTo(Number(e.target.value))}
-                className="font-mono text-[10px] tracking-[0.1em] text-[#E8B85C] uppercase bg-[#C99A46]/10 border border-[#C99A46]/30 rounded px-2 py-1 pr-6 outline-none cursor-pointer appearance-none hover:bg-[#C99A46]/20 transition-colors"
+                className="font-mono text-[10px] tracking-[0.1em] text-rr-gold-bright uppercase bg-rr-gold/10 border border-rr-gold/30 rounded px-2 py-1 pr-6 outline-none cursor-pointer appearance-none hover:bg-rr-gold/20 transition-colors"
               >
                 {slides.map((s, idx) => (
-                  <option key={s.id} value={idx} className="bg-[#0C1A2E] text-[#F5F1E8]">
+                  <option key={s.id} value={idx} className="bg-rr-navy-mid text-rr-cream">
                     {idx + 1}. {s.sectorTag}
                   </option>
                 ))}
               </select>
-              <ChevronDown className="absolute right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 text-[#E8B85C] pointer-events-none" />
+              <ChevronDown className="absolute right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 text-rr-gold-bright pointer-events-none" />
             </div>
             <div className="flex items-center gap-2">
               <button
                 onClick={resetAll}
-                className="text-[9px] font-mono uppercase tracking-wider text-[#7C8CA8] hover:text-[#D7DEEA] transition-colors"
+                className="text-[9px] font-mono uppercase tracking-wider text-muted-foreground hover:text-rr-cream transition-colors"
               >
                 Reset all
               </button>
-              <button onClick={() => setEditMode(false)} aria-label="Close panel" className="text-[#8FA3C2] hover:text-[#F5F1E8]">
+              <button onClick={() => setEditMode(false)} aria-label="Close panel" className="text-rr-cream/60 hover:text-rr-cream">
                 <X className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -620,8 +629,8 @@ const Hero = () => {
                 onClick={() => setEditTab(tab)}
                 className="flex-1 py-2 text-[10px] font-mono font-semibold uppercase tracking-wider transition-colors"
                 style={{
-                  color: editTab === tab ? "#E8B85C" : "#5A6E88",
-                  borderBottom: editTab === tab ? "2px solid #C99A46" : "2px solid transparent",
+                  color: editTab === tab ? "var(--rr-gold-bright)" : "var(--muted-foreground)",
+                  borderBottom: editTab === tab ? "2px solid var(--rr-gold)" : "2px solid transparent",
                   background: "transparent",
                 }}
               >
@@ -640,21 +649,21 @@ const Hero = () => {
                 <PanelSlider label="Vertical (y)" value={t.y} min={-800} max={800} step={1} onChange={(v) => updateTransform("y", v)} unit="px" onCopy={() => handleCopyProperty("image", "y", t.y)} />
                 
                 <div className="mt-3 mb-1 pt-2 border-t border-white/10">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#5A6E88]">Zoom Direction</span>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Zoom Direction</span>
                 </div>
                 <PanelSlider label="Origin X (Left ↔ Right)" value={t.originX ?? 50} min={0} max={100} step={1} onChange={(v) => updateTransform("originX", v)} unit="%" onCopy={() => handleCopyProperty("image", "originX", t.originX ?? 50)} />
                 <PanelSlider label="Origin Y (Top ↔ Bottom)" value={t.originY ?? 100} min={0} max={100} step={1} onChange={(v) => updateTransform("originY", v)} unit="%" onCopy={() => handleCopyProperty("image", "originY", t.originY ?? 100)} />
 
                 <div className="flex items-center justify-between mt-3 mb-1 pt-2 border-t border-white/10">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[11px] font-semibold text-[#D7DEEA]">Ken Burns zoom</span>
-                    <button onClick={() => handleCopyProperty("image", "kenBurns", t.kenBurns)} className="p-0.5 text-white/30 hover:text-[#E8B85C] transition-colors rounded hover:bg-white/5" title="Apply to other slides"><Copy className="w-[10px] h-[10px]" /></button>
+                     <span className="text-[11px] font-semibold text-rr-cream/80">Ken Burns zoom</span>
+                     <button onClick={() => handleCopyProperty("image", "kenBurns", t.kenBurns)} className="p-0.5 text-white/30 hover:text-rr-gold-bright transition-colors rounded hover:bg-white/5" title="Apply to other slides"><Copy className="w-[10px] h-[10px]" /></button>
                   </div>
                   <input
                     type="checkbox"
                     checked={t.kenBurns}
                     onChange={(e) => updateTransform("kenBurns", e.target.checked)}
-                    className="accent-[#C99A46] cursor-pointer"
+                     className="accent-rr-gold cursor-pointer"
                   />
                 </div>
                 {t.kenBurns && (
@@ -662,13 +671,13 @@ const Hero = () => {
                 )}
 
                 <div className="flex items-center gap-1.5 mt-3 mb-1 pt-2 border-t border-white/10">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#5A6E88]">Entrance Animation</span>
-                  <button onClick={() => handleCopyProperty("image", "entrance", t.entrance || "up")} className="p-0.5 text-white/30 hover:text-[#E8B85C] transition-colors rounded hover:bg-white/5" title="Apply to other slides"><Copy className="w-[10px] h-[10px]" /></button>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Entrance Animation</span>
+                  <button onClick={() => handleCopyProperty("image", "entrance", t.entrance || "up")} className="p-0.5 text-white/30 hover:text-rr-gold-bright transition-colors rounded hover:bg-white/5" title="Apply to other slides"><Copy className="w-[10px] h-[10px]" /></button>
                 </div>
                 <select
                   value={t.entrance || "up"}
                   onChange={(e) => updateTransform("entrance", e.target.value)}
-                  className="w-full mt-1 bg-[#0A1B33] text-[11px] text-[#D7DEEA] border border-white/15 rounded px-2 py-1.5 outline-none cursor-pointer focus:border-[#C99A46]"
+                   className="w-full mt-1 bg-rr-navy-deep text-[11px] text-rr-cream/80 border border-rr-cream/15 rounded px-2 py-1.5 outline-none cursor-pointer focus:border-rr-gold"
                 >
                   <option value="up">Slide Up</option>
                   <option value="down">Slide Down</option>
@@ -679,7 +688,7 @@ const Hero = () => {
 
                 <button
                   onClick={resetTransform}
-                  className="mt-4 w-full text-[11px] font-semibold text-[#D7DEEA] border border-white/15 rounded-[3px] py-1.5 hover:bg-white/[0.06] transition-colors"
+                  className="mt-4 w-full text-[11px] font-semibold text-rr-cream/80 border border-rr-cream/15 rounded-[3px] py-1.5 hover:bg-rr-cream/10 transition-colors"
                 >
                   Reset this slide
                 </button>
@@ -730,13 +739,13 @@ const Hero = () => {
                   onCopy={() => handleCopyProperty("bg", "letterSpacing", bg.letterSpacing)}
                 />
                 <div className="flex items-center gap-1.5 mt-3 mb-1 pt-2 border-t border-white/10">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#5A6E88]">Entrance Animation</span>
-                  <button onClick={() => handleCopyProperty("bg", "entrance", bg.entrance || "fade")} className="p-0.5 text-white/30 hover:text-[#E8B85C] transition-colors rounded hover:bg-white/5" title="Apply to other slides"><Copy className="w-[10px] h-[10px]" /></button>
+                   <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Entrance Animation</span>
+                   <button onClick={() => handleCopyProperty("bg", "entrance", bg.entrance || "fade")} className="p-0.5 text-white/30 hover:text-rr-gold-bright transition-colors rounded hover:bg-white/5" title="Apply to other slides"><Copy className="w-[10px] h-[10px]" /></button>
                 </div>
                 <select
                   value={bg.entrance || "fade"}
                   onChange={(e) => setBgConfigs((p) => ({ ...p, [slide.id]: { ...p[slide.id], entrance: e.target.value } }))}
-                  className="w-full mt-1 bg-[#0A1B33] text-[11px] text-[#D7DEEA] border border-white/15 rounded px-2 py-1.5 outline-none cursor-pointer focus:border-[#C99A46]"
+                   className="w-full mt-1 bg-rr-navy-deep text-[11px] text-rr-cream/80 border border-rr-cream/15 rounded px-2 py-1.5 outline-none cursor-pointer focus:border-rr-gold"
                 >
                   <option value="fade">Fade Only</option>
                   <option value="up">Slide Up</option>
@@ -746,7 +755,7 @@ const Hero = () => {
                 </select>
                 <button
                   onClick={resetBg}
-                  className="mt-4 w-full text-[11px] font-semibold text-[#D7DEEA] border border-white/15 rounded-[3px] py-1.5 hover:bg-white/[0.06] transition-colors"
+                  className="mt-4 w-full text-[11px] font-semibold text-rr-cream/80 border border-rr-cream/15 rounded-[3px] py-1.5 hover:bg-rr-cream/10 transition-colors"
                 >
                   Reset this slide's BG
                 </button>
@@ -818,7 +827,7 @@ const Hero = () => {
                 />
                 <button
                   onClick={resetCard}
-                  className="mt-4 w-full text-[11px] font-semibold text-[#D7DEEA] border border-white/15 rounded-[3px] py-1.5 hover:bg-white/[0.06] transition-colors"
+                  className="mt-4 w-full text-[11px] font-semibold text-rr-cream/80 border border-rr-cream/15 rounded-[3px] py-1.5 hover:bg-rr-cream/10 transition-colors"
                 >
                   Reset this slide's Card
                 </button>
@@ -872,14 +881,50 @@ const Hero = () => {
           <div className="px-4 pb-3 pt-0 border-t border-white/10">
             <button
               onClick={copyConfig}
-              className="mt-3 w-full flex items-center justify-center gap-1.5 text-[11px] font-bold text-[#0A1B33] bg-[#C99A46] hover:bg-[#E8B85C] rounded-[3px] py-2 transition-colors"
+               className="mt-3 w-full flex items-center justify-center gap-1.5 text-[11px] font-bold text-rr-navy-deep bg-rr-gold hover:bg-rr-gold-bright rounded-[3px] py-2 transition-colors"
             >
               {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
               {copied ? "Copied!" : "Copy full config (all slides + layout)"}
             </button>
-            <p className="mt-2 text-[9px] leading-relaxed text-[#4A5D73] text-center">
+            <p className="mt-2 text-[9px] leading-relaxed text-muted-foreground text-center">
               Exports image transforms + bgConfig + cardConfig as JSON
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* ── COPY PROPERTY MODAL ── */}
+      {copyPrompt.isOpen && (
+         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-rr-navy-deep/60 backdrop-blur-sm pointer-events-auto">
+          <div className="bg-rr-navy-mid border border-rr-cream/10 p-6 rounded-lg shadow-2xl w-[320px] animate-fade-in">
+            <h3 className="text-rr-gold-bright font-semibold text-sm uppercase tracking-widest mb-2">Apply Property</h3>
+            <p className="text-rr-cream/60 text-xs mb-4">
+              Apply <strong className="text-rr-cream/80">{copyPrompt.propertyKey}</strong> to which slides?
+              <br/>
+              <span className="text-[10px] opacity-70">Enter comma-separated (1-{slides.length}) or 'all'</span>
+            </p>
+            <input 
+              type="text" 
+              value={copyPrompt.inputStr} 
+              onChange={(e) => setCopyPrompt(prev => ({ ...prev, inputStr: e.target.value }))}
+               className="w-full bg-rr-navy-deep border border-rr-cream/20 rounded px-3 py-2 text-sm text-rr-cream outline-none focus:border-rr-gold mb-5"
+              autoFocus
+              onKeyDown={(e) => e.key === "Enter" && executeCopyProperty()}
+            />
+            <div className="flex items-center justify-end gap-3">
+              <button 
+                onClick={() => setCopyPrompt(prev => ({ ...prev, isOpen: false }))}
+                className="text-xs font-semibold text-rr-cream/60 hover:text-rr-cream"
+              >
+                Cancel
+              </button>
+              <button 
+                onClick={executeCopyProperty}
+                className="text-xs bg-rr-gold hover:bg-rr-gold-bright text-rr-navy-deep font-bold px-4 py-2 rounded transition-colors"
+              >
+                Apply
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -933,18 +978,18 @@ function PanelSlider({
     <div className="mt-2.5">
       <div className="flex items-center justify-between mb-1">
         <div className="flex items-center gap-1.5">
-          <span className="text-[11px] font-semibold text-[#D7DEEA]">{label}</span>
+          <span className="text-[11px] font-semibold text-rr-cream/80">{label}</span>
           {onCopy && (
             <button 
               onClick={onCopy} 
-              className="p-0.5 text-white/30 hover:text-[#E8B85C] transition-colors rounded hover:bg-white/5" 
+              className="p-0.5 text-white/30 hover:text-rr-gold-bright transition-colors rounded hover:bg-white/5" 
               title="Apply this value to other slides"
             >
               <Copy className="w-[10px] h-[10px]" />
             </button>
           )}
         </div>
-        <span className="font-mono text-[11px] text-[#C99A46] tabular-nums">
+        <span className="font-mono text-[11px] text-rr-gold tabular-nums">
           {value.toFixed(step < 1 ? 2 : 0)}{unit}
         </span>
       </div>
@@ -957,8 +1002,8 @@ function PanelSlider({
         onChange={(e) => onChange(parseFloat(e.target.value))}
         className="w-full h-1 appearance-none rounded-full outline-none cursor-pointer"
         style={{
-          background: `linear-gradient(to right, #C99A46 ${((value - min) / (max - min)) * 100}%, rgba(255,255,255,0.12) ${((value - min) / (max - min)) * 100}%)`,
-          accentColor: "#C99A46",
+          background: `linear-gradient(to right, var(--rr-gold) ${((value - min) / (max - min)) * 100}%, rgba(255,255,255,0.12) ${((value - min) / (max - min)) * 100}%)`,
+          accentColor: "var(--rr-gold)",
         }}
       />
     </div>

@@ -2,120 +2,113 @@ import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { useLanguage } from "@/contexts/LanguageContext";
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  segment: string;
+  message: string;
+}
+
+const contactInfo = [
+  {
+    icon: MapPin,
+    title: "Registered Office",
+    content: "#18, 2nd Floor, 3rd Cross,\nSanjeevappa Layout,\nKolar, Karnataka 563101",
+  },
+  {
+    icon: Phone,
+    title: "Phone",
+    content: "+91 94480 85212",
+  },
+  {
+    icon: Mail,
+    title: "Email",
+    content: "info@rrinfra.co.in",
+  },
+  {
+    icon: Clock,
+    title: "Office Hours",
+    content: "Monday - Saturday: 9:30 AM - 6:30 PM\nSunday: By Appointment",
+  },
+];
+
+const segments = [
+  "Commercial Building",
+  "Residential Development",
+  "Hospital & Healthcare Facility",
+  "Educational Institution",
+  "Industrial Facility & Warehouse",
+  "Resort & Hospitality Project",
+];
 
 const Contact = () => {
   const { toast } = useToast();
-  const { t, language } = useLanguage();
-  
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
-    service: "",
+    segment: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: t.visitOurStudio,
-      content: language === "hi" 
-        ? "गया-बोधगया रोड, ज्ञान दीप स्कूल के पास, केन्दुई, गया, बिहार 823001"
-        : "Gaya-Bodhgaya Road, near Gyan Deep School, Kendui, Gaya, Bihar 823001",
-    },
-    {
-      icon: Phone,
-      title: t.callUs,
-      content: "+91 88005 70957\n+91 70618 63057",
-    },
-    {
-      icon: Mail,
-      title: t.emailUs,
-      content: "enquiry@dancingdrills.com",
-    },
-    {
-      icon: Clock,
-      title: t.workingHours,
-      content: language === "hi"
-        ? "सोम - शनि: सुबह 10:00 - शाम 7:00\nरविवार: अपॉइंटमेंट द्वारा"
-        : "Mon - Sat: 10:00 AM - 7:00 PM\nSunday: By Appointment",
-    },
-  ];
-
-  const serviceOptions = [
-    { value: "interior", label: t.interiorDesigning },
-    { value: "temple", label: t.templeDesignService },
-    { value: "furniture", label: t.customFurniture },
-    { value: "wpc", label: t.wpcPanels },
-    { value: "cnc", label: t.cncCutting },
-  ];
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    await new Promise((resolve) => setTimeout(resolve, 800));
     toast({
-      title: t.thankYouMessage,
-      description: t.thankYouDescription,
+      title: "Inquiry Received Successfully",
+      description: "Thank you for reaching out to RR Constructions & RR Infra. Our team will contact you within 24 hours.",
     });
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", segment: "", message: "" });
+    setIsSubmitting(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
     <section id="contact" className="py-24 bg-card">
       <div className="container mx-auto px-6">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="w-12 h-px bg-gold" />
             <span className="text-gold text-sm uppercase tracking-[0.2em] font-medium">
-              {t.getInTouch}
+              Get In Touch
             </span>
             <div className="w-12 h-px bg-gold" />
           </div>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground font-medium mb-4">
-            {t.startYourProject}
+            Contact RR Constructions
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {t.contactDescription}
+            Share your project requirements and our leadership team will get back to you within 24 hours.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="grid sm:grid-cols-2 gap-6">
-              {contactInfo.map((info) => (
-                <div key={info.title} className="bg-background p-6 shadow-soft">
-                  <div className="w-12 h-12 bg-secondary flex items-center justify-center mb-4">
-                    <info.icon className="w-5 h-5 text-gold" />
-                  </div>
-                  <h4 className="font-serif text-lg text-foreground mb-2">{info.title}</h4>
-                  <p className="text-muted-foreground text-sm whitespace-pre-line">{info.content}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Map or Image Placeholder */}
-            {/* <div className="h-64 bg-secondary flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-8 h-8 text-gold mx-auto mb-2" />
-                <p className="text-muted-foreground text-sm">{t.interactiveMap}</p>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {contactInfo.map((item) => (
+              <div key={item.title} className="bg-background p-6 shadow-sm border border-border/60 rounded-xl">
+                <item.icon className="w-5 h-5 text-gold mb-4" />
+                <h4 className="font-serif text-lg text-foreground mb-2">{item.title}</h4>
+                <p className="text-muted-foreground text-sm whitespace-pre-line">{item.content}</p>
               </div>
-            </div> */}
+            ))}
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-background p-8 shadow-soft">
-            <h3 className="font-serif text-2xl text-foreground mb-6">{t.sendUsMessage}</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="bg-background p-6 md:p-8 shadow-sm border border-border/60 rounded-xl">
+            <h3 className="font-serif text-2xl text-foreground mb-6">Send Us a Project Inquiry</h3>
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                    {t.fullName}
+                    Full Name
                   </label>
                   <input
                     type="text"
@@ -124,13 +117,13 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-secondary border-0 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
-                    placeholder={language === "hi" ? "आपका नाम" : "John Doe"}
+                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                    placeholder="John Doe"
                   />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    {t.emailAddress}
+                    Email Address
                   </label>
                   <input
                     type="email"
@@ -139,8 +132,8 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-secondary border-0 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
-                    placeholder="john@example.com"
+                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                    placeholder="john@company.com"
                   />
                 </div>
               </div>
@@ -148,7 +141,7 @@ const Contact = () => {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    {t.phoneNumber}
+                    Phone Number
                   </label>
                   <input
                     type="tel"
@@ -156,25 +149,25 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-secondary border-0 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
-                    placeholder="+91 98765 43210"
+                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                    placeholder="+91 94480 85212"
                   />
                 </div>
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
-                    {t.serviceInterestedIn}
+                  <label htmlFor="segment" className="block text-sm font-medium text-foreground mb-2">
+                    Project Segment
                   </label>
                   <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
+                    id="segment"
+                    name="segment"
+                    value={formData.segment}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-secondary border-0 text-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
                   >
-                    <option value="">{t.selectService}</option>
-                    {serviceOptions.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
+                    <option value="">Select project segment</option>
+                    {segments.map((segment) => (
+                      <option key={segment} value={segment}>
+                        {segment}
                       </option>
                     ))}
                   </select>
@@ -183,7 +176,7 @@ const Contact = () => {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  {t.projectDetails}
+                  Project Specifications & Scope
                 </label>
                 <textarea
                   id="message"
@@ -191,14 +184,24 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 bg-secondary border-0 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all resize-none"
-                  placeholder={t.tellUsAboutProject}
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all resize-none"
+                  placeholder="Tell us about built-up area, site location, timeline, and structural scope..."
                 />
               </div>
 
-              <Button type="submit" variant="elegant" size="lg" className="w-full">
-                <Send className="w-4 h-4 mr-2" />
-                {t.sendMessage}
+              <Button
+                type="submit"
+                variant="gold"
+                size="lg"
+                className="w-full"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting Inquiry..." : (
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    Submit Project Inquiry
+                  </>
+                )}
               </Button>
             </form>
           </div>

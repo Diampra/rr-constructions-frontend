@@ -1,92 +1,32 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Building2, MapPin, Maximize2, CheckCircle2 } from "lucide-react";
+import { Building2, MapPin, Maximize2, CheckCircle2, Search, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  type: string;
-  builtUpArea: string;
-  location: string;
-  status: string;
-  featured?: boolean;
-}
-
-const staticProjects: Project[] = [
-  {
-    id: "1",
-    title: "R L Jalappa Hospital & Research Center",
-    description: "A state-of-the-art multi-specialty hospital and research center offering world-class healthcare infrastructure with modern amenities and advanced medical facilities.",
-    type: "Healthcare Infrastructure",
-    builtUpArea: "2,20,000+ Sq. Ft.",
-    location: "Kolar, Karnataka",
-    status: "Completed",
-    featured: true,
-  },
-  {
-    id: "2",
-    title: "AHS Building",
-    description: "Modern commercial building constructed to drive business operations with state-of-the-art architectural design and structural integrity.",
-    type: "Commercial Building",
-    builtUpArea: "75,000+ Sq. Ft.",
-    location: "Kolar, Karnataka",
-    status: "Completed",
-  },
-  {
-    id: "3",
-    title: "JP Apartment",
-    description: "Premium residential building featuring modern apartments engineered for comfort, luxury living, and Vastu-compliant layout.",
-    type: "Residential Building",
-    builtUpArea: "60,000+ Sq. Ft.",
-    location: "Kolar, Karnataka",
-    status: "Completed",
-  },
-  {
-    id: "4",
-    title: "Commercial Complex",
-    description: "High-grade commercial complex built to accommodate corporate offices, retail outlets, and business hubs with advanced safety systems.",
-    type: "Commercial Building",
-    builtUpArea: "45,000+ Sq. Ft.",
-    location: "Kolar, Karnataka",
-    status: "Completed",
-  },
-  {
-    id: "5",
-    title: "Resort Project",
-    description: "Luxury resort & hospitality development blending aesthetics, guest comfort, and structural durability in a scenic environment.",
-    type: "Hospitality Resort",
-    builtUpArea: "35,000+ Sq. Ft.",
-    location: "Karnataka",
-    status: "Completed",
-  },
-  {
-    id: "6",
-    title: "Educational Building",
-    description: "Modern educational institution complex featuring spacious classrooms, laboratories, and student-focused facilities.",
-    type: "Educational Institution",
-    builtUpArea: "40,000+ Sq. Ft.",
-    location: "Karnataka",
-    status: "Completed",
-  },
-];
+import { Lightbox } from "@/components/ui/lightbox";
+import { projects, projectCategories } from "@/data/projects";
 
 const PortfolioPage = () => {
   const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState("All");
-
-  const categories = ["All", "Healthcare Infrastructure", "Commercial Building", "Residential Building", "Educational Institution", "Hospitality Resort"];
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxImages, setLightboxImages] = useState<Array<{ src: string; alt: string }>>([]);
 
   const filteredProjects = activeFilter === "All"
-    ? staticProjects
-    : staticProjects.filter(p => p.type === activeFilter);
+    ? projects
+    : projects.filter(p => p.type === activeFilter);
 
-  const featuredProject = staticProjects.find(p => p.featured);
+  const featuredProject = projects.find(p => p.featured);
+
+  const openLightbox = (images: Array<{ src: string; alt: string }>, index: number) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
 
   return (
     <>
@@ -102,21 +42,35 @@ const PortfolioPage = () => {
 
       <main className="pt-24">
         {/* Hero */}
-        <section className="py-20 bg-secondary text-center">
-          <div className="container mx-auto px-6">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="w-12 h-px bg-gold" />
-              <span className="text-gold text-sm uppercase tracking-[0.2em] font-medium">
-                Our Proven Track Record
-              </span>
-              <div className="w-12 h-px bg-gold" />
+        <section className="relative py-24 bg-secondary overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="/design_patterns/AR8.jpg"
+              alt="Construction project"
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-secondary/60" />
+          </div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-px bg-gold" />
+                <span className="text-gold text-sm uppercase tracking-[0.2em] font-medium">
+                  Our Proven Track Record
+                </span>
+              </div>
+              <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
+                Landmark Construction Projects
+              </h1>
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
+                Building structures that stand the test of time — delivering over 5 Million+ Sq. Ft. of high-quality construction across Karnataka.
+              </p>
+              <Link to="/contact">
+                <Button variant="gold" size="lg" className="font-semibold">
+                  Discuss Your Project <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
             </div>
-            <h1 className="font-serif text-4xl md:text-6xl mb-6 font-bold text-foreground">
-              Landmark Construction Projects
-            </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-              Building structures that stand the test of time — delivering over 5 Million+ Sq. Ft. of high-quality construction across Karnataka.
-            </p>
           </div>
         </section>
 
@@ -159,6 +113,15 @@ const PortfolioPage = () => {
                         </span>
                       </div>
                     </div>
+                    {featuredProject.images.length > 0 && (
+                      <button
+                        onClick={() => openLightbox(featuredProject.images, 0)}
+                        className="inline-flex items-center gap-2 text-gold hover:text-gold-light font-semibold text-xs uppercase tracking-wider mt-4"
+                      >
+                        <Search className="w-4 h-4" />
+                        View Project Gallery
+                      </button>
+                    )}
                   </div>
                   <div className="bg-muted/40 p-6 rounded-xl border border-gold/20 text-center space-y-4">
                     <Building2 className="w-12 h-12 text-gold mx-auto" />
@@ -176,7 +139,7 @@ const PortfolioPage = () => {
           <div className="container mx-auto px-6">
             {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-3 mb-16">
-              {categories.map((category) => (
+              {projectCategories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setActiveFilter(category)}
@@ -194,40 +157,69 @@ const PortfolioPage = () => {
             {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project) => (
-                <div
+                <article
                   key={project.id}
-                  className="bg-card border border-gold/20 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                  className="group bg-card border border-gold/20 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs font-bold uppercase text-gold tracking-wider">
-                        {project.type}
-                      </span>
-                      <span className="text-[11px] font-semibold bg-gold/10 text-gold px-2.5 py-0.5 rounded-full border border-gold/20">
-                        {project.status}
-                      </span>
-                    </div>
-
-                    <h3 className="font-serif text-xl font-bold mb-2 text-foreground">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-muted-foreground text-xs leading-relaxed mb-6">
-                      {project.description}
-                    </p>
+                  {/* Image */}
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    {project.thumbnail ? (
+                      <img
+                        src={project.thumbnail}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-muted/50 flex items-center justify-center">
+                        <Building2 className="w-12 h-12 text-gold/50" />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {project.images.length > 0 && (
+                      <button
+                        onClick={() => openLightbox(project.images, 0)}
+                        className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/90 text-foreground hover:bg-white flex items-center justify-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+                        aria-label={`View ${project.title} gallery`}
+                      >
+                        <Search className="w-5 h-5" />
+                      </button>
+                    )}
                   </div>
 
-                  <div className="pt-4 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-foreground">
-                    <div className="flex items-center gap-1 text-muted-foreground">
-                      <MapPin className="w-3.5 h-3.5 text-gold shrink-0" />
-                      <span>{project.location}</span>
+                  {/* Content */}
+                  <div className="p-6 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-xs font-bold uppercase text-gold tracking-wider">
+                          {project.type}
+                        </span>
+                        <span className="text-[11px] font-semibold bg-gold/10 text-gold px-2.5 py-0.5 rounded-full border border-gold/20">
+                          {project.status}
+                        </span>
+                      </div>
+
+                      <h3 className="font-serif text-xl font-bold mb-2 text-foreground line-clamp-2">
+                        {project.title}
+                      </h3>
+
+                      <p className="text-muted-foreground text-xs leading-relaxed mb-6 line-clamp-3">
+                        {project.description}
+                      </p>
                     </div>
-                    <div className="flex items-center gap-1 text-gold">
-                      <Maximize2 className="w-3.5 h-3.5 shrink-0" />
-                      <span>{project.builtUpArea}</span>
+
+                    <div className="pt-4 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-foreground">
+                      <div className="flex items-center gap-1 text-muted-foreground">
+                        <MapPin className="w-3.5 h-3.5 text-gold shrink-0" />
+                        <span>{project.location}</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-gold">
+                        <Maximize2 className="w-3.5 h-3.5 shrink-0" />
+                        <span>{project.builtUpArea}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
@@ -247,6 +239,14 @@ const PortfolioPage = () => {
           </div>
         </section>
       </main>
+
+      {/* Lightbox */}
+      <Lightbox
+        images={lightboxImages}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        initialIndex={lightboxIndex}
+      />
 
       <Footer />
     </>

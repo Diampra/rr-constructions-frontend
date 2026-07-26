@@ -119,21 +119,30 @@ const ContactPage = () => {
       
       <main className="pt-24">
         {/* Hero Banner */}
-        <section className="py-20 bg-secondary">
-          <div className="container mx-auto px-6 text-center">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="w-12 h-px bg-gold" />
-              <span className="text-gold text-sm uppercase tracking-[0.2em] font-medium">
-                Building Trust • Delivering Excellence
-              </span>
-              <div className="w-12 h-px bg-gold" />
+        <section className="relative py-24 bg-secondary overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="/design_patterns/AR34.jpg"
+              alt="Construction project"
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-secondary/60" />
+          </div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-px bg-gold" />
+                <span className="text-gold text-sm uppercase tracking-[0.2em] font-medium">
+                  Get In Touch With Us
+                </span>
+              </div>
+              <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
+                Contact RR Constructions
+              </h1>
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
+                We welcome the opportunity to work with you and build a better tomorrow together. Let's discuss your next landmark project.
+              </p>
             </div>
-            <h1 className="font-serif text-4xl md:text-6xl text-foreground font-bold mb-6">
-              Get In Touch With Us
-            </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-              We welcome the opportunity to work with you and build a better tomorrow together. Let's discuss your next landmark project.
-            </p>
           </div>
         </section>
 
