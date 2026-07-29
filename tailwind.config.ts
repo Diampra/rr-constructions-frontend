@@ -57,10 +57,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        "rr-navy-deep": "var(--rr-navy-deep)",
+        "rr-navy-deep": "rgb(var(--rr-navy-deep-rgb) / <alpha-value>)",
         "rr-navy-mid": "var(--rr-navy-mid)",
-        "rr-cream": "var(--rr-cream)",
-        "rr-gold": "var(--rr-gold)",
+        "rr-cream": "rgb(var(--rr-cream-rgb) / <alpha-value>)",
+        "rr-gold": "rgb(var(--rr-gold-rgb) / <alpha-value>)",
         "rr-gold-bright": "var(--rr-gold-bright)",
       },
       borderRadius: {

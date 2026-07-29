@@ -131,7 +131,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-rr-cream/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-rr-cream/60 text-sm">
-            © {currentYear} RR Constructions & RR Infra. All rights reserved.
+            © {currentYear} RR Constructions & RR Infra. All rights reserved. Developed and Designed by <a href="https://macrossys.com/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-white transition-colors">Macrossys</a> in collaboration with <a href="https://wishingindia.com/" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-white transition-colors">Wishingindia</a>
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors">

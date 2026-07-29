@@ -4,13 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* RR Constructions — Standard Brand Colors */
+/* RR Constructions - Standard Brand Colors */
 
 :root {
   --rr-navy-deep: #0A1B33;
+  --rr-navy-deep-rgb: 10 27 51;
   --rr-navy-mid: #12233F;
   --rr-cream: #F5F1E8;
+  --rr-cream-rgb: 245 241 232;
   --rr-gold: #C99A46;
+  --rr-gold-rgb: 201 154 70;
   --rr-gold-bright: #E8B85C;
 
   --background: var(--rr-cream);

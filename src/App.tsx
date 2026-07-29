@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import ScrollToTop from "@/components/ScrollToTop";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Index from "./pages/Index";
 import ServicesPage from "./pages/ServicesPage";
 import PortfolioPage from "./pages/PortfolioPage";
@@ -22,6 +24,8 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <BrowserRouter>
+            <ScrollToTop />
+            <ScrollToTopButton />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<AboutPage />} />

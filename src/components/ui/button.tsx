@@ -9,16 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft",
+        default: "bg-rr-gold hover:bg-rr-gold-bright text-rr-navy-deep font-bold shadow-md hover:shadow-lg hover:-translate-y-0.5",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        // Premium variants for luxury aesthetic
-        gold: "bg-gradient-to-r from-gold to-gold-light text-foreground font-medium hover:shadow-gold hover:scale-[1.02]",
-        hero: "bg-primary-foreground/10 text-primary-foreground border border-primary-foreground/30 backdrop-blur-sm hover:bg-primary-foreground/20",
-        elegant: "bg-primary text-primary-foreground hover:bg-walnut-light tracking-wide uppercase text-xs font-semibold px-8",
+        outline: "border-2 border-rr-gold bg-transparent text-foreground hover:bg-rr-gold hover:text-rr-navy-deep font-bold",
+        secondary: "bg-rr-navy-mid text-rr-cream hover:bg-rr-navy-mid/90 shadow-sm",
+        ghost: "hover:bg-rr-gold/10 hover:text-rr-gold transition-colors font-semibold",
+        link: "text-rr-gold underline-offset-4 hover:underline font-bold",
+        gold: "bg-gradient-to-r from-rr-gold to-rr-gold-bright text-rr-navy-deep font-bold hover:shadow-[0_4px_20px_-4px_rgba(201,154,70,0.5)] hover:scale-[1.02]",
+        hero: "bg-rr-navy-deep/20 text-white border border-white/30 backdrop-blur-md hover:bg-rr-navy-deep/40 font-bold tracking-wide",
+        elegant: "bg-rr-navy-deep text-rr-cream hover:bg-rr-gold hover:text-rr-navy-deep tracking-wider uppercase text-xs font-bold px-8 shadow-md",
       },
       size: {
         default: "h-11 px-6 py-2",

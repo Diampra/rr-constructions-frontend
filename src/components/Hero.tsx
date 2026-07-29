@@ -51,7 +51,7 @@ const slides = [
     bgText: "HEALTHCARE",
     title: "Multi-Specialty Hospitals & Healthcare Facilities",
     description:
-      "Landmark medical infrastructure — including R L Jalappa Hospital, 2,20,000+ sq. ft. — built to global clinical standards.",
+      "Landmark medical infrastructure - including R L Jalappa Hospital, 2,20,000+ sq. ft. - built to global clinical standards.",
     highlights: ["R L Jalappa Hospital", "Medical Colleges", "ICU Suites"],
     desktopImage: "/images/rr-hero-1-desktop.png",
     mobileImage: "/images/rr-hero-1.png",
@@ -65,7 +65,7 @@ const slides = [
     title: "Schools, Colleges, Universities & Research Centers",
     description:
       "Safe, future-ready campus facilities and specialized research laboratories.",
-    highlights: ["AHS Building — 75k Sq. Ft.", "Universities", "Research Labs"],
+    highlights: ["AHS Building - 75k Sq. Ft.", "Universities", "Research Labs"],
     desktopImage: "/images/rr-hero-2-desktop.png",
     mobileImage: "/images/rr-hero-3.png",
     alt: "Educational campus structure",
@@ -91,7 +91,7 @@ const slides = [
     title: "Resorts, Hotels & Hospitality Spaces",
     description:
       "Hospitality developments combining scenic aesthetics with premium guest comfort.",
-    highlights: ["Luxury Resorts — 35k Sq. Ft.", "Boutique Hotels", "Eco Hospitality"],
+    highlights: ["Luxury Resorts - 35k Sq. Ft.", "Boutique Hotels", "Eco Hospitality"],
     desktopImage: "/images/rr-hero-2-desktop.png",
     mobileImage: "/images/rr-hero-3.png",
     alt: "Resort and hospitality landmark",
@@ -118,7 +118,7 @@ const Hero = () => {
   // Per-slide image transform state
   const [transforms, setTransforms] = useState(() => layoutConfig.transforms);
 
-  // Per-slide BG config — controls large background text individually
+  // Per-slide BG config - controls large background text individually
   const [bgConfigs, setBgConfigs] = useState(() => layoutConfig.bgConfigs);
 
   const [cardConfigs, setCardConfigs] = useState(() => layoutConfig.cardConfigs);
@@ -221,7 +221,7 @@ const Hero = () => {
     setBottomBarConfig(layoutConfig.bottomBarConfig);
   };
 
-  // Autoplay — pauses on hover/focus/edit mode, respects reduced motion
+  // Autoplay - pauses on hover/focus/edit mode, respects reduced motion
   useEffect(() => {
     if (prefersReducedMotion || paused || editMode) return;
     const timer = setInterval(handleNext, AUTOPLAY_MS);
@@ -234,7 +234,7 @@ const Hero = () => {
       if (e.target.tagName === "INPUT") return; // don't hijack slider focus
       if (e.key === "ArrowRight" || e.key === "ArrowDown") handleNext();
       if (e.key === "ArrowLeft" || e.key === "ArrowUp") handlePrev();
-      if (e.key.toLowerCase() === "e") setEditMode((v) => !v);
+      if (e.key.toLowerCase() === "e" && import.meta.env.DEV) setEditMode((v) => !v);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -245,7 +245,7 @@ const Hero = () => {
       id="hero"
       role="region"
       aria-roledescription="carousel"
-      aria-label="RR Constructions — sectors we build"
+      aria-label="RR Constructions - sectors we build"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -253,7 +253,7 @@ const Hero = () => {
       className="relative w-full overflow-hidden bg-rr-navy-deep text-rr-cream transition-colors duration-500"
       style={{ height: "100svh", minHeight: "640px", paddingTop: "56px" }}
     >
-      {/* Ambient depth — replaces the flat grid + gradient with a single
+      {/* Ambient depth - replaces the flat grid + gradient with a single
           warm glow anchored low, echoing the lit windows in the photos */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div
@@ -273,15 +273,15 @@ const Hero = () => {
         />
       </div>
 
-      {/* Eyebrow — top left, quiet metadata, clear of the image entirely */}
+      {/* Eyebrow - top left, quiet metadata, clear of the image entirely */}
       <div className="absolute top-6 left-4 md:left-6 z-10 font-mono text-[11px] tracking-[0.25em] text-rr-cream/60">
         {String(currentSlide + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
         <span className="ml-2 text-rr-gold">{slide.sectorTag}</span>
       </div>
 
-      {/* LAYER 1 — the sector name, big and solid, sitting BEHIND the
+      {/* LAYER 1 - the sector name, big and solid, sitting BEHIND the
           building. The roofline physically crosses through the bottom
-          of the letterforms once the image (z-20) stacks on top of it —
+          of the letterforms once the image (z-20) stacks on top of it -
           this is the hero's one signature move. */}
       <div
         key={`bg-word-${slide.id}`}
@@ -314,7 +314,7 @@ const Hero = () => {
         </span>
       </div>
 
-      {/* LAYER 2 — the building. Sits on top of the headline, under
+      {/* LAYER 2 - the building. Sits on top of the headline, under
           everything else. Pan/scale come from the wrapper (static);
           the optional Ken Burns drift animates the img itself so the
           two transforms don't collide. */}
@@ -366,7 +366,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* LAYER 3 — title, description, highlights: no card, no box.
+      {/* LAYER 3 - title, description, highlights: no card, no box.
           Sits directly OVER the photo, lower-left, with just enough
           text-shadow to stay legible against the glass/facade behind it,
           plus a single gold rule doing the job a border would have. */}
@@ -414,7 +414,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* LAYER 4 — bottom scrim strip. Full-bleed, flat, not a floating
+      {/* LAYER 4 - bottom scrim strip. Full-bleed, flat, not a floating
           card: a soft gradient grounds the stats + CTAs against whatever
           part of the image or ambient glow sits behind them. */}
       <div
@@ -484,7 +484,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* ── SECTOR RAIL — one navigation element instead of three.
+      {/* ── SECTOR RAIL - one navigation element instead of three.
           Thin line + progress-fill communicates the autoplay timer;
           labels appear on hover so it stays quiet by default ── */}
       <div
@@ -563,23 +563,25 @@ const Hero = () => {
           Toggle with the gear icon (bottom-left) or the "E" key.
           Adjust scale / position / Ken Burns per slide with sliders,
           then hit "Copy config" and paste the result into each slide's
-          `imageTransform` field in the `slides` array above — then you
+          `imageTransform` field in the `slides` array above - then you
           can delete this whole block (and the toggle button) for
           production. It's inert otherwise: no visual footprint when
           editMode is false beyond the small toggle button.
           ══════════════════════════════════════════════════════════ */}
-      <button
-        onClick={() => setEditMode((v) => !v)}
-        aria-label="Toggle image adjustment panel"
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 z-40 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-        style={{
-          background: editMode ? "var(--rr-gold)" : "rgba(255,255,255,0.08)",
-          border: "1px solid rgba(255,255,255,0.2)",
-          color: editMode ? "var(--rr-navy-deep)" : "rgba(245,241,232,0.6)",
-        }}
-      >
-        <Settings2 className="w-4 h-4" />
-      </button>
+      {import.meta.env.DEV && (
+        <button
+          onClick={() => setEditMode((v) => !v)}
+          aria-label="Toggle image adjustment panel"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 z-40 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+          style={{
+            background: editMode ? "var(--rr-gold)" : "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.2)",
+            color: editMode ? "var(--rr-navy-deep)" : "rgba(245,241,232,0.6)",
+          }}
+        >
+          <Settings2 className="w-4 h-4" />
+        </button>
+      )}
 
       {import.meta.env.DEV && editMode && (
         <div

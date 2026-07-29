@@ -45,7 +45,7 @@ const PortfolioPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/design_patterns/AR8.jpg"
+              src="/images/rr-hero-2-desktop.png"
               alt="Construction project"
               className="w-full h-full object-cover opacity-20"
             />
@@ -63,7 +63,7 @@ const PortfolioPage = () => {
                 Landmark Construction Projects
               </h1>
               <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
-                Building structures that stand the test of time — delivering over 5 Million+ Sq. Ft. of high-quality construction across Karnataka.
+                Building structures that stand the test of time - delivering over 5 Million+ Sq. Ft. of high-quality construction across Karnataka.
               </p>
               <Link to="/contact">
                 <Button variant="gold" size="lg" className="font-semibold">
@@ -78,8 +78,8 @@ const PortfolioPage = () => {
         {featuredProject && (
           <section className="py-16 bg-background border-b border-border/60">
             <div className="container mx-auto px-6">
-              <div className="bg-card border border-gold/30 rounded-2xl p-8 md:p-12 shadow-md relative overflow-hidden">
-                <div className="inline-block bg-gold text-foreground text-xs uppercase font-bold tracking-widest px-4 py-1.5 rounded-full mb-6">
+              <div className="bg-white rounded-2xl p-8 md:p-12 shadow-md relative overflow-hidden">
+                <div className="inline-block bg-rr-gold text-rr-navy-deep text-xs uppercase font-bold tracking-widest px-4 py-1.5 rounded-full mb-6">
                   Flagship Landmark Project
                 </div>
                 <div className="grid lg:grid-cols-3 gap-8 items-center">
@@ -123,7 +123,7 @@ const PortfolioPage = () => {
                       </button>
                     )}
                   </div>
-                  <div className="bg-muted/40 p-6 rounded-xl border border-gold/20 text-center space-y-4">
+                  <div className="bg-rr-navy-deep/5 p-6 rounded-xl border border-rr-gold/20 text-center space-y-4">
                     <Building2 className="w-12 h-12 text-gold mx-auto" />
                     <h4 className="font-serif text-xl font-bold text-foreground">Healthcare Infrastructure</h4>
                     <p className="text-xs text-muted-foreground">World-class hospital facility built to stringent international medical safety & structural standards.</p>
@@ -145,8 +145,8 @@ const PortfolioPage = () => {
                   onClick={() => setActiveFilter(category)}
                   className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-wider rounded-lg transition-all ${
                     activeFilter === category
-                      ? "bg-gold text-foreground shadow-sm"
-                      : "bg-secondary text-foreground/80 hover:bg-gold/10 hover:text-gold"
+                      ? "bg-rr-gold text-rr-navy-deep shadow-md"
+                      : "bg-rr-navy-deep text-rr-cream border border-rr-cream/20 hover:bg-rr-gold hover:text-rr-navy-deep"
                   }`}
                 >
                   {category}
@@ -159,7 +159,7 @@ const PortfolioPage = () => {
               {filteredProjects.map((project) => (
                 <article
                   key={project.id}
-                  className="group bg-card border border-gold/20 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
                 >
                   {/* Image */}
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -226,9 +226,9 @@ const PortfolioPage = () => {
         </section>
 
         {/* Quote & CTA */}
-        <section className="py-20 bg-foreground text-primary-foreground text-center">
+        <section className="py-20 bg-rr-navy-deep text-center">
           <div className="container mx-auto px-6 max-w-3xl">
-            <blockquote className="italic font-serif text-xl md:text-2xl text-gold mb-8 leading-relaxed">
+            <blockquote className="italic font-serif text-xl md:text-2xl text-rr-gold mb-8 leading-relaxed">
               "Every project we build reflects our commitment to quality, innovation and lasting relationships with our clients."
             </blockquote>
             <Link to="/contact">

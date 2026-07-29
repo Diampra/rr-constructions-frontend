@@ -24,32 +24,32 @@ const capabilities = [
   {
     title: "Commercial Buildings",
     desc: "Office towers, business parks, and corporate complexes engineered for modern enterprises with high functionality and energy-efficient systems.",
-    image: "/design_patterns/GT20.jpg",
+    image: "/images/Commercial-Complex.png",
   },
   {
     title: "Residential Projects",
     desc: "Luxury apartments, private villas, and gated communities built for comfort, durability, and sustainable living.",
-    image: "/design_patterns/dev5.png",
+    image: "/images/JP-Apartment.png",
   },
   {
     title: "Hospital Buildings",
     desc: "Multi-specialty hospitals and medical colleges built to global clinical standards, including the 2,20,000+ sq. ft. R L Jalappa Hospital.",
-    image: "/design_patterns/AR22.jpg",
+    image: "/images/R-L-Jalappa-Hospital-&-Research-Center.png",
   },
   {
     title: "Educational Institutions",
     desc: "Schools, colleges, universities, and research centers with safe, future-ready campus facilities and specialized laboratories.",
-    image: "/design_patterns/FL22.jpg",
+    image: "/images/Educational-Building.png",
   },
   {
     title: "Industrial Buildings",
     desc: "Manufacturing units, warehouses, and logistics hubs built with high-load precision and heavy-duty structural integrity.",
-    image: "/design_patterns/GT12.jpg",
+    image: "/images/AHS-Building.png",
   },
   {
     title: "Resorts & Hospitality",
     desc: "Luxury resorts and hospitality spaces combining scenic aesthetics with premium guest comfort and landscape integration.",
-    image: "/design_patterns/FL3.jpg",
+    image: "/images/Resort-Project.png",
   },
 ];
 
@@ -60,7 +60,7 @@ const AboutPage = () => {
         <title>About Us | RR Constructions & RR Infra</title>
         <meta
           name="description"
-          content="RR Constructions & RR Infra — 40+ years of excellence in commercial, residential, hospital, educational, industrial, and hospitality infrastructure across Karnataka."
+          content="RR Constructions & RR Infra - 40+ years of excellence in commercial, residential, hospital, educational, industrial, and hospitality infrastructure across Karnataka."
         />
       </Helmet>
 
@@ -71,7 +71,7 @@ const AboutPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/design_patterns/AR8.jpg"
+              src="/images/rr-hero-1.png"
               alt="Construction site"
               className="w-full h-full object-cover opacity-20"
             />
@@ -89,7 +89,7 @@ const AboutPage = () => {
                 Building Excellence Through Experience
               </h1>
               <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
-                For over 40 years, RR Constructions & RR Infra has been a trusted name in infrastructure development across Karnataka — delivering landmark projects in commercial, residential, healthcare, education, industrial, and hospitality sectors.
+                For over 40 years, RR Constructions & RR Infra has been a trusted name in infrastructure development across Karnataka - delivering landmark projects in commercial, residential, healthcare, education, industrial, and hospitality sectors.
               </p>
               <Link to="/contact">
                 <Button variant="gold" size="lg" className="font-semibold">
@@ -133,7 +133,7 @@ const AboutPage = () => {
                 40+ Years of Building Trust
               </h2>
               <p className="text-muted-foreground text-base md:text-lg">
-                From a small civil engineering firm to a full-spectrum infrastructure company — our growth mirrors the trust our clients have placed in us.
+                From a small civil engineering firm to a full-spectrum infrastructure company - our growth mirrors the trust our clients have placed in us.
               </p>
             </div>
 
@@ -181,7 +181,7 @@ const AboutPage = () => {
               {capabilities.map((cap) => (
                 <article
                   key={cap.title}
-                  className="group bg-card border border-gold/20 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
@@ -223,7 +223,7 @@ const AboutPage = () => {
                   engineered for performance, built for permanence
                 </h2>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8">
-                  With 40+ years of rich experience, we don't just construct buildings — we deliver infrastructure that stands the test of time. Every project reflects our commitment to quality, safety, and timely execution.
+                  With 40+ years of rich experience, we don't just construct buildings - we deliver infrastructure that stands the test of time. Every project reflects our commitment to quality, safety, and timely execution.
                 </p>
                 <div className="space-y-4">
                   {[
@@ -251,7 +251,7 @@ const AboutPage = () => {
               <div className="relative">
                 <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
                   <img
-                    src="/design_patterns/AR34.jpg"
+                    src="/images/rr-hero-2-desktop.png"
                     alt="RR Constructions project"
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -278,7 +278,7 @@ const AboutPage = () => {
               Ready to Build Your Next Landmark?
             </h2>
             <p className="text-rr-cream/60 text-base md:text-lg leading-relaxed mb-8">
-              Whether it's a commercial tower, hospital campus, or residential community — our team is ready to deliver. Let's discuss your project today.
+              Whether it's a commercial tower, hospital campus, or residential community - our team is ready to deliver. Let's discuss your project today.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact">

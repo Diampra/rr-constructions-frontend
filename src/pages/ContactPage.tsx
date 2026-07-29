@@ -122,7 +122,7 @@ const ContactPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/design_patterns/AR34.jpg"
+              src="/images/rr-hero-2-desktop.png"
               alt="Construction project"
               className="w-full h-full object-cover opacity-20"
             />
@@ -159,38 +159,38 @@ const ContactPage = () => {
                   </p>
                 </div>
                 
-                <div className="grid sm:grid-cols-2 gap-6">
-                  {contactInfoData.map((info) => {
-                    const IconComponent = info.icon;
-                    return (
-                      <div key={info.id} className="bg-card p-6 border border-gold/20 rounded-xl shadow-sm">
-                        <div className="w-12 h-12 bg-gold/10 text-gold rounded-lg flex items-center justify-center mb-4 border border-gold/20">
-                          <IconComponent className="w-5 h-5" />
-                        </div>
-                        <h4 className="font-serif text-lg font-bold text-foreground mb-2">{info.title}</h4>
-                        <p className="text-muted-foreground text-xs leading-relaxed whitespace-pre-line">{info.content}</p>
-                      </div>
-                    );
-                  })}
-                </div>
+                 <div className="grid sm:grid-cols-2 gap-4">
+                   {contactInfoData.map((info) => {
+                     const IconComponent = info.icon;
+                     return (
+                       <div key={info.id} className="bg-white p-4 shadow-md rounded-xl">
+                         <div className="w-9 h-9 rounded-full bg-gold/10 text-gold flex items-center justify-center mb-3 border border-gold/20">
+                           <IconComponent className="w-4 h-4" />
+                         </div>
+                         <h4 className="font-serif text-sm font-bold text-foreground mb-1">{info.title}</h4>
+                         <p className="text-muted-foreground text-xs leading-relaxed whitespace-pre-line">{info.content}</p>
+                       </div>
+                     );
+                   })}
+                 </div>
 
                 {/* Nearby Landmarks */}
-                <div className="bg-card p-6 border border-gold/20 rounded-xl">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Landmark className="w-5 h-5 text-gold" />
-                    <h4 className="font-serif text-base font-bold text-foreground">Nearby Office Landmarks</h4>
+                <div className="bg-white p-4 shadow-md rounded-xl">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Landmark className="w-4 h-4 text-gold" />
+                    <h4 className="font-serif text-sm font-bold text-foreground">Nearby Office Landmarks</h4>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {nearbyLandmarks.map((landmark, idx) => (
-                      <span key={idx} className="text-xs bg-secondary text-foreground/80 px-3 py-1 rounded-full border border-border">
-                        📍 {landmark}
+                      <span key={idx} className="text-xs bg-secondary text-foreground/80 px-2.5 py-1 rounded-full border border-border">
+                        {landmark}
                       </span>
                     ))}
                   </div>
                 </div>
 
                 {/* Map */}
-                <div className="h-72 bg-card shadow-soft overflow-hidden rounded-xl border border-gold/20">
+                <div className="h-56 bg-white shadow-md overflow-hidden rounded-xl border border-border">
                   <iframe
                     title="RR Constructions Kolar Location"
                     src="https://maps.google.com/maps?q=Kolar+Karnataka+India&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -205,16 +205,16 @@ const ContactPage = () => {
               </div>
 
               {/* Contact Form */}
-              <div className="bg-card p-8 md:p-10 border border-gold/20 rounded-xl shadow-sm">
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-2">Send Us a Project Inquiry</h3>
-                <p className="text-muted-foreground text-sm mb-8">
+              <div className="bg-white p-5 shadow-md rounded-xl">
+                <h3 className="font-serif text-xl font-bold text-foreground mb-1">Send Us a Project Inquiry</h3>
+                <p className="text-muted-foreground text-xs mb-5">
                   Fill out the project details below and our leadership team will contact you within 24 hours.
                 </p>
                 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-3">
                     <div>
-                      <label htmlFor="name" className="block text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">
+                      <label htmlFor="name" className="block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wider">
                         Full Name *
                       </label>
                       <input
@@ -224,12 +224,12 @@ const ContactPage = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                        className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
                         placeholder="e.g. Ritesh Sinha"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">
+                      <label htmlFor="email" className="block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wider">
                         Email Address *
                       </label>
                       <input
@@ -239,15 +239,15 @@ const ContactPage = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                        className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
                         placeholder="info@company.com"
                       />
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-3">
                     <div>
-                      <label htmlFor="phone" className="block text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">
+                      <label htmlFor="phone" className="block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wider">
                         Phone Number
                       </label>
                       <input
@@ -256,12 +256,12 @@ const ContactPage = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                        className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
                         placeholder="+91 94480 85212"
                       />
                     </div>
                     <div>
-                      <label htmlFor="segment" className="block text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">
+                      <label htmlFor="segment" className="block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wider">
                         Project Segment
                       </label>
                       <select
@@ -269,7 +269,7 @@ const ContactPage = () => {
                         name="segment"
                         value={formData.segment}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground text-sm focus:ring-2 focus:ring-gold outline-none transition-all"
+                        className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm focus:ring-2 focus:ring-gold outline-none transition-all"
                       >
                         <option value="">Select project segment</option>
                         {segments.map((segment, idx) => (
@@ -282,7 +282,7 @@ const ContactPage = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-xs font-semibold text-foreground mb-2 uppercase tracking-wider">
+                    <label htmlFor="message" className="block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wider">
                       Project Specifications & Scope
                     </label>
                     <textarea
@@ -290,8 +290,8 @@ const ContactPage = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      rows={5}
-                      className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all resize-none"
+                      rows={3}
+                      className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all resize-none"
                       placeholder="Tell us about built-up area, site location, timeline, and structural scope..."
                     />
                   </div>
@@ -299,7 +299,6 @@ const ContactPage = () => {
                   <Button 
                     type="submit" 
                     variant="gold" 
-                    size="lg" 
                     className="w-full font-semibold"
                     disabled={isSubmitting}
                   >
@@ -327,10 +326,10 @@ const ContactPage = () => {
               </h2>
             </div>
             
-            <div className="max-w-3xl mx-auto space-y-6">
+            <div className="max-w-3xl mx-auto space-y-3">
               {faqData.map((faq, index) => (
-                <div key={index} className="bg-background p-6 rounded-xl border border-gold/20 shadow-sm">
-                  <h4 className="font-serif text-lg font-bold text-foreground mb-2">{faq.q}</h4>
+                <div key={index} className="bg-white p-4 shadow-md rounded-xl">
+                  <h4 className="font-serif text-sm font-bold text-foreground mb-1">{faq.q}</h4>
                   <p className="text-muted-foreground text-xs leading-relaxed">{faq.a}</p>
                 </div>
               ))}

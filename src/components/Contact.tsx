@@ -72,42 +72,58 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const inputClasses =
+    "w-full px-4 py-3 bg-rr-navy-deep/50 border border-white/10 rounded-[2px] text-rr-cream placeholder:text-rr-cream/40 focus:ring-1 focus:ring-rr-gold focus:border-rr-gold outline-none transition-all text-sm font-medium";
+
   return (
-    <section id="contact" className="py-24 bg-card">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="w-12 h-px bg-gold" />
-            <span className="text-gold text-sm uppercase tracking-[0.2em] font-medium">
+    <section id="contact" className="py-24 bg-rr-navy-deep relative overflow-hidden">
+      {/* Background blueprint elements */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20 animate-fade-up">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-12 h-px bg-rr-gold" />
+            <span className="font-mono text-rr-gold text-xs uppercase tracking-[0.3em] font-bold">
               Get In Touch
             </span>
-            <div className="w-12 h-px bg-gold" />
+            <div className="w-12 h-px bg-rr-gold" />
           </div>
-          <h2 className="font-serif text-3xl md:text-5xl text-foreground font-medium mb-4">
+          <h2 className="font-serif text-4xl md:text-5xl text-rr-cream font-bold mb-6">
             Contact RR Constructions
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Share your project requirements and our leadership team will get back to you within 24 hours.
+          <p className="text-rr-cream/70 max-w-2xl mx-auto text-base md:text-lg font-light">
+            Share your project requirements and our leadership team will get back to you within 24 hours to discuss your vision.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
+          {/* Contact Info (Left Side - Takes 2 cols) */}
+          <div className="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
             {contactInfo.map((item) => (
-              <div key={item.title} className="bg-background p-6 shadow-sm border border-border/60 rounded-xl">
-                <item.icon className="w-5 h-5 text-gold mb-4" />
-                <h4 className="font-serif text-lg text-foreground mb-2">{item.title}</h4>
-                <p className="text-muted-foreground text-sm whitespace-pre-line">{item.content}</p>
+              <div
+                key={item.title}
+                className="group bg-white/5 backdrop-blur-md p-6 shadow-xl shadow-black/40 transition-all duration-300 rounded-[2px] flex flex-col justify-center"
+              >
+                <div className="w-12 h-12 rounded-full bg-white/5 text-rr-gold flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-rr-gold group-hover:text-rr-navy-deep transition-all duration-300">
+                  <item.icon className="w-5 h-5" />
+                </div>
+                <h4 className="font-sans text-sm font-bold tracking-wide text-rr-cream mb-2">{item.title}</h4>
+                <p className="text-rr-cream/70 text-sm whitespace-pre-line leading-relaxed font-light">{item.content}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-background p-6 md:p-8 shadow-sm border border-border/60 rounded-xl">
-            <h3 className="font-serif text-2xl text-foreground mb-6">Send Us a Project Inquiry</h3>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-4">
+          {/* Form (Right Side - Takes 3 cols) */}
+          <div className="lg:col-span-3 bg-white/5 backdrop-blur-md p-8 md:p-12 shadow-2xl shadow-black/40 rounded-[2px] relative overflow-hidden">
+            {/* Subtle gold accent on the form */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-rr-gold/5 rounded-bl-full pointer-events-none" />
+            
+            <h3 className="font-serif text-3xl font-bold text-rr-cream mb-8">Send Us a Project Inquiry</h3>
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-rr-cream/70 mb-2">
                     Full Name
                   </label>
                   <input
@@ -117,12 +133,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                    className={inputClasses}
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-rr-cream/70 mb-2">
                     Email Address
                   </label>
                   <input
@@ -132,15 +148,15 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                    className={inputClasses}
                     placeholder="john@company.com"
                   />
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-rr-cream/70 mb-2">
                     Phone Number
                   </label>
                   <input
@@ -149,12 +165,12 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                    className={inputClasses}
                     placeholder="+91 94480 85212"
                   />
                 </div>
                 <div>
-                  <label htmlFor="segment" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="segment" className="block text-xs font-bold uppercase tracking-wider text-rr-cream/70 mb-2">
                     Project Segment
                   </label>
                   <select
@@ -162,11 +178,11 @@ const Contact = () => {
                     name="segment"
                     value={formData.segment}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                    className={inputClasses}
                   >
-                    <option value="">Select project segment</option>
+                    <option value="" className="text-rr-navy-deep">Select project segment</option>
                     {segments.map((segment) => (
-                      <option key={segment} value={segment}>
+                      <option key={segment} value={segment} className="text-rr-navy-deep">
                         {segment}
                       </option>
                     ))}
@@ -175,7 +191,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="message" className="block text-xs font-bold uppercase tracking-wider text-rr-cream/70 mb-2">
                   Project Specifications & Scope
                 </label>
                 <textarea
@@ -184,7 +200,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all resize-none"
+                  className={inputClasses}
                   placeholder="Tell us about built-up area, site location, timeline, and structural scope..."
                 />
               </div>
@@ -193,12 +209,12 @@ const Contact = () => {
                 type="submit"
                 variant="gold"
                 size="lg"
-                className="w-full"
+                className="w-full uppercase tracking-[0.1em]"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting Inquiry..." : (
                   <>
-                    <Send className="w-4 h-4 mr-2" />
+                    <Send className="w-5 h-5 mr-3" />
                     Submit Project Inquiry
                   </>
                 )}
