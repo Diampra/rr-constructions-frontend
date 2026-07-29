@@ -136,6 +136,14 @@
     font-family: var(--font-serif);
   }
 
+  .text-hero-title {
+    @apply font-serif font-black uppercase leading-[0.85] tracking-tight;
+  }
+
+  .text-section-heading {
+    @apply font-serif font-bold uppercase leading-tight tracking-wide;
+  }
+
   .bg-gradient-gold {
     background: var(--gradient-gold);
   }

@@ -76,7 +76,7 @@ const Contact = () => {
     "w-full px-4 py-3 bg-rr-navy-deep/50 border border-white/10 rounded-[2px] text-rr-cream placeholder:text-rr-cream/40 focus:ring-1 focus:ring-rr-gold focus:border-rr-gold outline-none transition-all text-sm font-medium";
 
   return (
-    <section id="contact" className="py-24 bg-rr-navy-deep relative overflow-hidden">
+    <section id="contact" className="py-24 bg-rr-navy-mid relative overflow-hidden">
       {/* Background blueprint elements */}
       <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
       

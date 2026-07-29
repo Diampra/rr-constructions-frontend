@@ -44,18 +44,21 @@ const PortfolioPage = () => {
         {/* Hero */}
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
-            <img
-              src="/images/rr-hero-2-desktop.png"
-              alt="Construction project"
-              className="w-full h-full object-cover opacity-20"
-            />
+            <picture>
+              <source media="(min-width: 768px)" srcSet="/images/rr-hero-2-desktop.png" />
+              <img
+                src="/images/rr-hero-3.png"
+                alt="Construction project"
+                className="w-full h-full object-cover opacity-20"
+              />
+            </picture>
             <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-secondary/60" />
           </div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-px bg-gold" />
-                <span className="text-gold text-sm uppercase tracking-[0.2em] font-medium">
+                <div className="w-12 h-px bg-rr-gold" />
+                <span className="text-rr-gold text-sm uppercase tracking-[0.2em] font-medium">
                   Our Proven Track Record
                 </span>
               </div>
@@ -226,8 +229,11 @@ const PortfolioPage = () => {
         </section>
 
         {/* Quote & CTA */}
-        <section className="py-20 bg-rr-navy-deep text-center">
-          <div className="container mx-auto px-6 max-w-3xl">
+        <section className="py-20 bg-rr-navy-deep text-center relative overflow-hidden">
+          {/* Background blueprint elements */}
+          <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
+          
+          <div className="container mx-auto px-6 max-w-3xl relative z-10">
             <blockquote className="italic font-serif text-xl md:text-2xl text-rr-gold mb-8 leading-relaxed">
               "Every project we build reflects our commitment to quality, innovation and lasting relationships with our clients."
             </blockquote>

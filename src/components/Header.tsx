@@ -46,7 +46,7 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`relative text-[11px] font-bold uppercase tracking-[0.15em] py-2 transition-colors duration-300 ${
+                className={`relative text-[11px] font-bold uppercase tracking-[0.15em] py-2 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rr-gold rounded-sm ${
                   isActive
                     ? "text-rr-gold"
                     : "text-white/70 hover:text-rr-cream"
@@ -68,22 +68,24 @@ const Header = () => {
           </a>
 
           <div className="flex items-center gap-3 border-x px-4 py-1 border-white/10 text-white/40">
-            <a href="#" className="hover:text-rr-gold transition-colors"><Facebook className="w-4 h-4" /></a>
-            <a href="#" className="hover:text-rr-gold transition-colors"><Instagram className="w-4 h-4" /></a>
-            <a href="#" className="hover:text-rr-gold transition-colors"><Linkedin className="w-4 h-4" /></a>
+            <a href="#" aria-label="Facebook" className="hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rr-gold rounded-sm"><Facebook className="w-4 h-4" /></a>
+            <a href="#" aria-label="Instagram" className="hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rr-gold rounded-sm"><Instagram className="w-4 h-4" /></a>
+            <a href="#" aria-label="LinkedIn" className="hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rr-gold rounded-sm"><Linkedin className="w-4 h-4" /></a>
           </div>
 
-          <Link to="/contact">
-            <Button className="bg-rr-gold hover:bg-rr-gold-bright text-rr-navy-deep text-[11px] font-extrabold uppercase tracking-widest px-6 py-2.5 rounded-[2px] shadow-[0_4px_14px_rgba(201,154,70,0.4)] transition-all duration-300 hover:shadow-[0_6px_20px_rgba(201,154,70,0.6)] hover:-translate-y-0.5 flex items-center gap-2">
+          <Button asChild className="bg-rr-gold hover:bg-rr-gold-bright text-rr-navy-deep text-[11px] font-extrabold uppercase tracking-widest px-6 py-2.5 rounded-[2px] shadow-[0_4px_14px_rgba(201,154,70,0.4)] transition-all duration-300 hover:shadow-[0_6px_20px_rgba(201,154,70,0.6)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rr-gold">
+            <Link to="/contact" className="flex items-center gap-2">
               <span>Inquire</span>
               <span className="text-base leading-none">↘</span>
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
 
         <button
-          className="lg:hidden p-2 text-rr-cream hover:text-rr-gold transition-colors"
+          className="lg:hidden p-2 text-rr-cream hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rr-gold rounded-sm"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+          aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -108,11 +110,11 @@ const Header = () => {
               <Phone className="w-4 h-4" />
               <span>+91 94480 85212</span>
             </a>
-            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button className="w-full bg-rr-gold text-rr-navy-deep text-xs font-bold uppercase tracking-widest py-6 rounded-[2px]">
+            <Button asChild className="w-full bg-rr-gold text-rr-navy-deep text-xs font-bold uppercase tracking-widest py-6 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rr-gold">
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                 Inquire Project ↘
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       )}

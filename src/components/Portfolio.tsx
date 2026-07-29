@@ -57,7 +57,7 @@ const Portfolio = () => {
                 {project.images.length > 0 && (
                   <button
                     onClick={() => window.location.href = `/portfolio#${project.id}`}
-                    className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm"
+                    className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rr-gold focus-visible:ring-offset-2 focus-visible:ring-offset-rr-navy-deep"
                     aria-label={`View ${project.title} gallery`}
                   >
                     <div className="w-14 h-14 rounded-full bg-rr-gold text-rr-navy-deep flex items-center justify-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -109,11 +109,11 @@ const Portfolio = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Link to="/portfolio">
-            <Button variant="gold" size="lg" className="font-bold tracking-wide shadow-gold shadow-2xl">
+          <Button asChild variant="gold" size="lg" className="font-bold tracking-wide shadow-gold shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rr-gold">
+            <Link to="/portfolio">
               Explore Complete Landmark Portfolio <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

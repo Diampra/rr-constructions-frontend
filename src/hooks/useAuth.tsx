@@ -1,4 +1,3 @@
-import { apiUrl } from "@/constants/constants";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type User = {
@@ -21,65 +20,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  /* Load current session */
   useEffect(() => {
-    const loadUser = async () => {
-      try {
-        const res = await fetch(`${apiUrl}/auth/me`, {
-          credentials: "include",
-        });
-
-        if (!res.ok) {
-          setLoading(false);
-          return;
-        }
-
-        const data = await res.json();
-        setUser(data.user);
-        setIsAdmin(data.isAdmin);
-      } catch {
-        // ignore
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadUser();
+    setLoading(false);
   }, []);
 
-  /* Login */
-  const signIn = async (email: string, password: string) => {
-    const res = await fetch(`${apiUrl}/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ email, password }),
-    });
-
-    if (!res.ok) return false;
-
-    const data = await res.json();
-    setUser(data.user);
-
-    // fetch admin status
-    const meRes = await fetch(`${apiUrl}/auth/me`, {
-      credentials: "include",
-    });
-
-    if (meRes.ok) {
-      const me = await meRes.json();
-      setIsAdmin(me.isAdmin);
-    }
-
-    return true;
+  const signIn = async (_email: string, _password: string) => {
+    return false;
   };
 
-  /* Logout */
   const signOut = async () => {
-    await fetch(`${apiUrl}/auth/logout`, {
-      method: "POST",
-      credentials: "include",
-    });
     setUser(null);
     setIsAdmin(false);
   };

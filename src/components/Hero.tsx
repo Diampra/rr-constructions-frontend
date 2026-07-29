@@ -134,6 +134,15 @@ const Hero = () => {
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
   ).current;
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile(); // Check on mount
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const goTo = useCallback((idx) => {
     setCurrentSlide(((idx % slides.length) + slides.length) % slides.length);
   }, []);
@@ -286,9 +295,9 @@ const Hero = () => {
       <div
         key={`bg-word-${slide.id}`}
         aria-hidden="true"
-        className="absolute inset-x-0 z-10 flex justify-center pointer-events-none select-none"
+        className={`absolute inset-x-0 z-10 flex ${isMobile ? 'justify-start pl-4' : 'justify-center'} pointer-events-none select-none`}
         style={{
-          top: `${bg.topPct}%`,
+          top: isMobile ? '28%' : `${bg.topPct}%`,
           animation: `${
             bg.entrance === "left"
               ? "slideInLeft"
@@ -305,8 +314,8 @@ const Hero = () => {
         <span
           className="font-serif font-black uppercase leading-[0.85] tracking-tight text-rr-cream"
           style={{
-            fontSize: `clamp(52px, ${bg.fontSize}vw, 1000px)`,
-            letterSpacing: `${bg.letterSpacing}em`,
+            fontSize: isMobile ? `clamp(28px, 11vw, 52px)` : `clamp(52px, ${bg.fontSize}vw, 1000px)`,
+            letterSpacing: isMobile ? `0em` : `${bg.letterSpacing}em`,
             opacity: bg.opacity * 10, // 0.07 → displayed as 0.7 on slider
           }}
         >
@@ -322,7 +331,7 @@ const Hero = () => {
         <div
           className="h-full flex justify-center items-end"
           style={{
-            transform: `translate(${t.x}px, ${t.y}px) scale(${t.scale})`,
+            transform: isMobile ? 'scale(1)' : `translate(${t.x}px, ${t.y}px) scale(${t.scale})`,
             transformOrigin: `${t.originX ?? 50}% ${t.originY ?? 100}%`,
             transition: editMode ? "none" : "transform 0.4s ease",
           }}
@@ -374,9 +383,9 @@ const Hero = () => {
         key={`copy-${slide.id}`}
         className="absolute pointer-events-none animate-fade-in"
         style={{
-          left: `calc(1rem + ${card.x}px)`,
-          top: `calc(50% + ${card.y}px)`,
-          width: card.width ? `min(90vw, ${card.width}px)` : "min(78vw, 340px)",
+          left: isMobile ? '1rem' : `calc(1rem + ${card.x}px)`,
+          top: isMobile ? '40%' : `calc(50% + ${card.y}px)`,
+          width: isMobile ? 'min(90vw, 340px)' : (card.width ? `min(90vw, ${card.width}px)` : "min(78vw, 340px)"),
           zIndex: 25,
         }}
       >
@@ -386,7 +395,7 @@ const Hero = () => {
             style={{
               textShadow: `0 2px 14px rgba(0,0,0,${(card.shadowAlpha ?? 65) / 100})`,
               letterSpacing: "0.04em",
-              fontSize: `${card.titleSize}px`,
+              fontSize: isMobile ? `24px` : `${card.titleSize}px`,
             }}
           >
             {slide.title}
@@ -395,7 +404,7 @@ const Hero = () => {
             className="mt-2 font-barlow leading-relaxed text-rr-cream/80 font-normal"
             style={{
               textShadow: `0 2px 10px rgba(0,0,0,${(card.shadowAlpha ?? 65) / 100})`,
-              fontSize: `${card.descSize}px`,
+              fontSize: isMobile ? `14px` : `${card.descSize}px`,
             }}
           >
             {slide.description}
@@ -427,9 +436,9 @@ const Hero = () => {
         <div 
           className="pointer-events-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3 px-4"
           style={{ 
-            paddingBottom: `${bottomBarConfig.paddingBottom}px`,
-            paddingLeft: `${bottomBarConfig.paddingX ?? 24}px`,
-            paddingRight: `${bottomBarConfig.paddingX ?? 24}px`
+            paddingBottom: isMobile ? '16px' : `${bottomBarConfig.paddingBottom}px`,
+            paddingLeft: isMobile ? '16px' : `${bottomBarConfig.paddingX ?? 24}px`,
+            paddingRight: isMobile ? '16px' : `${bottomBarConfig.paddingX ?? 24}px`
           }}
         >
           {/* Mobile-only sector dots, folded into the strip instead of
@@ -459,8 +468,8 @@ const Hero = () => {
               { v: "5M+", l: "Sq. Ft." },
             ].map((s, i) => (
               <div key={s.l} className={i > 0 ? "border-l border-white/15 pl-4" : ""}>
-                 <span className="block font-bold text-rr-gold-bright leading-none" style={{ fontSize: `${bottomBarConfig.statsValueSize}px` }}>{s.v}</span>
-                 <span className="uppercase tracking-wider text-muted-foreground" style={{ fontSize: `${bottomBarConfig.statsLabelSize}px` }}>{s.l}</span>
+                 <span className="block font-bold text-rr-gold-bright leading-none" style={{ fontSize: isMobile ? '22px' : `${bottomBarConfig.statsValueSize}px` }}>{s.v}</span>
+                 <span className="uppercase tracking-wider text-muted-foreground" style={{ fontSize: isMobile ? '11px' : `${bottomBarConfig.statsLabelSize}px` }}>{s.l}</span>
               </div>
             ))}
           </div>

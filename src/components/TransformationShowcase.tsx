@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { apiUrl } from "@/constants/constants";
 
 type Transformation = {
   id: string;
@@ -14,10 +13,7 @@ const TransformationShowcase = () => {
   const [items, setItems] = useState<Transformation[]>([]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/transformations`)
-      .then((r) => r.json())
-      .then(setItems)
-      .catch(() => setItems([]));
+    setItems([]);
   }, []);
 
   if (items.length === 0) return null; // hide section if empty
