@@ -24,32 +24,32 @@ const capabilities = [
   {
     title: "Commercial Buildings",
     desc: "Office towers, business parks, and corporate complexes engineered for modern enterprises with high functionality and energy-efficient systems.",
-    image: "/images/Commercial-Complex.png",
+    image: "/images/Commercial-Complex.webp",
   },
   {
     title: "Residential Projects",
     desc: "Luxury apartments, private villas, and gated communities built for comfort, durability, and sustainable living.",
-    image: "/images/JP-Apartment.png",
+    image: "/images/JP-Apartment.webp",
   },
   {
     title: "Hospital Buildings",
     desc: "Multi-specialty hospitals and medical colleges built to global clinical standards, including the 2,20,000+ sq. ft. R L Jalappa Hospital.",
-    image: "/images/R-L-Jalappa-Hospital-&-Research-Center.png",
+    image: "/images/R-L-Jalappa-Hospital-&-Research-Center.webp",
   },
   {
     title: "Educational Institutions",
     desc: "Schools, colleges, universities, and research centers with safe, future-ready campus facilities and specialized laboratories.",
-    image: "/images/Educational-Building.png",
+    image: "/images/Educational-Building.webp",
   },
   {
     title: "Industrial Buildings",
     desc: "Manufacturing units, warehouses, and logistics hubs built with high-load precision and heavy-duty structural integrity.",
-    image: "/images/AHS-Building.png",
+    image: "/images/AHS-Building.webp",
   },
   {
     title: "Resorts & Hospitality",
     desc: "Luxury resorts and hospitality spaces combining scenic aesthetics with premium guest comfort and landscape integration.",
-    image: "/images/Resort-Project.png",
+    image: "/images/Resort-Project.webp",
   },
 ];
 
@@ -66,7 +66,7 @@ const AboutPage = () => {
 
       <Header />
 
-      <main className="pt-24">
+      <main className="pt-12">
         {/* Hero */}
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">

@@ -40,7 +40,7 @@ const PortfolioPage = () => {
 
       <Header />
 
-      <main className="pt-24">
+      <main className="pt-12">
         {/* Hero */}
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">

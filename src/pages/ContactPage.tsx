@@ -117,7 +117,7 @@ const ContactPage = () => {
       
       <Header />
       
-      <main className="pt-24">
+      <main className="pt-12">
         {/* Hero Banner */}
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
@@ -131,8 +131,8 @@ const ContactPage = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-px bg-gold" />
-                <span className="text-gold text-sm uppercase tracking-[0.2em] font-medium">
+                <div className="w-12 h-px bg-rr-gold" />
+                <span className="text-rr-gold text-sm uppercase tracking-[0.2em] font-medium">
                   Get In Touch With Us
                 </span>
               </div>

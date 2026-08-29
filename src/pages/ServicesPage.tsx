@@ -54,16 +54,16 @@ const ServicesPage = () => {
 
       <Header />
 
-      <main className="pt-24">
+      <main className="pt-12">
         {/* Hero */}
-        <section className="relative py-24 bg-rr-navy-deep overflow-hidden">
+        <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/design_patterns/GT20.jpg"
+              src="/images/rr-hero-1.png"
               alt="Construction project"
               className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-rr-navy-deep via-rr-navy-deep/90 to-rr-navy-deep/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-secondary/60" />
           </div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl">
@@ -73,10 +73,10 @@ const ServicesPage = () => {
                   Our Construction Services
                 </span>
               </div>
-              <h1 className="font-serif text-4xl md:text-6xl font-bold text-rr-cream mb-6">
-                Construction Services & Expertise
+              <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
+                Construction Services &amp; Expertise
               </h1>
-              <p className="text-rr-cream/70 text-lg md:text-xl leading-relaxed mb-8">
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
                 Delivering high-grade commercial, residential, medical, educational, industrial, and hospitality projects across Karnataka with uncompromised quality and structural safety.
               </p>
               <Link to="/contact">

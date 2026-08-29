@@ -71,7 +71,7 @@ const BlogPage = () => {
 
       <Header />
 
-      <main className="pt-24">
+      <main className="pt-12">
         {/* Hero */}
         <section className="py-20 bg-secondary text-center">
           <div className="container mx-auto px-6">
