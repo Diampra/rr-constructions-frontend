@@ -1,12 +1,25 @@
+import { useState } from "react";
 import { MapPin, Maximize2, CheckCircle2, ArrowRight, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { projects } from "@/data/projects";
+import { Lightbox } from "@/components/ui/lightbox";
 
 const Portfolio = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxImages, setLightboxImages] = useState<Array<{ src: string; alt: string }>>([]);
+
   const featuredProjects = projects.slice(0, 6);
 
+  const openLightbox = (images: Array<{ src: string; alt: string }>, index: number) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
   return (
+    <>
     <section id="portfolio" className="py-24 bg-white relative overflow-hidden">
       {/* Subtle blueprint grid in background */}
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(to right, #0A1B33 1px, transparent 1px), linear-gradient(to bottom, #0A1B33 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
@@ -56,7 +69,7 @@ const Portfolio = () => {
                 
                 {project.images.length > 0 && (
                   <button
-                    onClick={() => window.location.href = `/portfolio#${project.id}`}
+                    onClick={() => openLightbox(project.images, 0)}
                     className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rr-gold focus-visible:ring-offset-2 focus-visible:ring-offset-rr-navy-deep"
                     aria-label={`View ${project.title} gallery`}
                   >
@@ -117,6 +130,14 @@ const Portfolio = () => {
         </div>
       </div>
     </section>
+      
+      <Lightbox
+        images={lightboxImages}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        initialIndex={lightboxIndex}
+      />
+    </>
   );
 };
 

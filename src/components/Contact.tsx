@@ -73,7 +73,7 @@ const Contact = () => {
   };
 
   const inputClasses =
-    "w-full px-4 py-3 bg-rr-navy-deep/50 border border-white/10 rounded-[2px] text-rr-cream placeholder:text-rr-cream/40 focus:ring-1 focus:ring-rr-gold focus:border-rr-gold outline-none transition-all text-sm font-medium";
+    "w-full px-4 py-3 bg-white border border-black/10 rounded-[2px] text-rr-navy-deep placeholder:text-rr-navy-deep/40 focus:ring-1 focus:ring-rr-gold focus:border-rr-gold outline-none transition-all text-sm font-medium";
 
   return (
     <section id="contact" className="py-24 bg-rr-navy-mid relative overflow-hidden">
@@ -103,27 +103,27 @@ const Contact = () => {
             {contactInfo.map((item) => (
               <div
                 key={item.title}
-                className="group bg-white/5 backdrop-blur-md p-6 shadow-xl shadow-black/40 transition-all duration-300 rounded-[2px] flex flex-col justify-center"
+                className="group bg-rr-cream p-6 shadow-xl shadow-black/10 transition-all duration-300 rounded-[2px] flex flex-col justify-center"
               >
-                <div className="w-12 h-12 rounded-full bg-white/5 text-rr-gold flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-rr-gold group-hover:text-rr-navy-deep transition-all duration-300">
+                <div className="w-12 h-12 rounded-full bg-rr-navy-deep/5 text-rr-navy-deep flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-rr-navy-deep group-hover:text-white transition-all duration-300">
                   <item.icon className="w-5 h-5" />
                 </div>
-                <h4 className="font-sans text-sm font-bold tracking-wide text-rr-cream mb-2">{item.title}</h4>
-                <p className="text-rr-cream/70 text-sm whitespace-pre-line leading-relaxed font-light">{item.content}</p>
+                <h4 className="font-sans text-sm font-bold tracking-wide text-rr-navy-deep mb-2">{item.title}</h4>
+                <p className="text-rr-navy-deep/70 text-sm whitespace-pre-line leading-relaxed font-light">{item.content}</p>
               </div>
             ))}
           </div>
 
           {/* Form (Right Side - Takes 3 cols) */}
-          <div className="lg:col-span-3 bg-white/5 backdrop-blur-md p-8 md:p-12 shadow-2xl shadow-black/40 rounded-[2px] relative overflow-hidden">
+          <div className="lg:col-span-3 bg-rr-cream p-8 md:p-12 shadow-2xl shadow-black/10 rounded-[2px] relative overflow-hidden">
             {/* Subtle gold accent on the form */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-rr-gold/5 rounded-bl-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-rr-gold/10 rounded-bl-full pointer-events-none" />
             
-            <h3 className="font-serif text-3xl font-bold text-rr-cream mb-8">Send Us a Project Inquiry</h3>
+            <h3 className="font-serif text-3xl font-bold text-rr-navy-deep mb-8">Send Us a Project Inquiry</h3>
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-rr-cream/70 mb-2">
+                  <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-rr-navy-deep/70 mb-2">
                     Full Name
                   </label>
                   <input
@@ -138,7 +138,7 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-rr-cream/70 mb-2">
+                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-rr-navy-deep/70 mb-2">
                     Email Address
                   </label>
                   <input
@@ -156,7 +156,7 @@ const Contact = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-rr-cream/70 mb-2">
+                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-rr-navy-deep/70 mb-2">
                     Phone Number
                   </label>
                   <input
@@ -170,7 +170,7 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="segment" className="block text-xs font-bold uppercase tracking-wider text-rr-cream/70 mb-2">
+                  <label htmlFor="segment" className="block text-xs font-bold uppercase tracking-wider text-rr-navy-deep/70 mb-2">
                     Project Segment
                   </label>
                   <select
@@ -191,7 +191,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs font-bold uppercase tracking-wider text-rr-cream/70 mb-2">
+                <label htmlFor="message" className="block text-xs font-bold uppercase tracking-wider text-rr-navy-deep/70 mb-2">
                   Project Specifications & Scope
                 </label>
                 <textarea

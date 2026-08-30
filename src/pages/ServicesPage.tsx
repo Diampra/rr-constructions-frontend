@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useState, useRef } from "react";
 import { Building2, Home, Cross, GraduationCap, Factory, Hotel, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
@@ -12,6 +13,28 @@ const ServicesPage = () => {
   const [s0, s1, s2, s3, s4, s5] = servicesData;
   const totalStr = "06";
 
+  const [activeImages, setActiveImages] = useState<Record<string, string>>({});
+  const articleRefs = useRef<Record<string, HTMLElement | null>>({});
+
+  const handleImageToggle = (serviceId: string, thumbUrl: string, defaultUrl: string) => {
+    setActiveImages(prev => ({
+      ...prev,
+      [serviceId]: prev[serviceId] === thumbUrl ? defaultUrl : thumbUrl
+    }));
+
+    setTimeout(() => {
+      const el = articleRefs.current[serviceId];
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        // If the top of the article is above the viewport (with some padding for header)
+        // or bottom is below, scroll it into view.
+        if (rect.top < 80 || rect.bottom > window.innerHeight) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    }, 10);
+  };
+
   const renderBadgeAndIcon = (service: any, index: number, total: string) => (
     <div className="absolute top-4 inset-x-4 flex items-center justify-between z-10">
       <span className="font-mono text-[11px] tracking-widest text-white drop-shadow-md">
@@ -23,19 +46,35 @@ const ServicesPage = () => {
     </div>
   );
 
-  const renderInlineGallery = (service: any, align: "start" | "center" = "start") => {
+  const THUMB_ROTATIONS = ["-6deg", "3deg", "-2deg"];
+
+  const renderOverlayGallery = (service: any) => {
     if (!service.projectThumbnails || service.projectThumbnails.length === 0) return null;
+    const currentActive = activeImages[service.id] || service.sectorHeroImage;
+
     return (
-      <div className={`flex gap-4 md:gap-6 mt-8 md:mt-12 w-full ${align === "center" ? "justify-center" : "justify-start"}`} role="list">
+      <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 flex z-20" role="list">
         {service.projectThumbnails.slice(0, 3).map((thumb: any, i: number) =>
           thumb ? (
-            <img
+            <button
               key={i}
-              src={thumb}
-              alt=""
-              loading="lazy"
-              className="w-24 h-24 md:w-32 md:h-32 object-cover bg-white shadow-md border-2 border-white/50"
-            />
+              onClick={(e) => {
+                e.stopPropagation();
+                handleImageToggle(service.id, thumb, service.sectorHeroImage);
+              }}
+              style={{
+                rotate: THUMB_ROTATIONS[i % THUMB_ROTATIONS.length],
+                marginLeft: i === 0 ? 0 : "-1rem",
+              }}
+              className="w-16 h-16 md:w-24 md:h-24 p-0 border-none bg-transparent outline-none cursor-pointer group/thumb z-0 hover:z-10 transition-all duration-300 hover:!rotate-0 hover:-translate-y-2 focus-visible:z-10"
+            >
+              <img
+                src={thumb}
+                alt=""
+                loading="lazy"
+                className={`w-full h-full object-cover bg-white shadow-lg border-2 transition-all duration-300 ${currentActive === thumb ? 'border-rr-gold' : 'border-white'}`}
+              />
+            </button>
           ) : null
         )}
       </div>
@@ -93,16 +132,22 @@ const ServicesPage = () => {
           <div className="container mx-auto px-6 py-24 space-y-32 md:space-y-48">
             
             {/* 1. Commercial Buildings (Full width landscape) */}
-            <article className="group">
+            <article className="group" ref={(el) => (articleRefs.current[s0.id] = el)}>
               <div className="relative w-full aspect-[21/9] md:aspect-[16/9] mb-16 md:mb-20">
                 <div className="absolute inset-0 overflow-hidden shadow-xl bg-rr-navy-deep/5">
                   {s0.sectorHeroImage ? (
-                    <img src={s0.sectorHeroImage} alt={s0.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
+                    <img 
+                      src={activeImages[s0.id] || s0.sectorHeroImage} 
+                      alt={s0.title} 
+                      onClick={() => handleImageToggle(s0.id, s0.sectorHeroImage, s0.sectorHeroImage)}
+                      className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] ${(activeImages[s0.id] && activeImages[s0.id] !== s0.sectorHeroImage) ? 'cursor-pointer' : ''}`} 
+                    />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center"><s0.icon className="w-20 h-20 text-rr-gold/50" /></div>
                   )}
                 </div>
                 {renderBadgeAndIcon(s0, 0, totalStr)}
+                {renderOverlayGallery(s0)}
               </div>
               <div className="grid md:grid-cols-12 gap-8 items-start">
                 <div className="md:col-span-5 flex flex-col items-start">
@@ -112,7 +157,6 @@ const ServicesPage = () => {
                       {s0.title}
                     </h3>
                   </div>
-                  {renderInlineGallery(s0, "start")}
                 </div>
                 <div className="md:col-span-7 space-y-6">
                   <p className="text-rr-navy-deep/80 text-lg leading-relaxed">{s0.description}</p>
@@ -129,7 +173,7 @@ const ServicesPage = () => {
             </article>
 
             {/* 2. Residential Projects (Portrait offset) */}
-            <article className="group">
+            <article className="group" ref={(el) => (articleRefs.current[s1.id] = el)}>
               <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
                 <div className="md:col-span-5 order-2 md:order-1 flex flex-col md:pr-8 h-full justify-center">
                   <div className="space-y-6">
@@ -147,35 +191,46 @@ const ServicesPage = () => {
                       ))}
                     </div>
                   </div>
-                  {renderInlineGallery(s1, "start")}
                 </div>
                 <div className="md:col-span-7 order-1 md:order-2 mb-12 md:mb-0">
                   <div className="relative w-full md:w-10/12 ml-auto aspect-[3/4]">
                     <div className="absolute inset-0 overflow-hidden shadow-2xl bg-rr-navy-deep/5">
                       {s1.sectorHeroImage ? (
-                        <img src={s1.sectorHeroImage} alt={s1.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                        <img 
+                          src={activeImages[s1.id] || s1.sectorHeroImage} 
+                          alt={s1.title} 
+                          onClick={() => handleImageToggle(s1.id, s1.sectorHeroImage, s1.sectorHeroImage)}
+                          className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${(activeImages[s1.id] && activeImages[s1.id] !== s1.sectorHeroImage) ? 'cursor-pointer' : ''}`} 
+                        />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center"><s1.icon className="w-16 h-16 text-rr-gold/50" /></div>
                       )}
                     </div>
                     {renderBadgeAndIcon(s1, 1, totalStr)}
+                    {renderOverlayGallery(s1)}
                   </div>
                 </div>
               </div>
             </article>
 
             {/* 3. Hospital Buildings (Floating Square) */}
-            <article className="group bg-rr-navy-deep/5 -mx-6 px-6 py-16 md:p-16 rounded-xl">
+            <article className="group bg-rr-navy-deep/5 -mx-6 px-6 py-16 md:p-16 rounded-xl" ref={(el) => (articleRefs.current[s2.id] = el)}>
               <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-end">
                 <div className="relative w-full aspect-square mb-12 md:mb-0">
                   <div className="absolute inset-0 overflow-hidden shadow-xl bg-rr-navy-deep/5">
                     {s2.sectorHeroImage ? (
-                      <img src={s2.sectorHeroImage} alt={s2.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                      <img 
+                        src={activeImages[s2.id] || s2.sectorHeroImage} 
+                        alt={s2.title} 
+                        onClick={() => handleImageToggle(s2.id, s2.sectorHeroImage, s2.sectorHeroImage)}
+                        className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${(activeImages[s2.id] && activeImages[s2.id] !== s2.sectorHeroImage) ? 'cursor-pointer' : ''}`} 
+                      />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center"><s2.icon className="w-16 h-16 text-rr-gold/50" /></div>
                     )}
                   </div>
                   {renderBadgeAndIcon(s2, 2, totalStr)}
+                  {renderOverlayGallery(s2)}
                 </div>
                 <div className="flex flex-col pb-4 md:pb-12 h-full justify-end">
                   <div className="space-y-6">
@@ -193,7 +248,6 @@ const ServicesPage = () => {
                       ))}
                     </div>
                   </div>
-                  {renderInlineGallery(s2, "start")}
                 </div>
               </div>
             </article>
@@ -203,16 +257,22 @@ const ServicesPage = () => {
               {[s3, s4].map((service, i) => {
                 const globalIndex = i + 3;
                 return (
-                  <article key={service.id} className={`group ${i === 1 ? 'md:mt-32' : ''}`}>
+                  <article key={service.id} className={`group ${i === 1 ? 'md:mt-32' : ''}`} ref={(el) => (articleRefs.current[service.id] = el)}>
                     <div className="relative w-full aspect-[4/3] mb-12 md:mb-16">
                       <div className="absolute inset-0 overflow-hidden shadow-lg bg-rr-navy-deep/5">
                         {service.sectorHeroImage ? (
-                          <img src={service.sectorHeroImage} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                          <img 
+                            src={activeImages[service.id] || service.sectorHeroImage} 
+                            alt={service.title} 
+                            onClick={() => handleImageToggle(service.id, service.sectorHeroImage, service.sectorHeroImage)}
+                            className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${(activeImages[service.id] && activeImages[service.id] !== service.sectorHeroImage) ? 'cursor-pointer' : ''}`} 
+                          />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center"><service.icon className="w-16 h-16 text-rr-gold/50" /></div>
                         )}
                       </div>
                       {renderBadgeAndIcon(service, globalIndex, totalStr)}
+                      {renderOverlayGallery(service)}
                     </div>
                     <div className="flex flex-col h-full">
                       <div className="space-y-4">
@@ -232,7 +292,6 @@ const ServicesPage = () => {
                           ))}
                         </div>
                       </div>
-                      {renderInlineGallery(service, "start")}
                     </div>
                   </article>
                 );
@@ -240,16 +299,22 @@ const ServicesPage = () => {
             </div>
 
             {/* 6. Resorts & Hospitality (Panoramic Finale) */}
-            <article className="group pt-16">
+            <article className="group pt-16" ref={(el) => (articleRefs.current[s5.id] = el)}>
               <div className="relative w-full aspect-[21/9] md:aspect-[24/9] mb-16 md:mb-20">
                 <div className="absolute inset-0 overflow-hidden shadow-2xl bg-rr-navy-deep/5">
                   {s5.sectorHeroImage ? (
-                    <img src={s5.sectorHeroImage} alt={s5.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
+                    <img 
+                      src={activeImages[s5.id] || s5.sectorHeroImage} 
+                      alt={s5.title} 
+                      onClick={() => handleImageToggle(s5.id, s5.sectorHeroImage, s5.sectorHeroImage)}
+                      className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] ${(activeImages[s5.id] && activeImages[s5.id] !== s5.sectorHeroImage) ? 'cursor-pointer' : ''}`} 
+                    />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center"><s5.icon className="w-20 h-20 text-rr-gold/50" /></div>
                   )}
                 </div>
                 {renderBadgeAndIcon(s5, 5, totalStr)}
+                {renderOverlayGallery(s5)}
               </div>
               <div className="max-w-4xl mx-auto text-center flex flex-col items-center space-y-6">
                 <s5.icon className="w-12 h-12 text-rr-gold mx-auto mb-2" />
@@ -265,7 +330,6 @@ const ServicesPage = () => {
                     </div>
                   ))}
                 </div>
-                {renderInlineGallery(s5, "center")}
               </div>
             </article>
 

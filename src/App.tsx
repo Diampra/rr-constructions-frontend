@@ -16,7 +16,7 @@ import BlogPostPage from "./pages/BlogPostPage";
 import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
 import TransformationsPage from "./pages/TransformationsPage";
-
+import DeveloperPage from "./pages/DeveloperPage";
 const App = () => (
   <HelmetProvider>
     <ThemeProvider>
@@ -36,6 +36,7 @@ const App = () => (
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/transformations" element={<TransformationsPage />} />
+              <Route path="/developer" element={<DeveloperPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

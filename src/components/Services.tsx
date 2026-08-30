@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
@@ -32,6 +33,103 @@ const total = servicesData.length;
 // rather than jittery.
 const THUMB_ROTATIONS = ["-6deg", "3deg", "-2deg"];
 
+const ServiceCard = ({ service, index }: { service: any; index: number }) => {
+  const Icon = service.icon;
+  const thumbs = service.projectThumbnails.slice(0, 3);
+  const [activeImage, setActiveImage] = useState(service.sectorHeroImage);
+
+  return (
+    <article
+      className="group relative flex flex-col transition-transform duration-300"
+    >
+      {/* Exposed Image */}
+      <div className="relative w-full aspect-[4/3] overflow-hidden bg-rr-navy-deep/5 mb-6">
+        {activeImage ? (
+          <img
+            src={activeImage}
+            alt={`${service.title} sector`}
+            onClick={() => setActiveImage(service.sectorHeroImage)}
+            className={`w-full h-full object-cover transition-transform duration-700 motion-reduce:transition-none group-hover:scale-[1.03] ${activeImage !== service.sectorHeroImage ? 'cursor-pointer' : ''}`}
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <Icon className="w-16 h-16 text-rr-gold/50" aria-hidden="true" />
+          </div>
+        )}
+
+        {/* Top Badges */}
+        <div className="absolute top-4 inset-x-4 flex items-center justify-between z-10">
+          <span className="font-mono text-[11px] tracking-widest text-white drop-shadow-md">
+            {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
+          </span>
+          <span className="inline-flex items-center gap-1.5 bg-rr-gold text-rr-navy-deep text-xs uppercase font-bold tracking-widest px-3 py-1 shadow-sm">
+            {service.badge}
+          </span>
+        </div>
+
+        {/* Fanned Photo Stack (anchored to bottom right of image) */}
+        {thumbs.length > 0 && (
+          <div
+            className="absolute bottom-4 right-4 flex"
+            role="list"
+            aria-label={`Recent ${service.title} projects`}
+          >
+            {thumbs.map((thumb: string, i: number) =>
+              thumb ? (
+                <button
+                  key={i}
+                  role="listitem"
+                  onClick={() => setActiveImage(activeImage === thumb ? service.sectorHeroImage : thumb)}
+                  style={{
+                    rotate: THUMB_ROTATIONS[i % THUMB_ROTATIONS.length],
+                    marginLeft: i === 0 ? 0 : "-1rem",
+                  }}
+                  className="w-12 h-12 p-0 border-none bg-transparent outline-none cursor-pointer group/thumb z-0 hover:z-10 transition-all duration-300 hover:!rotate-0 hover:-translate-y-1 focus-visible:z-10 focus-visible:!rotate-0 focus-visible:-translate-y-1"
+                >
+                  <img
+                    src={thumb}
+                    alt={`${service.title} project ${i + 1}`}
+                    loading="lazy"
+                    className="w-full h-full object-cover bg-white border-2 border-white shadow-md"
+                  />
+                </button>
+              ) : null
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Content (No box, directly on background) */}
+      <div className="flex flex-col flex-1 pl-2">
+        <div className="flex justify-between items-start mb-2">
+          <h3 className="font-serif text-2xl font-bold text-rr-navy-deep pr-4">
+            {service.title}
+          </h3>
+          <Icon className="w-6 h-6 text-rr-gold shrink-0 mt-1" aria-hidden="true" />
+        </div>
+
+        <p className="text-rr-navy-deep/70 text-sm leading-relaxed mb-6">
+          {service.description}
+        </p>
+
+        <Link
+          to="/services"
+          className="mt-auto inline-flex items-center gap-1.5 text-rr-gold hover:text-rr-gold-bright
+                     text-xs font-semibold uppercase tracking-wider w-fit
+                     focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rr-gold"
+        >
+          View sector specs
+          <ArrowRight
+            className="w-3.5 h-3.5 transition-transform duration-200 motion-reduce:transition-none group-hover:translate-x-1"
+            aria-hidden="true"
+          />
+        </Link>
+      </div>
+    </article>
+  );
+};
+
 const Services = () => {
   return (
     <section id="services" className="py-24 bg-rr-cream relative">
@@ -65,102 +163,16 @@ const Services = () => {
           {/* Right Column: Scrolling Cards Grid */}
           <div className="w-full lg:w-2/3">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {servicesData.map((service, index) => {
-                const Icon = service.icon;
-                const thumbs = service.projectThumbnails.slice(0, 3);
-
-                return (
-                  <article
-                key={service.id}
-                className="group relative flex flex-col transition-transform duration-300"
-              >
-                 {/* Exposed Image */}
-                 <div className="relative w-full aspect-[4/3] overflow-hidden bg-rr-navy-deep/5 mb-6">
-                   {service.sectorHeroImage ? (
-                     <img
-                       src={service.sectorHeroImage}
-                       alt={`${service.title} sector`}
-                       className="w-full h-full object-cover transition-transform duration-700 motion-reduce:transition-none group-hover:scale-[1.03]"
-                       loading="lazy"
-                     />
-                   ) : (
-                     <div className="w-full h-full flex items-center justify-center">
-                       <Icon className="w-16 h-16 text-rr-gold/50" aria-hidden="true" />
-                     </div>
-                   )}
-
-                   {/* Top Badges */}
-                   <div className="absolute top-4 inset-x-4 flex items-center justify-between z-10">
-                     <span className="font-mono text-[11px] tracking-widest text-white drop-shadow-md">
-                       {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
-                     </span>
-                     <span className="inline-flex items-center gap-1.5 bg-rr-gold text-rr-navy-deep text-xs uppercase font-bold tracking-widest px-3 py-1 shadow-sm">
-                       {service.badge}
-                     </span>
-                   </div>
-
-                   {/* Fanned Photo Stack (anchored to bottom right of image) */}
-                   {thumbs.length > 0 && (
-                     <div
-                       className="absolute bottom-4 right-4 flex"
-                       role="list"
-                       aria-label={`Recent ${service.title} projects`}
-                     >
-                       {thumbs.map((thumb, i) =>
-                         thumb ? (
-                           <img
-                             key={i}
-                             role="listitem"
-                             src={thumb}
-                             alt={`${service.title} project ${i + 1}`}
-                             loading="lazy"
-                             style={{
-                               rotate: THUMB_ROTATIONS[i % THUMB_ROTATIONS.length],
-                               marginLeft: i === 0 ? 0 : "-1rem",
-                             }}
-                             className="w-12 h-12 object-cover bg-white border-2 border-white shadow-md transition-transform duration-300 hover:!rotate-0 hover:z-10 hover:-translate-y-1"
-                           />
-                         ) : null
-                       )}
-                     </div>
-                   )}
-                 </div>
-
-                 {/* Content (No box, directly on background) */}
-                 <div className="flex flex-col flex-1 pl-2">
-                   <div className="flex justify-between items-start mb-2">
-                     <h3 className="font-serif text-2xl font-bold text-rr-navy-deep pr-4">
-                       {service.title}
-                     </h3>
-                     <Icon className="w-6 h-6 text-rr-gold shrink-0 mt-1" aria-hidden="true" />
-                   </div>
-
-                   <p className="text-rr-navy-deep/70 text-sm leading-relaxed mb-6">
-                     {service.description}
-                   </p>
-
-                   <Link
-                     to="/services"
-                     className="mt-auto inline-flex items-center gap-1.5 text-rr-gold hover:text-rr-gold-bright
-                                text-xs font-semibold uppercase tracking-wider w-fit
-                                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rr-gold"
-                   >
-                     View sector specs
-                     <ArrowRight
-                       className="w-3.5 h-3.5 transition-transform duration-200 motion-reduce:transition-none group-hover:translate-x-1"
-                       aria-hidden="true"
-                     />
-                   </Link>
-                 </div>
-               </article>
-             );
-           })}
-         </div>
-       </div>
-     </div>
-   </div>
- </section>
-);
+              {servicesData.map((service, index) => (
+                <ServiceCard key={service.id} service={service} index={index} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Services;
+

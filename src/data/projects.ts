@@ -28,10 +28,7 @@ export const projects: Project[] = [
     featured: true,
     thumbnail: "/images/R-L-Jalappa-Hospital-&-Research-Center.webp",
     images: [
-      { src: "/images/R-L-Jalappa-Hospital-&-Research-Center.webp", alt: "Hospital exterior architectural render" },
-      { src: "/images/R-L-Jalappa-Hospital-&-Research-Center.webp", alt: "Hospital main entrance" },
-      { src: "/images/R-L-Jalappa-Hospital-&-Research-Center.webp", alt: "Hospital interior lobby" },
-      { src: "/images/R-L-Jalappa-Hospital-&-Research-Center.webp", alt: "Patient ward view" },
+      { src: "/images/R-L-Jalappa-Hospital-&-Research-Center.webp", alt: "Hospital exterior architectural render" }
     ],
   },
   {
@@ -42,11 +39,10 @@ export const projects: Project[] = [
     builtUpArea: "75,000+ Sq. Ft.",
     location: "Kolar, Karnataka",
     status: "Completed",
-    thumbnail: "/images/AHS-Building.webp",
+    thumbnail: "/images/AHS-Building/image-1.png",
     images: [
-      { src: "/images/AHS-Building.webp", alt: "AHS Building facade" },
-      { src: "/images/AHS-Building.webp", alt: "AHS Building entrance" },
-      { src: "/images/AHS-Building.webp", alt: "AHS Building interior" },
+      { src: "/images/AHS-Building/image-1.png", alt: "AHS Building facade" },
+      { src: "/images/AHS-Building/image-2.png", alt: "AHS Building entrance" }
     ],
   },
   {
@@ -57,11 +53,12 @@ export const projects: Project[] = [
     builtUpArea: "60,000+ Sq. Ft.",
     location: "Kolar, Karnataka",
     status: "Completed",
-    thumbnail: "/images/JP-Apartment.webp",
+    thumbnail: "/images/J-P-Enclave/image-1.png",
     images: [
-      { src: "/images/JP-Apartment.webp", alt: "JP Apartment exterior" },
-      { src: "/images/JP-Apartment.webp", alt: "JP Apartment living area" },
-      { src: "/images/JP-Apartment.webp", alt: "JP Apartment bedroom" },
+      { src: "/images/J-P-Enclave/image-1.png", alt: "JP Apartment exterior" },
+      { src: "/images/J-P-Enclave/image-2.png", alt: "JP Apartment living area" },
+      { src: "/images/J-P-Enclave/image-3.png", alt: "JP Apartment bedroom" },
+      { src: "/images/J-P-Enclave/image-4.png", alt: "JP Apartment facilities" }
     ],
   },
   {
@@ -75,8 +72,7 @@ export const projects: Project[] = [
     thumbnail: "/images/Commercial-Complex.webp",
     images: [
       { src: "/images/Commercial-Complex.webp", alt: "Commercial Complex exterior" },
-      { src: "/images/Commercial-Complex.webp", alt: "Commercial Complex retail" },
-      { src: "/images/Commercial-Complex.webp", alt: "Commercial Complex office" },
+      { src: "/images/Commercial-Complex.png", alt: "Commercial Complex interior" }
     ],
   },
   {
@@ -87,11 +83,13 @@ export const projects: Project[] = [
     builtUpArea: "35,000+ Sq. Ft.",
     location: "Karnataka",
     status: "Completed",
-    thumbnail: "/images/Resort-Project.webp",
+    thumbnail: "/images/mudigere-Resort-Project/image-1.png",
     images: [
-      { src: "/images/Resort-Project.webp", alt: "Resort main building" },
-      { src: "/images/Resort-Project.webp", alt: "Resort pool area" },
-      { src: "/images/Resort-Project.webp", alt: "Resort landscape" },
+      { src: "/images/mudigere-Resort-Project/image-1.png", alt: "Resort main building" },
+      { src: "/images/mudigere-Resort-Project/image-2.png", alt: "Resort pool area" },
+      { src: "/images/mudigere-Resort-Project/image-3.png", alt: "Resort landscape" },
+      { src: "/images/mudigere-Resort-Project/image-4.png", alt: "Resort rooms" },
+      { src: "/images/mudigere-Resort-Project/image-5.png", alt: "Resort facilities" }
     ],
   },
   {
@@ -102,11 +100,13 @@ export const projects: Project[] = [
     builtUpArea: "40,000+ Sq. Ft.",
     location: "Karnataka",
     status: "Completed",
-    thumbnail: "/images/Educational-Building.webp",
+    thumbnail: "/images/University-Building/image-1.png",
     images: [
-      { src: "/images/Educational-Building.webp", alt: "Educational Building campus" },
-      { src: "/images/Educational-Building.webp", alt: "Classroom interior" },
-      { src: "/images/Educational-Building.webp", alt: "Laboratory facility" },
+      { src: "/images/University-Building/image-1.png", alt: "Educational Building campus" },
+      { src: "/images/University-Building/image-2.png", alt: "Classroom interior" },
+      { src: "/images/University-Building/image-3.png", alt: "Laboratory facility" },
+      { src: "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-1.png", alt: "Boys Hostel Block" },
+      { src: "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-2.png", alt: "Hostel interior" }
     ],
   },
 ];

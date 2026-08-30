@@ -31,8 +31,13 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-rr-navy-deep text-rr-cream border-t border-white/10 relative">
-      <div className="container mx-auto px-6 py-16">
+    <footer className="bg-rr-navy-deep text-rr-cream border-t border-white/10 relative overflow-hidden">
+      {/* Background Image Overlay */}
+      <div 
+        className="absolute inset-x-0 bottom-0 top-0 pointer-events-none opacity-30 bg-bottom bg-no-repeat" 
+        style={{ backgroundImage: "url('/images/cityscape.png')", backgroundSize: "100% auto" }} 
+      />
+      <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
@@ -131,7 +136,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-rr-cream/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-rr-cream/60 text-sm">
-            © {currentYear} RR Constructions & RR Infra. All rights reserved. Developed and Designed by <a href="https://macrossys.com/" target="_blank" rel="noopener noreferrer" className="text-rr-gold hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white rounded-sm px-1 -ml-1">Macrossys</a> in collaboration with <a href="https://wishingindia.com/" target="_blank" rel="noopener noreferrer" className="text-rr-gold hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white rounded-sm px-1 -ml-1">Wishingindia</a>
+            © {currentYear} RR Constructions & RR Infra. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 inline-block">

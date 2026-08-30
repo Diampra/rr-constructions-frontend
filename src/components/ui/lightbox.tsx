@@ -1,6 +1,6 @@
 import * as React from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { Dialog, DialogContent, DialogOverlay } from "./dialog";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 interface LightboxImage {
   src: string;
@@ -32,59 +32,69 @@ export function Lightbox({ images, isOpen, onClose, initialIndex = 0 }: Lightbox
   const isLast = currentIndex === images.length - 1;
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Escape") onClose();
     if (e.key === "ArrowLeft" && !isFirst) setCurrentIndex(currentIndex - 1);
     if (e.key === "ArrowRight" && !isLast) setCurrentIndex(currentIndex + 1);
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogOverlay className="bg-black/95" onClick={onClose} />
-      <DialogContent
-        className="max-w-none p-0 bg-transparent shadow-none"
-        onKeyDown={handleKeyDown}
-        style={{ maxWidth: "95vw", maxHeight: "95vh" }}
-      >
-        <button
-          onClick={onClose}
-          className="absolute -top-12 right-0 z-10 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center justify-center"
-          aria-label="Close lightbox"
+    <DialogPrimitive.Root open={isOpen} onOpenChange={onClose}>
+      <DialogPrimitive.Portal>
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/40 backdrop-blur-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <DialogPrimitive.Content
+          className="fixed inset-0 z-50 flex items-center justify-center outline-none"
+          onKeyDown={handleKeyDown}
         >
-          <X className="w-5 h-5" />
-        </button>
+          <div className="relative w-full h-full flex items-center justify-center group outline-none">
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 z-[60] w-12 h-12 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors flex items-center justify-center backdrop-blur-sm"
+              aria-label="Close lightbox"
+            >
+              <X className="w-6 h-6" />
+            </button>
 
-        {!isFirst && (
-          <button
-            onClick={() => setCurrentIndex(currentIndex - 1)}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 w-12 h-12 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center justify-center"
-            aria-label="Previous image"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-        )}
+            {!isFirst && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(currentIndex - 1);
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-[60] w-12 h-12 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors flex items-center justify-center backdrop-blur-sm opacity-100 md:opacity-0 md:group-hover:opacity-100"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-8 h-8" />
+              </button>
+            )}
 
-        <figure className="relative">
-          <img
-            src={currentImage.src}
-            alt={currentImage.alt}
-            className="max-w-[90vw] max-h-[85vh] object-contain"
-            style={{ width: currentImage.width ? "auto" : undefined }}
-          />
-          <figcaption className="absolute bottom-0 left-0 right-0 p-4 text-white text-center bg-gradient-to-t from-black/70 to-transparent">
-            {currentIndex + 1} / {images.length}
-          </figcaption>
-        </figure>
+            <figure className="relative w-full h-full flex items-center justify-center p-4 md:p-16" onClick={onClose}>
+              <img
+                src={currentImage.src}
+                alt={currentImage.alt}
+                onClick={(e) => e.stopPropagation()}
+                className="max-w-full max-h-full object-contain mx-auto shadow-2xl"
+              />
+              {images.length > 1 && (
+                <figcaption className="absolute bottom-6 left-1/2 -translate-x-1/2 px-5 py-2 rounded-full text-white text-sm font-semibold bg-black/60 backdrop-blur-md pointer-events-none">
+                  {currentIndex + 1} / {images.length}
+                </figcaption>
+              )}
+            </figure>
 
-        {!isLast && (
-          <button
-            onClick={() => setCurrentIndex(currentIndex + 1)}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 w-12 h-12 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center justify-center"
-            aria-label="Next image"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        )}
-      </DialogContent>
-    </Dialog>
+            {!isLast && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(currentIndex + 1);
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-[60] w-12 h-12 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors flex items-center justify-center backdrop-blur-sm opacity-100 md:opacity-0 md:group-hover:opacity-100"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+            )}
+          </div>
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
   );
 }

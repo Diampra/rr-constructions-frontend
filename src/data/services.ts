@@ -19,8 +19,8 @@ export const servicesData: ServiceSector[] = [
     description: "Construction of modern commercial spaces including office buildings, business parks, and corporate complexes that drive business growth.",
     features: ["Modern Architecture", "Structural Precision", "High Functionality", "Energy Efficient Systems", "Timely Delivery", "Safety Compliant"],
     badge: "Commercial Infrastructure",
-    sectorHeroImage: "/images/AHS-Building.webp",
-    projectThumbnails: ["/images/AHS-Building.webp", "/images/Commercial-Complex.webp", "/images/AHS-Building.webp"],
+    sectorHeroImage: "/images/Commercial-Complex.webp",
+    projectThumbnails: ["/images/Commercial-Complex.png"],
   },
   {
     id: "2",
@@ -29,8 +29,8 @@ export const servicesData: ServiceSector[] = [
     description: "Creating premium residential spaces including apartments, villas, and communities with a focus on quality, comfort, and sustainable living.",
     features: ["Vastu Compliant Layouts", "Premium Structural Materials", "Modern Amenities", "Sustainable Living Space", "Aesthetic Design", "Zero Compromise Quality"],
     badge: "Residential Development",
-    sectorHeroImage: "/images/JP-Apartment.webp",
-    projectThumbnails: ["/images/JP-Apartment.webp", "/images/JP-Apartment.webp", "/images/Commercial-Complex.webp"],
+    sectorHeroImage: "/images/J-P-Enclave/image-1.png",
+    projectThumbnails: ["/images/J-P-Enclave/image-2.png", "/images/J-P-Enclave/image-3.png", "/images/J-P-Enclave/image-4.png"],
   },
   {
     id: "3",
@@ -40,7 +40,7 @@ export const servicesData: ServiceSector[] = [
     features: ["2,20,000+ Sq. Ft. Expertise", "Advanced Medical Layouts", "Strict Sterility Protocols", "Emergency Infrastructure", "Heavy Load Flooring", "ISO Standardized"],
     badge: "Healthcare Infrastructure",
     sectorHeroImage: "/images/R-L-Jalappa-Hospital-&-Research-Center.webp",
-    projectThumbnails: ["/images/R-L-Jalappa-Hospital-&-Research-Center.webp", "/images/R-L-Jalappa-Hospital-&-Research-Center.webp", "/images/R-L-Jalappa-Hospital-&-Research-Center.webp"],
+    projectThumbnails: ["/images/AHS-Building/image-1.png", "/images/AHS-Building/image-2.png"],
   },
   {
     id: "4",
@@ -49,8 +49,8 @@ export const servicesData: ServiceSector[] = [
     description: "Construction of schools, colleges, universities, and research centers that provide safe, inspiring, and innovative learning environments.",
     features: ["Spacious Classrooms", "Auditorium & Labs", "Sports Infrastructure", "Student Safety Focused", "Acoustic Engineering", "Future Ready Labs"],
     badge: "Educational Infrastructure",
-    sectorHeroImage: "/images/Educational-Building.webp",
-    projectThumbnails: ["/images/Educational-Building.webp", "/images/JP-Apartment.webp", "/images/Educational-Building.webp"],
+    sectorHeroImage: "/images/University-Building/image-1.png",
+    projectThumbnails: ["/images/University-Building/image-2.png", "/images/University-Building/image-3.png", "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-1.png"],
   },
   {
     id: "5",
@@ -59,8 +59,8 @@ export const servicesData: ServiceSector[] = [
     description: "Design and construction of industrial buildings including manufacturing units, warehouses, and other industrial facilities with high functionality.",
     features: ["Heavy Duty Structures", "Warehouse Logistics Units", "High Bay Storage", "Ventilation Systems", "Fire Retardant Materials", "Scalable Designs"],
     badge: "Industrial Facilities",
-    sectorHeroImage: "/images/AHS-Building.webp",
-    projectThumbnails: ["/images/AHS-Building.webp", "/images/Commercial-Complex.webp", "/images/AHS-Building.webp"],
+    sectorHeroImage: "/images/rr-hero-3.png",
+    projectThumbnails: ["/images/rr-hero-1-desktop.png", "/images/rr-hero-1.png"],
   },
   {
     id: "6",
@@ -69,7 +69,7 @@ export const servicesData: ServiceSector[] = [
     description: "Creating premium resorts, hotels, and hospitality spaces that combine aesthetics, comfort, and functionality for memorable experiences.",
     features: ["Luxury Aesthetic Finish", "Pool & Recreation Grounds", "Eco-friendly Materials", "Guest Comfort Optimized", "Landscape Integration", "Turnkey Construction"],
     badge: "Hospitality Development",
-    sectorHeroImage: "/images/Resort-Project.webp",
-    projectThumbnails: ["/images/Resort-Project.webp", "/images/Resort-Project.webp", "/images/Resort-Project.webp"],
+    sectorHeroImage: "/images/mudigere-Resort-Project/image-1.png",
+    projectThumbnails: ["/images/mudigere-Resort-Project/image-2.png", "/images/mudigere-Resort-Project/image-3.png", "/images/mudigere-Resort-Project/image-4.png"],
   },
 ];
