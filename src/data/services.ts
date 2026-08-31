@@ -52,16 +52,16 @@ export const servicesData: ServiceSector[] = [
     sectorHeroImage: "/images/University-Building/image-1.png",
     projectThumbnails: ["/images/University-Building/image-2.png", "/images/University-Building/image-3.png", "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-1.png"],
   },
-  {
-    id: "5",
-    title: "Industrial Buildings",
-    icon: Factory,
-    description: "Design and construction of industrial buildings including manufacturing units, warehouses, and other industrial facilities with high functionality.",
-    features: ["Heavy Duty Structures", "Warehouse Logistics Units", "High Bay Storage", "Ventilation Systems", "Fire Retardant Materials", "Scalable Designs"],
-    badge: "Industrial Facilities",
-    sectorHeroImage: "/images/rr-hero-3.png",
-    projectThumbnails: ["/images/rr-hero-1-desktop.png", "/images/rr-hero-1.png"],
-  },
+  // {
+  //   id: "5",
+  //   title: "Industrial Buildings",
+  //   icon: Factory,
+  //   description: "Design and construction of industrial buildings including manufacturing units, warehouses, and other industrial facilities with high functionality.",
+  //   features: ["Heavy Duty Structures", "Warehouse Logistics Units", "High Bay Storage", "Ventilation Systems", "Fire Retardant Materials", "Scalable Designs"],
+  //   badge: "Industrial Facilities",
+  //   sectorHeroImage: "/images/rr-hero-3.png",
+  //   projectThumbnails: ["/images/rr-hero-1-desktop.png", "/images/rr-hero-1.png"],
+  // },
   {
     id: "6",
     title: "Resorts & Hospitality",
@@ -71,5 +71,5 @@ export const servicesData: ServiceSector[] = [
     badge: "Hospitality Development",
     sectorHeroImage: "/images/mudigere-Resort-Project/image-1.png",
     projectThumbnails: ["/images/mudigere-Resort-Project/image-2.png", "/images/mudigere-Resort-Project/image-3.png", "/images/mudigere-Resort-Project/image-4.png"],
-  },
+  }
 ];

@@ -71,7 +71,7 @@ const AboutPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/images/rr-hero-1.png"
+              src="images/AHS-Building/image-2.png"
               alt="Construction site"
               className="w-full h-full object-cover opacity-20"
             />
@@ -223,11 +223,11 @@ const AboutPage = () => {
                   engineered for performance, built for permanence
                 </h2>
                 <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8">
-                  With 40+ years of rich experience, we don't just construct buildings - we deliver infrastructure that stands the test of time. Every project reflects our commitment to quality, safety, and timely execution.
+                  With 25+ years of rich experience, we don't just construct buildings - we deliver infrastructure that stands the test of time. Every project reflects our commitment to quality, safety, and timely execution.
                 </p>
                 <div className="space-y-4">
                   {[
-                    "40+ years of rich industry experience",
+                    "25+ years of rich industry experience",
                     "500+ completed projects across 6 sectors",
                     "5M+ sq. ft. of constructed excellence",
                     "100+ skilled civil engineers and supervisors",
@@ -251,7 +251,7 @@ const AboutPage = () => {
               <div className="relative">
                 <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
                   <img
-                    src="/images/rr-hero-2-desktop.png"
+                    src="/images/AHS-Building/image-2.png"
                     alt="RR Constructions project"
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -260,7 +260,7 @@ const AboutPage = () => {
                 <div className="absolute bg-white -bottom-6 -left-6 bg-card border border-rr-gold/30 rounded-xl p-6 shadow-lg max-w-xs">
                   <div className="flex items-center gap-3 mb-2">
                     <Award className="w-6 h-6 text-rr-gold" />
-                    <span className="font-serif text-lg font-bold text-foreground">Trusted Since 1980s</span>
+                    <span className="font-serif text-lg font-bold text-foreground">Trusted Since 2000s</span>
                   </div>
                   <p className="text-muted-foreground text-xs leading-relaxed">
                     Four decades of delivering landmark infrastructure across Karnataka with uncompromised quality and client trust.

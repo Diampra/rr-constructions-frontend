@@ -15,7 +15,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Registered Office",
-    content: "No.216/1, 1st Floor, 5th Main,\n4th Cross Road (Near K.E.R. Office)\nGanganagar, Bangalore-560032",
+    content: "No.216/1, 1st Floor, 5th Main,\n4th Cross Road\nGanganagar, Bangalore-560032",
   },
   {
     icon: Phone,

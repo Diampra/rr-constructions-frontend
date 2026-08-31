@@ -35,7 +35,7 @@ const Index = () => {
             "description": "Professionally managed construction and infrastructure development company with 40+ years of experience.",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "No.216/1, 1st Floor, 5th Main, 4th Cross Road (Near K.E.R. Office), Ganganagar",
+              "streetAddress": "No.216/1, 1st Floor, 5th Main, 4th Cross Road, Ganganagar",
               "addressLocality": "Bangalore",
               "addressRegion": "Karnataka",
               "postalCode": "560032",

@@ -45,7 +45,7 @@ const PortfolioPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <picture>
-              <source media="(min-width: 768px)" srcSet="/images/rr-hero-2-desktop.png" />
+              <source media="(min-width: 768px)" srcSet="images/mudigere-Resort-Project/image-5.png" />
               <img
                 src="/images/rr-hero-3.png"
                 alt="Construction project"

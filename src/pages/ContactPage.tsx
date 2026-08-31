@@ -32,7 +32,7 @@ const ContactPage = () => {
       id: "1",
       icon: MapPin,
       title: "Registered Office",
-      content: "No.216/1, 1st Floor, 5th Main, 4th Cross Road (Near K.E.R. Office), Ganganagar, Bangalore-560032",
+      content: "No.216/1, 1st Floor, 5th Main, 4th Cross Road, Ganganagar, Bangalore-560032",
     },
     {
       id: "2",
@@ -122,7 +122,7 @@ const ContactPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/images/rr-hero-2-desktop.png"
+              src="images/mudigere-Resort-Project/image-5.png"
               alt="Construction project"
               className="w-full h-full object-cover opacity-20"
             />
@@ -225,7 +225,7 @@ const ContactPage = () => {
                         onChange={handleChange}
                         required
                         className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
-                        placeholder="e.g. Ritesh Sinha"
+                        placeholder="Enter your full name"
                       />
                     </div>
                     <div>
@@ -257,7 +257,7 @@ const ContactPage = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
-                        placeholder="+91 98450 78828"
+                        placeholder="Enter your phone number"
                       />
                     </div>
                     <div>

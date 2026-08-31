@@ -10,8 +10,8 @@ import { servicesData } from "@/data/services";
 
 const ServicesPage = () => {
   const { t } = useLanguage();
-  const [s0, s1, s2, s3, s4, s5] = servicesData;
-  const totalStr = "06";
+  const [s0, s1, s2, s3, s4] = servicesData;
+  const totalStr = "05";
 
   const [activeImages, setActiveImages] = useState<Record<string, string>>({});
   const articleRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -98,7 +98,7 @@ const ServicesPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/images/rr-hero-1.png"
+              src="images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-2.png"
               alt="Construction project"
               className="w-full h-full object-cover opacity-20"
             />
@@ -252,12 +252,12 @@ const ServicesPage = () => {
               </div>
             </article>
 
-            {/* 4 & 5. Educational & Industrial (Staggered Duo) */}
+            {/* 4. Educational */}
             <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start pt-8">
-              {[s3, s4].map((service, i) => {
+              {[s3].map((service, i) => {
                 const globalIndex = i + 3;
                 return (
-                  <article key={service.id} className={`group ${i === 1 ? 'md:mt-32' : ''}`} ref={(el) => (articleRefs.current[service.id] = el)}>
+                  <article key={service.id} className="group" ref={(el) => (articleRefs.current[service.id] = el)}>
                     <div className="relative w-full aspect-[4/3] mb-12 md:mb-16">
                       <div className="absolute inset-0 overflow-hidden shadow-lg bg-rr-navy-deep/5">
                         {service.sectorHeroImage ? (
@@ -298,32 +298,32 @@ const ServicesPage = () => {
               })}
             </div>
 
-            {/* 6. Resorts & Hospitality (Panoramic Finale) */}
-            <article className="group pt-16" ref={(el) => (articleRefs.current[s5.id] = el)}>
+            {/* 5. Resorts & Hospitality (Panoramic Finale) */}
+            <article className="group pt-16" ref={(el) => (articleRefs.current[s4.id] = el)}>
               <div className="relative w-full aspect-[21/9] md:aspect-[24/9] mb-16 md:mb-20">
                 <div className="absolute inset-0 overflow-hidden shadow-2xl bg-rr-navy-deep/5">
-                  {s5.sectorHeroImage ? (
+                  {s4.sectorHeroImage ? (
                     <img 
-                      src={activeImages[s5.id] || s5.sectorHeroImage} 
-                      alt={s5.title} 
-                      onClick={() => handleImageToggle(s5.id, s5.sectorHeroImage, s5.sectorHeroImage)}
-                      className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] ${(activeImages[s5.id] && activeImages[s5.id] !== s5.sectorHeroImage) ? 'cursor-pointer' : ''}`} 
+                      src={activeImages[s4.id] || s4.sectorHeroImage} 
+                      alt={s4.title} 
+                      onClick={() => handleImageToggle(s4.id, s4.sectorHeroImage, s4.sectorHeroImage)}
+                      className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] ${(activeImages[s4.id] && activeImages[s4.id] !== s4.sectorHeroImage) ? 'cursor-pointer' : ''}`} 
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center"><s5.icon className="w-20 h-20 text-rr-gold/50" /></div>
+                    <div className="w-full h-full flex items-center justify-center"><s4.icon className="w-20 h-20 text-rr-gold/50" /></div>
                   )}
                 </div>
-                {renderBadgeAndIcon(s5, 5, totalStr)}
-                {renderOverlayGallery(s5)}
+                {renderBadgeAndIcon(s4, 4, totalStr)}
+                {renderOverlayGallery(s4)}
               </div>
               <div className="max-w-4xl mx-auto text-center flex flex-col items-center space-y-6">
-                <s5.icon className="w-12 h-12 text-rr-gold mx-auto mb-2" />
+                <s4.icon className="w-12 h-12 text-rr-gold mx-auto mb-2" />
                 <h3 className="font-serif text-3xl md:text-5xl font-bold text-rr-navy-deep leading-tight">
-                  {s5.title}
+                  {s4.title}
                 </h3>
-                <p className="text-rr-navy-deep/80 text-lg leading-relaxed">{s5.description}</p>
+                <p className="text-rr-navy-deep/80 text-lg leading-relaxed">{s4.description}</p>
                 <div className="flex flex-wrap justify-center gap-4 pt-6">
-                  {s5.features.map((feature, i) => (
+                  {s4.features.map((feature, i) => (
                     <div key={i} className="flex items-center gap-2 text-sm text-rr-navy-deep/80 font-medium bg-rr-navy-deep/5 px-4 py-2 rounded-full border border-rr-gold/20">
                       <CheckCircle2 className="w-4 h-4 text-rr-gold shrink-0" />
                       <span>{feature}</span>

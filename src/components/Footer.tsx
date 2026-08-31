@@ -113,7 +113,7 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-rr-gold shrink-0 mt-0.5" />
                 <span className="text-rr-cream/60 text-sm">
                   No.216/1, 1st Floor, 5th Main,<br />
-                  4th Cross Road (Near K.E.R. Office)<br />
+                  4th Cross Road<br />
                   Ganganagar, Bangalore-560032
                 </span>
               </li>
