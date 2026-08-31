@@ -112,22 +112,28 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-rr-gold shrink-0 mt-0.5" />
                 <span className="text-rr-cream/60 text-sm">
-                  #18, 2nd Floor, 3rd Cross,<br />
-                  Sanjeevappa Layout,<br />
-                  Kolar, Karnataka 563101
+                  No.216/1, 1st Floor, 5th Main,<br />
+                  4th Cross Road (Near K.E.R. Office)<br />
+                  Ganganagar, Bangalore-560032
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-rr-gold shrink-0" />
-                <a href="tel:+919448085212" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 -ml-1">
-                  +91 94480 85212
+                <a href="tel:+919845078828" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 -ml-1">
+                  +91 98450 78828 <br />
+                  080-49901901
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-rr-gold shrink-0" />
-                <a href="mailto:info@rrinfra.co.in" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 -ml-1">
-                  info@rrinfra.co.in
-                </a>
+                <div className="flex flex-col gap-1 text-rr-cream/60 text-sm">
+                  <a href="mailto:rrconstruct1709@gmail.com" className="hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 -ml-1">
+                    rrconstruct1709@gmail.com
+                  </a>
+                  <a href="mailto:contact@rrinfra.co.in" className="hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 -ml-1">
+                    contact@rrinfra.co.in
+                  </a>
+                </div>
               </li>
             </ul>
           </div>

@@ -32,19 +32,19 @@ const ContactPage = () => {
       id: "1",
       icon: MapPin,
       title: "Registered Office",
-      content: "#18, 2nd Floor, 3rd Cross, Sanjeevappa Layout, Kolar – 563101, Karnataka, India",
+      content: "No.216/1, 1st Floor, 5th Main, 4th Cross Road (Near K.E.R. Office), Ganganagar, Bangalore-560032",
     },
     {
       id: "2",
       icon: Phone,
       title: "Phone Lines",
-      content: "+91 94480 85212\n+91 94482 52081",
+      content: "+91 98450 78828\n080-49901901",
     },
     {
       id: "3",
       icon: Mail,
       title: "Email & Web",
-      content: "info@rrinfra.co.in\nwww.rrinfra.co.in",
+      content: "rrconstruct1709@gmail.com\ncontact@rrinfra.co.in",
     },
     {
       id: "4",
@@ -55,10 +55,10 @@ const ContactPage = () => {
   ];
 
   const nearbyLandmarks = [
-    "Kolar Bus Stand",
-    "District Court, Kolar",
-    "Kolar Railway Station",
-    "Kolar City Center"
+    "K.E.R. Office",
+    "Ganganagar Market",
+    "Hebbal",
+    "CBI Office"
   ];
 
   const segments = [
@@ -85,7 +85,7 @@ const ContactPage = () => {
     },
     {
       q: "How do I request a project proposal or consultation?",
-      a: "Fill out the contact form on this page or reach out directly to our leadership via phone at +91 94480 85212 or email at info@rrinfra.co.in."
+      a: "Fill out the contact form on this page or reach out directly to our leadership via phone at +91 98450 78828 or email at contact@rrinfra.co.in."
     }
   ];
 
@@ -112,7 +112,7 @@ const ContactPage = () => {
     <>
       <Helmet>
         <title>Contact Us & Office Location | RR Constructions & RR Infra</title>
-        <meta name="description" content="Get in touch with RR Constructions & RR Infra. Registered office at Sanjeevappa Layout, Kolar, Karnataka. Call +91 94480 85212 or email info@rrinfra.co.in." />
+        <meta name="description" content="Get in touch with RR Constructions & RR Infra. Registered office at Ganganagar, Bangalore. Call +91 98450 78828 or email contact@rrinfra.co.in." />
       </Helmet>
       
       <Header />
@@ -155,7 +155,7 @@ const ContactPage = () => {
                 <div>
                   <h2 className="font-serif text-2xl text-foreground font-bold mb-4">Registered Office & Contact Lines</h2>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Reach out to our project management team or visit our head office in Kolar, Karnataka.
+                    Reach out to our project management team or visit our head office in Bangalore, Karnataka.
                   </p>
                 </div>
                 
@@ -192,8 +192,8 @@ const ContactPage = () => {
                 {/* Map */}
                 <div className="h-56 bg-white shadow-md overflow-hidden rounded-xl border border-border">
                   <iframe
-                    title="RR Constructions Kolar Location"
-                    src="https://maps.google.com/maps?q=Kolar+Karnataka+India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    title="RR Constructions Bangalore Location"
+                    src="https://maps.google.com/maps?q=Ganganagar+Bangalore+India&t=&z=13&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -257,7 +257,7 @@ const ContactPage = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
-                        placeholder="+91 94480 85212"
+                        placeholder="+91 98450 78828"
                       />
                     </div>
                     <div>

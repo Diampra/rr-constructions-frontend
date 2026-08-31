@@ -62,9 +62,9 @@ const Header = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-6">
-          <a href="tel:+919448085212" className="flex items-center gap-2 text-xs font-bold font-mono transition-colors text-white/80 hover:text-rr-gold">
+          <a href="tel:+919845078828" className="flex items-center gap-2 text-xs font-bold font-mono transition-colors text-white/80 hover:text-rr-gold">
             <Phone className="w-3.5 h-3.5 text-rr-gold shrink-0" />
-            <span>+91 94480 85212</span>
+            <span>+91 98450 78828</span>
           </a>
 
           <div className="flex items-center gap-3 border-x px-4 py-1 border-white/10 text-white/40">
@@ -106,9 +106,9 @@ const Header = () => {
             ))}
           </nav>
           <div className="pt-6 border-t border-white/10 flex flex-col gap-4">
-            <a href="tel:+919448085212" className="flex items-center gap-2 text-sm font-mono font-bold text-rr-gold">
+            <a href="tel:+919845078828" className="flex items-center gap-2 text-sm font-mono font-bold text-rr-gold">
               <Phone className="w-4 h-4" />
-              <span>+91 94480 85212</span>
+              <span>+91 98450 78828</span>
             </a>
             <Button asChild className="w-full bg-rr-gold text-rr-navy-deep text-xs font-bold uppercase tracking-widest py-6 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rr-gold">
               <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>

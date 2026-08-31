@@ -289,10 +289,10 @@ const AboutPage = () => {
                   Start Your Project
                 </Button>
               </Link>
-              <a href="tel:+919448085212">
+              <a href="tel:+919845078828">
                 <Button variant="outline" size="lg" className="border-rr-cream/20 text-rr-cream hover:bg-rr-cream/10 font-semibold">
                   <Phone className="w-4 h-4 mr-2" />
-                  Call +91 94480 85212
+                  Call +91 98450 78828
                 </Button>
               </a>
             </div>

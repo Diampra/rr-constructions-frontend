@@ -48,10 +48,10 @@ export const projects: Project[] = [
   {
     id: "3",
     title: "JP Apartment",
-    description: "Premium residential building featuring modern apartments engineered for comfort, luxury living, and Vastu-compliant layout.",
+    description: "Residential project in mysore",
     type: "Residential Building",
     builtUpArea: "60,000+ Sq. Ft.",
-    location: "Kolar, Karnataka",
+    location: "Mysore, Karnataka",
     status: "Completed",
     thumbnail: "/images/J-P-Enclave/image-1.png",
     images: [
@@ -77,11 +77,11 @@ export const projects: Project[] = [
   },
   {
     id: "5",
-    title: "Resort Project",
+    title: "Mudigere Resort Project",
     description: "Luxury resort & hospitality development blending aesthetics, guest comfort, and structural durability in a scenic environment.",
     type: "Hospitality Resort",
     builtUpArea: "35,000+ Sq. Ft.",
-    location: "Karnataka",
+    location: "Mudigere, Karnataka",
     status: "Completed",
     thumbnail: "/images/mudigere-Resort-Project/image-1.png",
     images: [
@@ -109,6 +109,22 @@ export const projects: Project[] = [
       { src: "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-2.png", alt: "Hostel interior" }
     ],
   },
+  {
+    id: "7",
+    title: "International school at DODDABALLAPURA",
+    description: "Upcoming educational institution project.",
+    type: "Upcoming Project",
+    builtUpArea: "TBA",
+    location: "Doddaballapura, Karnataka",
+    status: "Upcoming",
+    thumbnail: "/images/under-construction/image-1.jpeg",
+    images: [
+      { src: "/images/under-construction/image-1.jpeg", alt: "Under construction 1" },
+      { src: "/images/under-construction/image-2.jpeg", alt: "Under construction 2" },
+      { src: "/images/under-construction/image-3.jpeg", alt: "Under construction 3" },
+      { src: "/images/under-construction/image-4.jpeg", alt: "Under construction 4" }
+    ],
+  }
 ];
 
 export const projectCategories = [
@@ -118,4 +134,5 @@ export const projectCategories = [
   "Residential Building",
   "Educational Institution",
   "Hospitality Resort",
+  "Upcoming Project",
 ];

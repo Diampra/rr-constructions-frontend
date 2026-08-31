@@ -35,13 +35,13 @@ const Index = () => {
             "description": "Professionally managed construction and infrastructure development company with 40+ years of experience.",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "#18, 2nd Floor, 3rd Cross, Sanjeevappa Layout",
-              "addressLocality": "Kolar",
+              "streetAddress": "No.216/1, 1st Floor, 5th Main, 4th Cross Road (Near K.E.R. Office), Ganganagar",
+              "addressLocality": "Bangalore",
               "addressRegion": "Karnataka",
-              "postalCode": "563101",
+              "postalCode": "560032",
               "addressCountry": "IN"
             },
-            "telephone": "+91-9448085212",
+            "telephone": "+91-9845078828",
             "openingHours": "Mo-Sa 09:30-18:30"
           })}
         </script>

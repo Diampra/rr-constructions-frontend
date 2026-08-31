@@ -15,17 +15,17 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Registered Office",
-    content: "#18, 2nd Floor, 3rd Cross,\nSanjeevappa Layout,\nKolar, Karnataka 563101",
+    content: "No.216/1, 1st Floor, 5th Main,\n4th Cross Road (Near K.E.R. Office)\nGanganagar, Bangalore-560032",
   },
   {
     icon: Phone,
     title: "Phone",
-    content: "+91 94480 85212",
+    content: "+91 98450 78828\n080-49901901",
   },
   {
     icon: Mail,
     title: "Email",
-    content: "info@rrinfra.co.in",
+    content: "rrconstruct1709@gmail.com\ncontact@rrinfra.co.in",
   },
   {
     icon: Clock,
@@ -166,7 +166,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className={inputClasses}
-                    placeholder="+91 94480 85212"
+                    placeholder="+91 98450 78828"
                   />
                 </div>
                 <div>
