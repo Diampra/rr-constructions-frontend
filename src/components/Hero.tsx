@@ -260,7 +260,13 @@ const Hero = () => {
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
       className="relative w-full overflow-hidden bg-rr-navy-deep text-rr-cream transition-colors duration-500"
-      style={{ height: "100svh", minHeight: "640px", paddingTop: "56px" }}
+      style={{ 
+        height: "100svh", 
+        minHeight: "640px", 
+        paddingTop: "56px",
+        "--hero-w": "100vw",
+        "--hero-h": "max(100svh, 640px)"
+      } as React.CSSProperties}
     >
       {/* Ambient depth - replaces the flat grid + gradient with a single
           warm glow anchored low, echoing the lit windows in the photos */}
@@ -297,7 +303,7 @@ const Hero = () => {
         aria-hidden="true"
         className={`absolute inset-x-0 z-10 flex ${isMobile ? 'justify-start pl-4' : 'justify-center'} pointer-events-none select-none`}
         style={{
-          top: isMobile ? '28%' : `${bg.topPct}%`,
+          top: isMobile ? '15%' : `${bg.topPct}%`,
           animation: `${
             bg.entrance === "left"
               ? "slideInLeft"
@@ -314,7 +320,7 @@ const Hero = () => {
         <span
           className="font-serif font-black uppercase leading-[0.85] tracking-tight text-rr-cream"
           style={{
-            fontSize: isMobile ? `clamp(28px, 11vw, 52px)` : `clamp(52px, ${bg.fontSize}vw, 1000px)`,
+            fontSize: isMobile ? `clamp(40px, 16vw, 80px)` : `clamp(52px, ${bg.fontSize}vw, 1000px)`,
             letterSpacing: isMobile ? `0em` : `${bg.letterSpacing}em`,
             opacity: bg.opacity * 10, // 0.07 → displayed as 0.7 on slider
           }}
@@ -327,18 +333,18 @@ const Hero = () => {
           everything else. Pan/scale come from the wrapper (static);
           the optional Ken Burns drift animates the img itself so the
           two transforms don't collide. */}
-      <div className="absolute inset-x-0 bottom-0 z-20 flex justify-center items-end pointer-events-none h-[78%]">
+      <div className={`absolute inset-x-0 bottom-0 z-20 flex justify-center pointer-events-none ${isMobile ? 'h-full items-center pb-32' : 'h-[78%] items-end'}`}>
         <div
-          className="h-full flex justify-center items-end"
+          className={`w-full flex justify-center ${isMobile ? 'items-center' : 'h-full items-end'}`}
           style={{
-            transform: isMobile ? 'scale(1)' : `translate(${t.x}px, ${t.y}px) scale(${t.scale})`,
+            transform: isMobile ? 'scale(1.05)' : `translate(calc(${t.x} * (var(--hero-w) / 1920)), calc(${t.y} * (var(--hero-h) / 1080))) scale(${t.scale})`,
             transformOrigin: `${t.originX ?? 50}% ${t.originY ?? 100}%`,
             transition: editMode ? "none" : "transform 0.4s ease",
           }}
         >
           <div
             key={`entrance-${slide.id}`}
-            className="h-full flex justify-center items-end"
+            className={`w-full flex justify-center ${isMobile ? 'items-center' : 'h-full items-end'}`}
             style={{
               animation: `${
                 t.entrance === "left"
@@ -353,13 +359,13 @@ const Hero = () => {
               } 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards`,
             }}
           >
-            <picture className="h-full flex justify-center items-end">
+            <picture className={`w-full flex justify-center ${isMobile ? 'items-center' : 'h-full items-end'}`}>
               <source media="(min-width: 768px)" srcSet={slide.desktopImage} />
             <img
               key={`png-img-${slide.id}`}
               src={slide.mobileImage}
               alt={slide.alt}
-              className="h-full w-auto max-w-[86vw] object-contain object-bottom drop-shadow-[0_30px_50px_rgba(0,0,0,0.45)] animate-cinematic-up"
+              className={`h-full drop-shadow-[0_30px_50px_rgba(0,0,0,0.45)] animate-cinematic-up ${isMobile ? 'w-full max-w-none object-cover object-center' : 'w-auto max-w-[86vw] object-contain object-bottom'}`}
               style={
                 t.kenBurns && !prefersReducedMotion
                   ? ({
@@ -375,6 +381,42 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* LAYER 2.5 - the text outline OVER the building. 
+          This duplicates Layer 1 exactly but sets the text to transparent
+          with a stroke, creating an interlocking 3D effect with the building. */}
+      <div
+        key={`bg-word-outline-${slide.id}`}
+        aria-hidden="true"
+        className={`absolute inset-x-0 z-[21] flex ${isMobile ? 'justify-start pl-4' : 'justify-center'} pointer-events-none select-none`}
+        style={{
+          top: isMobile ? '15%' : `${bg.topPct}%`,
+          animation: `${
+            bg.entrance === "left"
+              ? "slideInLeft"
+              : bg.entrance === "right"
+              ? "slideInRight"
+              : bg.entrance === "down"
+              ? "slideInDown"
+              : bg.entrance === "up"
+              ? "slideInUp"
+              : "fadeIn"
+          } 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+        }}
+      >
+        <span
+          className="font-serif font-black uppercase leading-[0.85] tracking-tight text-transparent"
+          style={{
+            fontSize: isMobile ? `clamp(40px, 16vw, 80px)` : `clamp(52px, ${bg.fontSize}vw, 1000px)`,
+            letterSpacing: isMobile ? `0em` : `${bg.letterSpacing}em`,
+            WebkitTextStroke: `1px rgba(245,241,232, ${bg.opacity})`, // Using the opacity config for stroke alpha
+            opacity: bg.opacity * 10,
+          }}
+        >
+          {slide.bgText}
+        </span>
+      </div>
+
+
       {/* LAYER 3 - title, description, highlights: no card, no box.
           Sits directly OVER the photo, lower-left, with just enough
           text-shadow to stay legible against the glass/facade behind it,
@@ -383,17 +425,18 @@ const Hero = () => {
         key={`copy-${slide.id}`}
         className="absolute pointer-events-none animate-fade-in"
         style={{
-          left: isMobile ? '1rem' : `calc(1rem + ${card.x}px)`,
-          top: isMobile ? '40%' : `calc(50% + ${card.y}px)`,
+          left: isMobile ? '1rem' : `calc(1rem + calc(${card.x} * (var(--hero-w) / 1920)))`,
+          top: isMobile ? 'auto' : `calc(50% + calc(${card.y} * (var(--hero-h) / 1080)))`,
+          bottom: isMobile ? '160px' : 'auto',
           width: isMobile ? 'min(90vw, 340px)' : (card.width ? `min(90vw, ${card.width}px)` : "min(78vw, 340px)"),
           zIndex: 25,
         }}
       >
-        <div className="pl-3.5 border-l-2 border-rr-gold">
+        <div className="pl-5 pr-6 py-4 border-l-2 border-rr-gold bg-rr-navy-deep/50 backdrop-blur-md rounded-r-xl shadow-2xl">
           <h2
             className="font-serif font-bold uppercase leading-tight text-rr-cream"
             style={{
-              textShadow: `0 2px 14px rgba(0,0,0,${(card.shadowAlpha ?? 65) / 100})`,
+              textShadow: `0 2px 14px rgba(0,0,0,${Math.min(1, (card.shadowAlpha ?? 65) / 100 + 0.2)})`,
               letterSpacing: "0.04em",
               fontSize: isMobile ? `24px` : `${card.titleSize}px`,
             }}
@@ -463,7 +506,7 @@ const Hero = () => {
 
           <div className="flex items-center gap-4 font-mono">
             {[
-              { v: "40+", l: "Years" },
+              { v: "25+", l: "Years" },
               { v: "500+", l: "Projects" },
               { v: "5M+", l: "Sq. Ft." },
             ].map((s, i) => (

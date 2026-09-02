@@ -7,6 +7,7 @@
 /* RR Constructions - Standard Brand Colors */
 
 :root {
+  color-scheme: light;
   --rr-navy-deep: #0A1B33;
   --rr-navy-deep-rgb: 10 27 51;
   --rr-navy-mid: #12233F;

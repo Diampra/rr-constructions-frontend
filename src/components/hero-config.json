@@ -1,7 +1,7 @@
 {
   "transforms": {
     "1": {
-      "scale": 1.7,
+      "scale": 1.64,
       "x": 0,
       "y": 212,
       "kenBurns": false,
@@ -15,9 +15,9 @@
       "kenBurnsScale": 1.06
     },
     "3": {
-      "scale": 1.6,
+      "scale": 1.35,
       "x": 3,
-      "y": 309,
+      "y": 345,
       "kenBurns": false,
       "kenBurnsScale": 1.06
     },
@@ -38,9 +38,9 @@
       "originX": 0
     },
     "6": {
-      "scale": 2.47,
-      "x": -242,
-      "y": 800,
+      "scale": 1.92,
+      "x": -13,
+      "y": 769,
       "kenBurns": false,
       "kenBurnsScale": 1.06,
       "entrance": "fade"

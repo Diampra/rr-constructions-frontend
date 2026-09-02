@@ -16,14 +16,14 @@ const Index = () => {
         <title>RR Constructions & RR Infra | Premier Construction & Infrastructure Development</title>
         <meta 
           name="description" 
-          content="RR Constructions & RR Infra brings 40+ years of expertise in commercial buildings, residential projects, multi-specialty hospital infrastructure, educational institutions, and industrial developments in Karnataka."
+          content="RR Constructions & RR Infra brings 25+ years of expertise in commercial buildings, residential projects, multi-specialty hospital infrastructure, educational institutions, and industrial developments in Karnataka."
         />
         <meta name="keywords" content="RR Constructions, RR Infra, Construction Company Kolar, Infrastructure Development Karnataka, Hospital Construction, Commercial Buildings, Residential Apartments" />
         <link rel="canonical" href="https://www.rrinfra.co.in" />
         
         {/* Open Graph */}
         <meta property="og:title" content="RR Constructions & RR Infra | Building Excellence Through Experience" />
-        <meta property="og:description" content="Professionally managed construction and infrastructure development company with over 40+ years of rich experience in Karnataka." />
+        <meta property="og:description" content="Professionally managed construction and infrastructure development company with over 25+ years of rich experience in Karnataka." />
         <meta property="og:type" content="website" />
         
         {/* Structured Data */}
@@ -32,7 +32,7 @@ const Index = () => {
             "@context": "https://schema.org",
             "@type": "GeneralContractor",
             "name": "RR Constructions & RR Infra",
-            "description": "Professionally managed construction and infrastructure development company with 40+ years of experience.",
+            "description": "Professionally managed construction and infrastructure development company with 25+ years of experience.",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "No.216/1, 1st Floor, 5th Main, 4th Cross Road, Ganganagar",

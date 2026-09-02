@@ -55,7 +55,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-rr-cream/60 text-sm leading-relaxed mb-6">
-              40+ years of excellence in commercial, residential, healthcare, educational, industrial, and hospitality infrastructure across Karnataka.
+              25+ years of excellence in commercial, residential, healthcare, educational, industrial, and hospitality infrastructure across Karnataka.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (

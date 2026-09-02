@@ -148,7 +148,7 @@ const Services = () => {
                 Our Services &amp;<br />Construction Expertise
               </h2>
               <p className="text-rr-navy-deep/70 text-base md:text-lg leading-relaxed mb-8">
-                Over 40+ years of rich experience delivering high-grade projects across{" "}
+                Over 25+ years of rich experience delivering high-grade projects across{" "}
                 {total} core sectors in Karnataka. We build the future with uncompromised quality.
               </p>
               <Button asChild className="bg-rr-navy-deep hover:bg-rr-gold text-rr-cream hover:text-rr-navy-deep font-bold tracking-wide rounded-none px-6 py-6 h-auto transition-colors w-max focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rr-gold focus-visible:ring-offset-2">

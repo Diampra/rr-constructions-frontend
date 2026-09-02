@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Building2, MapPin, Maximize2, CheckCircle2, Search, ArrowRight } from "lucide-react";
+import { Building2, MapPin, Maximize2, CheckCircle2, Search, ArrowRight, FileText } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -34,7 +34,7 @@ const PortfolioPage = () => {
         <title>Landmark Projects Portfolio | RR Constructions & RR Infra</title>
         <meta 
           name="description" 
-          content="Explore RR Constructions & RR Infra's landmark projects including R L Jalappa Hospital & Research Center (2,20,000+ Sq. Ft.), AHS Building, JP Apartments, and commercial complexes across Karnataka." 
+          content="Explore RR Constructions & RR Infra's landmark projects including R L Jalappa Hospital & Research Center (2,20,000+ Sq. Ft.), AHS Building, J P Enclaves, and commercial complexes across Karnataka." 
         />
       </Helmet>
 
@@ -141,12 +141,12 @@ const PortfolioPage = () => {
         <section className="py-24 bg-background">
           <div className="container mx-auto px-6">
             {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-3 mb-16">
+            <div className="flex overflow-x-auto pb-4 mb-12 sm:flex-wrap sm:justify-center sm:overflow-visible sm:pb-0 gap-3 scrollbar-hide -mx-6 px-6 sm:mx-0 sm:px-0">
               {projectCategories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setActiveFilter(category)}
-                  className={`px-5 py-2.5 text-xs font-semibold uppercase tracking-wider rounded-lg transition-all ${
+                  className={`shrink-0 whitespace-nowrap px-5 py-2.5 text-xs font-semibold uppercase tracking-wider rounded-lg transition-all ${
                     activeFilter === category
                       ? "bg-rr-gold text-rr-navy-deep shadow-md"
                       : "bg-rr-navy-deep text-rr-cream border border-rr-cream/20 hover:bg-rr-gold hover:text-rr-navy-deep"
@@ -209,6 +209,18 @@ const PortfolioPage = () => {
                       <p className="text-muted-foreground text-xs leading-relaxed mb-6 line-clamp-3">
                         {project.description}
                       </p>
+                      
+                      {project.document && (
+                        <a 
+                          href={project.document} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-rr-gold hover:text-rr-gold/80 transition-colors mb-4"
+                        >
+                          <FileText className="w-4 h-4" />
+                          View Project Details (PDF)
+                        </a>
+                      )}
                     </div>
 
                     <div className="pt-4 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-foreground">

@@ -36,7 +36,7 @@ const contactInfo = [
 
 const segments = [
   "Commercial Building",
-  "Residential Development",
+  "Residential Building",
   "Hospital & Healthcare Facility",
   "Educational Institution",
   "Industrial Facility & Warehouse",
@@ -215,7 +215,7 @@ const Contact = () => {
                 {isSubmitting ? "Submitting Inquiry..." : (
                   <>
                     <Send className="w-5 h-5 mr-3" />
-                    Submit Project Inquiry
+                    Project Inquiry
                   </>
                 )}
               </Button>

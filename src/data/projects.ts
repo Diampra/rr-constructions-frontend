@@ -14,6 +14,7 @@ export interface Project {
   featured?: boolean;
   images: ProjectImage[];
   thumbnail: string;
+  document?: string;
 }
 
 export const projects: Project[] = [
@@ -47,7 +48,7 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    title: "JP Apartment",
+    title: "J P Enclave",
     description: "Residential project in mysore",
     type: "Residential Building",
     builtUpArea: "60,000+ Sq. Ft.",
@@ -55,10 +56,10 @@ export const projects: Project[] = [
     status: "Completed",
     thumbnail: "/images/J-P-Enclave/image-1.png",
     images: [
-      { src: "/images/J-P-Enclave/image-1.png", alt: "JP Apartment exterior" },
-      { src: "/images/J-P-Enclave/image-2.png", alt: "JP Apartment living area" },
-      { src: "/images/J-P-Enclave/image-3.png", alt: "JP Apartment bedroom" },
-      { src: "/images/J-P-Enclave/image-4.png", alt: "JP Apartment facilities" }
+      { src: "/images/J-P-Enclave/image-1.png", alt: "J P Enclave exterior" },
+      { src: "/images/J-P-Enclave/image-2.png", alt: "J P Enclave living area" },
+      { src: "/images/J-P-Enclave/image-3.png", alt: "J P Enclave bedroom" },
+      { src: "/images/J-P-Enclave/image-4.png", alt: "J P Enclave facilities" }
     ],
   },
   {
@@ -77,11 +78,11 @@ export const projects: Project[] = [
   },
   {
     id: "5",
-    title: "Mudigere Resort Project",
+    title: "J P Resorts",
     description: "Luxury resort & hospitality development blending aesthetics, guest comfort, and structural durability in a scenic environment.",
     type: "Hospitality Resort",
     builtUpArea: "35,000+ Sq. Ft.",
-    location: "Mudigere, Karnataka",
+    location: "Madikeri,Coorg, Karnataka",
     status: "Completed",
     thumbnail: "/images/mudigere-Resort-Project/image-1.png",
     images: [
@@ -89,7 +90,8 @@ export const projects: Project[] = [
       { src: "/images/mudigere-Resort-Project/image-2.png", alt: "Resort pool area" },
       { src: "/images/mudigere-Resort-Project/image-3.png", alt: "Resort landscape" },
       { src: "/images/mudigere-Resort-Project/image-4.png", alt: "Resort rooms" },
-      { src: "/images/mudigere-Resort-Project/image-5.png", alt: "Resort facilities" }
+      { src: "/images/mudigere-Resort-Project/image-5.png", alt: "Resort facilities" },
+      { src: "/images/mudigere-Resort-Project/image-6.png", alt: "Resort Top View" }
     ],
   },
   {
@@ -123,6 +125,20 @@ export const projects: Project[] = [
       { src: "/images/under-construction/image-2.jpeg", alt: "Under construction 2" },
       { src: "/images/under-construction/image-3.jpeg", alt: "Under construction 3" },
       { src: "/images/under-construction/image-4.jpeg", alt: "Under construction 4" }
+    ],
+  },
+  {
+    id: "8",
+    title: "Sparsh Hospital",
+    description: "Upcoming healthcare facility project with advanced infrastructure and design.",
+    type: "Upcoming Project",
+    builtUpArea: "TBA",
+    location: "Karnataka",
+    status: "Upcoming",
+    thumbnail: "/sparsh.jpeg",
+    document: "/sparsh-hospital-project-pdf-signed.pdf",
+    images: [
+      { src: "/sparsh.jpeg", alt: "Sparsh Hospital concept" }
     ],
   }
 ];

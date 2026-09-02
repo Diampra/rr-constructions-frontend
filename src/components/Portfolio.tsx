@@ -122,9 +122,10 @@ const Portfolio = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button asChild variant="gold" size="lg" className="font-bold tracking-wide shadow-gold shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rr-gold">
-            <Link to="/portfolio">
-              Explore Complete Landmark Portfolio <ArrowRight className="w-5 h-5 ml-2" />
+          <Button asChild variant="gold" size="lg" className="font-bold tracking-wide shadow-gold shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rr-gold w-full md:w-auto h-auto min-h-[48px] py-3 px-6 whitespace-normal leading-snug">
+            <Link to="/portfolio" className="flex items-center justify-center gap-2 text-center">
+              <span>Explore Complete Landmark Portfolio</span>
+              <ArrowRight className="w-5 h-5 shrink-0" />
             </Link>
           </Button>
         </div>

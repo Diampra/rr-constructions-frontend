@@ -86,7 +86,7 @@ const BlogPage = () => {
               Construction & Engineering Insights
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-              Knowledge and case studies from 40+ years of building commercial, medical, and residential infrastructure in Karnataka.
+              Knowledge and case studies from 25+ years of building commercial, medical, and residential infrastructure in Karnataka.
             </p>
           </div>
         </section>

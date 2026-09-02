@@ -319,7 +319,7 @@ const translations: Record<Language, Translations> = {
 
     studioName: "RR Constructions & RR Infra",
     studioTagline: "Constructions & Development",
-    footerDescription: "40+ years of excellence in commercial, residential, healthcare, educational, industrial, and hospitality infrastructure across Karnataka.",
+    footerDescription: "25+ years of excellence in commercial, residential, healthcare, educational, industrial, and hospitality infrastructure across Karnataka.",
     ourServices: "Our Services",
     company: "Company",
     aboutUs: "About Us",
@@ -546,7 +546,7 @@ const translations: Record<Language, Translations> = {
 
     studioName: "आरआर कंस्ट्रक्शन",
     studioTagline: "कंस्ट्रक्शन & डेवलपमेंट",
-    footerDescription: "कर्नाटक में 40+ वर्षों का अनुभव, व्यावसायिक, आवासीय, स्वास्थ्य, शैक्षिक, औद्योगिक और आतिथेयपूर्ण बुनियादी ढांचे में विश्वसनीयता।",
+    footerDescription: "कर्नाटक में 25+ वर्षों का अनुभव, व्यावसायिक, आवासीय, स्वास्थ्य, शैक्षिक, औद्योगिक और आतिथेयपूर्ण बुनियादी ढांचे में विश्वसनीयता।",
     ourServices: "हमारी सेवाएं",
     company: "कंपनी",
     aboutUs: "हमारे बारे में",

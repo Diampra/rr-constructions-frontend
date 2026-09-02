@@ -28,7 +28,7 @@ export const servicesData: ServiceSector[] = [
     icon: Home,
     description: "Creating premium residential spaces including apartments, villas, and communities with a focus on quality, comfort, and sustainable living.",
     features: ["Vastu Compliant Layouts", "Premium Structural Materials", "Modern Amenities", "Sustainable Living Space", "Aesthetic Design", "Zero Compromise Quality"],
-    badge: "Residential Development",
+    badge: "Residential Building",
     sectorHeroImage: "/images/J-P-Enclave/image-1.png",
     projectThumbnails: ["/images/J-P-Enclave/image-2.png", "/images/J-P-Enclave/image-3.png", "/images/J-P-Enclave/image-4.png"],
   },
@@ -40,7 +40,7 @@ export const servicesData: ServiceSector[] = [
     features: ["2,20,000+ Sq. Ft. Expertise", "Advanced Medical Layouts", "Strict Sterility Protocols", "Emergency Infrastructure", "Heavy Load Flooring", "ISO Standardized"],
     badge: "Healthcare Infrastructure",
     sectorHeroImage: "/images/R-L-Jalappa-Hospital-&-Research-Center.webp",
-    projectThumbnails: ["/images/AHS-Building/image-1.png", "/images/AHS-Building/image-2.png"],
+    projectThumbnails: [],
   },
   {
     id: "4",

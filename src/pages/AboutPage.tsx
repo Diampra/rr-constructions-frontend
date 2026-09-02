@@ -7,7 +7,7 @@ import { Award, Users, Building2, CheckCircle2, ArrowRight, Phone } from "lucide
 import LeadershipSection from "@/components/LeadershipSection";
 
 const stats = [
-  { value: "40+", label: "Years Experience" },
+  { value: "25+", label: "Years Experience" },
   { value: "500+", label: "Projects Delivered" },
   { value: "5M+", label: "Sq. Ft. Constructed" },
   { value: "100+", label: "Skilled Professionals" },
@@ -60,7 +60,7 @@ const AboutPage = () => {
         <title>About Us | RR Constructions & RR Infra</title>
         <meta
           name="description"
-          content="RR Constructions & RR Infra - 40+ years of excellence in commercial, residential, hospital, educational, industrial, and hospitality infrastructure across Karnataka."
+          content="RR Constructions & RR Infra - 25+ years of excellence in commercial, residential, hospital, educational, industrial, and hospitality infrastructure across Karnataka."
         />
       </Helmet>
 
@@ -130,7 +130,7 @@ const AboutPage = () => {
                 <div className="w-12 h-px bg-rr-gold" />
               </div>
               <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">
-                40+ Years of Building Trust
+                25+ Years of Building Trust
               </h2>
               <p className="text-muted-foreground text-base md:text-lg">
                 From a small civil engineering firm to a full-spectrum infrastructure company - our growth mirrors the trust our clients have placed in us.

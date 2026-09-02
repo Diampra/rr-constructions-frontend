@@ -63,7 +63,7 @@ const ContactPage = () => {
 
   const segments = [
     "Commercial Building",
-    "Residential Development",
+    "Residential Building",
     "Hospital & Healthcare Facility",
     "Educational Institution",
     "Industrial Facility & Warehouse",
@@ -77,11 +77,11 @@ const ContactPage = () => {
     },
     {
       q: "What is your track record and experience?",
-      a: "RR Constructions & RR Infra brings over 40+ years of rich industry experience, with 500+ completed projects and over 5 Million+ Sq. Ft. constructed across Karnataka."
+      a: "RR Constructions & RR Infra brings over 25+ years of rich industry experience, with 500+ completed projects and over 5 Million+ Sq. Ft. constructed across Karnataka."
     },
     {
       q: "Who leads project planning and execution?",
-      a: "Our company is led by Partners Mr. V. Rajashekhar (B.E. Civil, 40+ Yrs Exp) and Mr. T. M. Raghu (B.E. Civil, 40+ Yrs Exp) alongside a team of experienced civil engineers."
+      a: "Our company is led by Partners Mr. V. Rajashekhar (B.E. Civil, 25+ Yrs Exp) and Mr. T. M. Raghu (B.E. Civil, 25+ Yrs Exp) alongside a team of experienced civil engineers."
     },
     {
       q: "How do I request a project proposal or consultation?",
