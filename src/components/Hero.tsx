@@ -27,7 +27,7 @@ const slides = [
     description:
       "State-of-the-art office towers and corporate hubs engineered for modern enterprises.",
     highlights: ["Business Parks", "IT Parks", "Corporate HQs"],
-    desktopImage: "/images/rr-hero-1-desktop.png",
+    desktopImage: "/images/rr-hero-1.png",
     mobileImage: "/images/rr-hero-1.png",
     alt: "Commercial building edifice",
     imageTransform: { scale: 1, x: 0, y: 0, kenBurns: false, kenBurnsScale: 1.06 },
@@ -53,8 +53,8 @@ const slides = [
     description:
       "Landmark medical infrastructure - including R L Jalappa Hospital, 2,20,000+ sq. ft. - built to global clinical standards.",
     highlights: ["R L Jalappa Hospital", "Medical Colleges", "ICU Suites"],
-    desktopImage: "/images/rr-hero-5.png",
-    mobileImage: "/images/rr-hero-5.png",
+    desktopImage: "/images/rr-hero-5.webp",
+    mobileImage: "/images/rr-hero-5.webp",
     alt: "Hospital building infrastructure",
     imageTransform: { scale: 1, x: 0, y: 0, kenBurns: false, kenBurnsScale: 1.06 },
   },

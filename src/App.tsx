@@ -17,6 +17,9 @@ import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
 import TransformationsPage from "./pages/TransformationsPage";
 import DeveloperPage from "./pages/DeveloperPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsOfServicePage from "./pages/TermsOfServicePage";
+
 const App = () => (
   <HelmetProvider>
     <ThemeProvider>
@@ -37,6 +40,8 @@ const App = () => (
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/transformations" element={<TransformationsPage />} />
               <Route path="/developer" element={<DeveloperPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms-of-service" element={<TermsOfServicePage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

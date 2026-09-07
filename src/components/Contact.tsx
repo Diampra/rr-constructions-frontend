@@ -180,9 +180,9 @@ const Contact = () => {
                     onChange={handleChange}
                     className={inputClasses}
                   >
-                    <option value="" className="text-rr-navy-deep">Select project segment</option>
+                    <option value="" disabled hidden>Select project segment</option>
                     {segments.map((segment) => (
-                      <option key={segment} value={segment} className="text-rr-navy-deep">
+                      <option key={segment} value={segment}>
                         {segment}
                       </option>
                     ))}

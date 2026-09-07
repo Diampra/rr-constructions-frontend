@@ -63,7 +63,7 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
           <span className="font-mono text-[11px] tracking-widest text-white drop-shadow-md">
             {String(index + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
           </span>
-          <span className="inline-flex items-center gap-1.5 bg-rr-gold text-rr-navy-deep text-xs uppercase font-bold tracking-widest px-3 py-1 shadow-sm">
+          <span className="inline-flex items-center gap-1.5 bg-rr-gold text-rr-navy-deep text-[9px] sm:text-[10px] md:text-xs uppercase font-bold tracking-wider md:tracking-widest px-2 md:px-3 py-1 shadow-sm max-w-[70%] text-center leading-tight md:max-w-none">
             {service.badge}
           </span>
         </div>

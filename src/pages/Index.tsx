@@ -13,17 +13,17 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>RR Constructions & RR Infra | Premier Construction & Infrastructure Development</title>
+        <title>RR Constructions & RR Infra | Premier Construction Company in Bangalore</title>
         <meta 
           name="description" 
-          content="RR Constructions & RR Infra brings 25+ years of expertise in commercial buildings, residential projects, multi-specialty hospital infrastructure, educational institutions, and industrial developments in Karnataka."
+          content="RR Constructions & RR Infra is a leading civil construction and infrastructure company in Bangalore with 25+ years of experience in commercial buildings, residential projects, hospitals, and institutional developments across Karnataka."
         />
-        <meta name="keywords" content="RR Constructions, RR Infra, Construction Company Kolar, Infrastructure Development Karnataka, Hospital Construction, Commercial Buildings, Residential Apartments" />
+        <meta name="keywords" content="construction company in bangalore, civil contractors bangalore, commercial building contractors bangalore, hospital construction company karnataka, top builders bangalore, residential construction bangalore, turnkey civil contractors karnataka, rr constructions, rr infra bangalore" />
         <link rel="canonical" href="https://www.rrinfra.co.in" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="RR Constructions & RR Infra | Building Excellence Through Experience" />
-        <meta property="og:description" content="Professionally managed construction and infrastructure development company with over 25+ years of rich experience in Karnataka." />
+        <meta property="og:title" content="RR Constructions & RR Infra | Premier Construction Company in Bangalore" />
+        <meta property="og:description" content="25+ years of building excellence across Bangalore and Karnataka. Commercial, residential, hospital, and educational landmark infrastructure." />
         <meta property="og:type" content="website" />
         
         {/* Structured Data */}

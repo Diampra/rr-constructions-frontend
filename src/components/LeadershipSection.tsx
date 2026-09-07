@@ -1,33 +1,35 @@
-import { Award, Briefcase, CheckCircle2 } from "lucide-react";
+import { Award, Briefcase, ShieldCheck, Clock, HardHat, Users, ThumbsUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const LeadershipSection = () => {
   const partners = [
     {
       name: "Mr. V. Rajashekhar",
+      image: "/rajshekhar.jpeg",
       role: "Partner",
       qualification: "B.E. Civil Engineering",
-      experience: "25+ Years of Industry Experience",
+      experience: "40+ Years of Industry Experience",
       specialization: "Project Planning, Construction Management & Quality Control",
       bio: "With strong technical expertise and strategic vision, Mr. V. Rajashekhar has been instrumental in shaping the growth and reputation of RR Constructions & RR Infra, leading numerous landmark projects across Karnataka.",
     },
     {
       name: "Mr. T. M. Raghu",
+      image: "/Raghu.jpeg",
       role: "Partner",
       qualification: "B.E. Civil Engineering",
-      experience: "25+ Years of Industry Experience",
+      experience: "40+ Years of Industry Experience",
       specialization: "Infrastructure Development & Project Execution",
       bio: "Specializing in large-scale infrastructure development, Mr. T. M. Raghu's commitment to operational excellence, timely execution, and client satisfaction continues to drive the company's sustainable success.",
     },
   ];
 
   const coreValues = [
-    { title: "Integrity", desc: "Honest and transparent practices in every business transaction." },
-    { title: "Quality", desc: "Uncompromising quality standards across all materials and structural execution." },
-    { title: "Timely Delivery", desc: "Committed to strict deadlines with efficient planning and management." },
-    { title: "Safety First", desc: "Prioritizing the safety of our workforce, partners, and site environments." },
-    { title: "Teamwork", desc: "Collaborative synergy between engineers, architects, and skilled personnel." },
-    { title: "Client Satisfaction", desc: "Focused on building long-term trust and exceeding client expectations." },
+    { title: "Integrity", desc: "Honest and transparent practices in every business transaction.", icon: ShieldCheck },
+    { title: "Quality", desc: "Uncompromising quality standards across all materials and structural execution.", icon: Award },
+    { title: "Timely Delivery", desc: "Committed to strict deadlines with efficient planning and management.", icon: Clock },
+    { title: "Safety First", desc: "Prioritizing the safety of our workforce, partners, and site environments.", icon: HardHat },
+    { title: "Teamwork", desc: "Collaborative synergy between engineers, architects, and skilled personnel.", icon: Users },
+    { title: "Client Satisfaction", desc: "Focused on building long-term trust and exceeding client expectations.", icon: ThumbsUp },
   ];
 
   return (
@@ -59,13 +61,17 @@ const LeadershipSection = () => {
             <div key={index} className="group bg-white/5 backdrop-blur-md shadow-xl shadow-black/40 hover:shadow-2xl hover:shadow-black/60 hover:-translate-y-1 transition-all duration-500 rounded-[2px] overflow-hidden relative">
               <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-rr-gold to-rr-gold-bright transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500" />
               <div className="p-8 md:p-10">
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="w-16 h-16 rounded-[2px] bg-gradient-to-br from-rr-gold to-rr-gold-bright text-rr-navy-deep flex items-center justify-center font-serif text-3xl font-bold shadow-gold group-hover:scale-110 transition-transform duration-500">
-                    {partner.name.split(" ")[2]?.[0] || "R"}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8">
+                  <div className="w-24 h-24 shrink-0 rounded-[4px] overflow-hidden ring-2 ring-rr-gold/30 group-hover:ring-rr-gold shadow-lg transition-all duration-500 bg-white">
+                    <img 
+                      src={partner.image} 
+                      alt={partner.name} 
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
+                    />
                   </div>
                   <div>
-                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-rr-cream mb-1">{partner.name}</h3>
-                    <span className="font-mono text-xs font-bold text-rr-gold uppercase tracking-[0.15em]">{partner.role} <span className="text-white/30 mx-2">•</span> {partner.qualification}</span>
+                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-rr-cream mb-2">{partner.name}</h3>
+                    <span className="font-mono text-xs font-bold text-rr-gold uppercase tracking-[0.15em] block leading-relaxed">{partner.role} <span className="text-white/30 mx-2 inline-block hidden sm:inline-block">•</span><br className="sm:hidden"/> {partner.qualification}</span>
                   </div>
                 </div>
 
@@ -98,16 +104,18 @@ const LeadershipSection = () => {
             <span className="text-rr-navy-deep">Our Pillars of Excellence</span>
           </h3>
           <div className="relative z-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            {coreValues.map((value, idx) => (
+            {coreValues.map((value, idx) => {
+              const Icon = value.icon;
+              return (
               <div key={idx} className="group flex gap-4 items-start relative">
                 <div className="absolute -inset-4 bg-rr-navy-deep/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
-                <CheckCircle2 className="w-6 h-6 text-rr-gold shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
+                <Icon className="w-6 h-6 text-rr-gold shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
                 <div>
                   <h4 className="font-sans font-bold text-rr-navy-deep text-lg mb-2 tracking-wide">{value.title}</h4>
                   <p className="text-sm text-rr-navy-deep/70 leading-relaxed font-light">{value.desc}</p>
                 </div>
               </div>
-            ))}
+            )})}
           </div>
 
           <div className="relative z-10 mt-16 pt-8 border-t border-rr-navy-deep/10 text-center">

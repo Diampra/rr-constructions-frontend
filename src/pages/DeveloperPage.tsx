@@ -7,7 +7,7 @@ const DeveloperPage = () => {
     <>
       <Helmet>
         <title>Developer Credits | RR Constructions</title>
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="noindex, follow" />
       </Helmet>
 
       <Header />

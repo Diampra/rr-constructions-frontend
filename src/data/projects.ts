@@ -73,7 +73,7 @@ export const projects: Project[] = [
     thumbnail: "/images/Commercial-Complex.webp",
     images: [
       { src: "/images/Commercial-Complex.webp", alt: "Commercial Complex exterior" },
-      { src: "/images/Commercial-Complex.png", alt: "Commercial Complex interior" }
+      { src: "/images/Commercial-Complex.webp", alt: "Commercial Complex interior" }
     ],
   },
   {
@@ -139,6 +139,45 @@ export const projects: Project[] = [
     document: "/sparsh-hospital-project-pdf-signed.pdf",
     images: [
       { src: "/sparsh.jpeg", alt: "Sparsh Hospital concept" }
+    ],
+  },
+  {
+    id: "9",
+    title: "Malleshwaram Enclave",
+    description: "A modern, upscale residential enclave in the heart of Malleshwaram, featuring thoughtfully designed premium living spaces that offer a perfect blend of comfort, elegance, and urban convenience.",
+    type: "Residential Building",
+    builtUpArea: "TBA",
+    location: "Malleshwaram, Bangalore",
+    status: "Completed",
+    thumbnail: "/images/Malleshwaram-enclave/Malleshwaram-enclave.jpeg",
+    images: [
+      { src: "/images/Malleshwaram-enclave/Malleshwaram-enclave.jpeg", alt: "Malleshwaram Enclave exterior" }
+    ],
+  },
+  {
+    id: "10",
+    title: "Kalyanamantapa",
+    description: "An elegantly designed residential project situated in C.B. Pura, distinguished by its excellent modern amenities, robust infrastructure, and focus on delivering an exceptional quality of life for its residents.",
+    type: "Residential Building",
+    builtUpArea: "TBA",
+    location: "C B Pura, Bangalore",
+    status: "Completed",
+    thumbnail: "/images/kalyanamantapa/kalyanamantapa-C-B-Pura.jpeg",
+    images: [
+      { src: "/images/kalyanamantapa/kalyanamantapa-C-B-Pura.jpeg", alt: "Kalyanamantapa exterior" }
+    ],
+  },
+  {
+    id: "11",
+    title: "Ideal Enclave",
+    description: "A premium residential enclave located in the serene surroundings of R.R. Nagar, built with state-of-the-art architectural precision to provide luxurious, spacious, and highly comfortable homes.",
+    type: "Residential Building",
+    builtUpArea: "TBA",
+    location: "R R Nagar, Bangalore",
+    status: "Completed",
+    thumbnail: "/images/Ideal-Enclave/Ideal-Enclave-R-R-nagar.jpeg",
+    images: [
+      { src: "/images/Ideal-Enclave/Ideal-Enclave-R-R-nagar.jpeg", alt: "Ideal Enclave exterior" }
     ],
   }
 ];

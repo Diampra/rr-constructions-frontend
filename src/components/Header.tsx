@@ -22,7 +22,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center group">
           <img 
-            src="/images/logo.png" 
+            src="/images/logo.webp" 
             alt="RR Infra Logo" 
             className="h-14 md:h-16 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
           />

@@ -145,12 +145,12 @@ const Footer = () => {
             © {currentYear} RR Constructions & RR Infra. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 inline-block">
+            <Link to="/privacy-policy" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 inline-block">
               Privacy Policy
-            </a>
-            <a href="#" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 inline-block">
+            </Link>
+            <Link to="/terms-of-service" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 inline-block">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { servicesData } from "@/data/services";
+import InfrastructureSection from "@/components/InfrastructureSection";
 
 const ServicesPage = () => {
   const { t } = useLanguage();
@@ -84,11 +85,13 @@ const ServicesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Our Services & Construction Expertise | RR Constructions & RR Infra</title>
+        <title>Construction Services & Civil Contractors in Bangalore | RR Infra</title>
         <meta 
           name="description" 
-          content="Explore RR Constructions & RR Infra's 6 core service segments: Commercial Buildings, Residential Projects, Hospital Infrastructure, Educational Institutions, Industrial Facilities, and Resort Projects across Karnataka." 
+          content="Specialized civil construction services in Bangalore and Karnataka. We deliver commercial complexes, hospital infrastructure, educational campuses, residential developments, and turnkey execution." 
         />
+        <meta name="keywords" content="construction services bangalore, commercial building contractors bangalore, hospital construction company bangalore, educational campus builders karnataka, residential contractors bangalore" />
+        <link rel="canonical" href="https://www.rrinfra.co.in/services" />
       </Helmet>
 
       <Header />
@@ -161,12 +164,14 @@ const ServicesPage = () => {
                 <div className="md:col-span-7 space-y-6">
                   <p className="text-rr-navy-deep/80 text-lg leading-relaxed">{s0.description}</p>
                   <div className="grid grid-cols-2 gap-3 pt-4 border-t border-rr-gold/20">
-                    {s0.features.map((feature, i) => (
+                    {s0.features.map((feature, i) => {
+                      const Icon = feature.icon;
+                      return (
                       <div key={i} className="flex items-center gap-2 text-sm text-rr-navy-deep/80 font-medium">
-                        <CheckCircle2 className="w-4 h-4 text-rr-gold shrink-0" />
-                        <span>{feature}</span>
+                        <Icon className="w-4 h-4 text-rr-gold shrink-0" />
+                        <span>{feature.text}</span>
                       </div>
-                    ))}
+                    )})}
                   </div>
                 </div>
               </div>
@@ -183,12 +188,14 @@ const ServicesPage = () => {
                     </h3>
                     <p className="text-rr-navy-deep/80 text-lg leading-relaxed">{s1.description}</p>
                     <div className="space-y-2 pt-4 border-t border-rr-gold/20">
-                      {s1.features.map((feature, i) => (
+                      {s1.features.map((feature, i) => {
+                        const Icon = feature.icon;
+                        return (
                         <div key={i} className="flex items-center gap-2 text-sm text-rr-navy-deep/80 font-medium">
-                          <CheckCircle2 className="w-4 h-4 text-rr-gold shrink-0" />
-                          <span>{feature}</span>
+                          <Icon className="w-4 h-4 text-rr-gold shrink-0" />
+                          <span>{feature.text}</span>
                         </div>
-                      ))}
+                      )})}
                     </div>
                   </div>
                 </div>
@@ -240,12 +247,14 @@ const ServicesPage = () => {
                     </h3>
                     <p className="text-rr-navy-deep/80 text-lg leading-relaxed">{s2.description}</p>
                     <div className="space-y-2 pt-4 border-t border-rr-gold/20">
-                      {s2.features.map((feature, i) => (
+                      {s2.features.map((feature, i) => {
+                        const Icon = feature.icon;
+                        return (
                         <div key={i} className="flex items-center gap-2 text-sm text-rr-navy-deep/80 font-medium">
-                          <CheckCircle2 className="w-4 h-4 text-rr-gold shrink-0" />
-                          <span>{feature}</span>
+                          <Icon className="w-4 h-4 text-rr-gold shrink-0" />
+                          <span>{feature.text}</span>
                         </div>
-                      ))}
+                      )})}
                     </div>
                   </div>
                 </div>
@@ -253,50 +262,47 @@ const ServicesPage = () => {
             </article>
 
             {/* 4. Educational */}
-            <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start pt-8">
-              {[s3].map((service, i) => {
-                const globalIndex = i + 3;
-                return (
-                  <article key={service.id} className="group" ref={(el) => (articleRefs.current[service.id] = el)}>
-                    <div className="relative w-full aspect-[4/3] mb-12 md:mb-16">
-                      <div className="absolute inset-0 overflow-hidden shadow-lg bg-rr-navy-deep/5">
-                        {service.sectorHeroImage ? (
-                          <img 
-                            src={activeImages[service.id] || service.sectorHeroImage} 
-                            alt={service.title} 
-                            onClick={() => handleImageToggle(service.id, service.sectorHeroImage, service.sectorHeroImage)}
-                            className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${(activeImages[service.id] && activeImages[service.id] !== service.sectorHeroImage) ? 'cursor-pointer' : ''}`} 
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center"><service.icon className="w-16 h-16 text-rr-gold/50" /></div>
-                        )}
-                      </div>
-                      {renderBadgeAndIcon(service, globalIndex, totalStr)}
-                      {renderOverlayGallery(service)}
+            <article className="group pt-8 md:pt-16" ref={(el) => (articleRefs.current[s3.id] = el)}>
+              <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
+                <div className="md:col-span-7 mb-12 md:mb-0">
+                  <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden shadow-2xl bg-rr-navy-deep/5">
+                    {s3.sectorHeroImage ? (
+                      <img 
+                        src={activeImages[s3.id] || s3.sectorHeroImage} 
+                        alt={s3.title} 
+                        onClick={() => handleImageToggle(s3.id, s3.sectorHeroImage, s3.sectorHeroImage)}
+                        className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${(activeImages[s3.id] && activeImages[s3.id] !== s3.sectorHeroImage) ? 'cursor-pointer' : ''}`} 
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center"><s3.icon className="w-16 h-16 text-rr-gold/50" /></div>
+                    )}
+                    {renderBadgeAndIcon(s3, 3, totalStr)}
+                    {renderOverlayGallery(s3)}
+                  </div>
+                </div>
+                <div className="md:col-span-5 flex flex-col h-full justify-center">
+                  <div className="space-y-6">
+                    <div className="flex items-start justify-between">
+                      <h3 className="font-serif text-3xl md:text-5xl font-bold text-rr-navy-deep leading-tight pr-4">
+                        {s3.title}
+                      </h3>
+                      <s3.icon className="w-10 h-10 text-rr-gold shrink-0 mt-2" />
                     </div>
-                    <div className="flex flex-col h-full">
-                      <div className="space-y-4">
-                        <div className="flex justify-between items-start">
-                          <h3 className="font-serif text-2xl md:text-3xl font-bold text-rr-navy-deep pr-4">
-                            {service.title}
-                          </h3>
-                          <service.icon className="w-8 h-8 text-rr-gold shrink-0 mt-1" />
+                    <p className="text-rr-navy-deep/80 text-lg leading-relaxed">{s3.description}</p>
+                    <div className="space-y-2 pt-4 border-t border-rr-gold/20">
+                      {s3.features.map((feature, idx) => {
+                        const Icon = feature.icon;
+                        return (
+                        <div key={idx} className="flex items-center gap-2 text-sm text-rr-navy-deep/80 font-medium">
+                          <Icon className="w-4 h-4 text-rr-gold shrink-0" />
+                          <span>{feature.text}</span>
                         </div>
-                        <p className="text-rr-navy-deep/80 text-base leading-relaxed">{service.description}</p>
-                        <div className="space-y-1.5 pt-3 border-t border-rr-gold/20">
-                          {service.features.map((feature, idx) => (
-                            <div key={idx} className="flex items-center gap-2 text-sm text-rr-navy-deep/80 font-medium">
-                              <CheckCircle2 className="w-4 h-4 text-rr-gold shrink-0" />
-                              <span>{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+                      )})}
                     </div>
-                  </article>
-                );
-              })}
-            </div>
+                  </div>
+                </div>
+              </div>
+            </article>
 
             {/* 5. Resorts & Hospitality (Panoramic Finale) */}
             <article className="group pt-16" ref={(el) => (articleRefs.current[s4.id] = el)}>
@@ -323,18 +329,23 @@ const ServicesPage = () => {
                 </h3>
                 <p className="text-rr-navy-deep/80 text-lg leading-relaxed">{s4.description}</p>
                 <div className="flex flex-wrap justify-center gap-4 pt-6">
-                  {s4.features.map((feature, i) => (
+                  {s4.features.map((feature, i) => {
+                    const Icon = feature.icon;
+                    return (
                     <div key={i} className="flex items-center gap-2 text-sm text-rr-navy-deep/80 font-medium bg-rr-navy-deep/5 px-4 py-2 rounded-full border border-rr-gold/20">
-                      <CheckCircle2 className="w-4 h-4 text-rr-gold shrink-0" />
-                      <span>{feature}</span>
+                      <Icon className="w-4 h-4 text-rr-gold shrink-0" />
+                      <span>{feature.text}</span>
                     </div>
-                  ))}
+                  )})}
                 </div>
               </div>
             </article>
 
           </div>
         </section>
+
+        {/* Infrastructure: Equipment & Technology Component */}
+        <InfrastructureSection />
 
         {/* CTA */}
         <section className="py-20 bg-rr-navy-deep text-rr-cream">

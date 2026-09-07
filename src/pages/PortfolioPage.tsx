@@ -31,11 +31,13 @@ const PortfolioPage = () => {
   return (
     <>
       <Helmet>
-        <title>Landmark Projects Portfolio | RR Constructions & RR Infra</title>
+        <title>Construction Projects in Bangalore & Karnataka | RR Infra Portfolio</title>
         <meta 
           name="description" 
-          content="Explore RR Constructions & RR Infra's landmark projects including R L Jalappa Hospital & Research Center (2,20,000+ Sq. Ft.), AHS Building, J P Enclaves, and commercial complexes across Karnataka." 
+          content="Explore landmark construction projects by RR Infra across Bangalore and Karnataka: R L Jalappa Hospital (2,20,000+ Sq. Ft.), AHS Building, commercial towers, and premium residential enclaves." 
         />
+        <meta name="keywords" content="construction projects bangalore, civil construction portfolio karnataka, commercial buildings bangalore, hospital infrastructure projects bangalore" />
+        <link rel="canonical" href="https://www.rrinfra.co.in/portfolio" />
       </Helmet>
 
       <Header />

@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Award, Users, Building2, CheckCircle2, ArrowRight, Phone } from "lucide-react";
+import { Award, Users, Building2, Check, ArrowRight, Phone, Target, Compass, Maximize, ShieldCheck, Layers } from "lucide-react";
 import LeadershipSection from "@/components/LeadershipSection";
 
 const stats = [
@@ -57,11 +57,13 @@ const AboutPage = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | RR Constructions & RR Infra</title>
+        <title>About RR Constructions & RR Infra | Civil Contractors in Bangalore</title>
         <meta
           name="description"
-          content="RR Constructions & RR Infra - 25+ years of excellence in commercial, residential, hospital, educational, industrial, and hospitality infrastructure across Karnataka."
+          content="Founded in Karnataka with 25+ years of engineering leadership, RR Constructions & RR Infra is a premier civil contractor based in Ganganagar, Bangalore, delivering commercial, residential, hospital, and institutional landmarks."
         />
+        <meta name="keywords" content="civil engineering contractors bangalore, construction company bangalore, builders in karnataka, rr constructions partners, civil builders bangalore" />
+        <link rel="canonical" href="https://www.rrinfra.co.in/about" />
       </Helmet>
 
       <Header />
@@ -89,7 +91,7 @@ const AboutPage = () => {
                 Building Excellence Through Experience
               </h1>
               <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
-                For over 40 years, RR Constructions & RR Infra has been a trusted name in infrastructure development across Karnataka - delivering landmark projects in commercial, residential, healthcare, education, industrial, and hospitality sectors.
+                For over 25+ years, RR Constructions & RR Infra has been a trusted name in infrastructure development across Karnataka - delivering landmark projects in commercial, residential, healthcare, education, industrial, and hospitality sectors.
               </p>
               <Link to="/contact">
                 <Button variant="gold" size="lg" className="font-semibold">
@@ -114,6 +116,39 @@ const AboutPage = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Vision & Mission */}
+        <section className="py-24 bg-background">
+          <div className="container mx-auto px-6">
+            <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
+              {/* Vision */}
+              <div className="group border-l-2 border-rr-gold/30 hover:border-rr-gold pl-8 py-2 transition-colors duration-500">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-rr-navy-deep/5 rounded-[2px] flex items-center justify-center group-hover:bg-rr-gold/10 transition-colors duration-500">
+                    <Compass className="w-6 h-6 text-rr-gold" />
+                  </div>
+                  <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">Our Vision</h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  To be the most trusted and innovative infrastructure development company, setting new benchmarks in structural quality, sustainability, and architectural excellence across India.
+                </p>
+              </div>
+
+              {/* Mission */}
+              <div className="group border-l-2 border-rr-gold/30 hover:border-rr-gold pl-8 py-2 transition-colors duration-500">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-rr-navy-deep/5 rounded-[2px] flex items-center justify-center group-hover:bg-rr-gold/10 transition-colors duration-500">
+                    <Target className="w-6 h-6 text-rr-gold" />
+                  </div>
+                  <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">Our Mission</h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  To consistently deliver robust, future-ready construction solutions through uncompromising quality, timely execution, and a relentless focus on client satisfaction and workforce safety.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -227,18 +262,20 @@ const AboutPage = () => {
                 </p>
                 <div className="space-y-4">
                   {[
-                    "25+ years of rich industry experience",
-                    "500+ completed projects across 6 sectors",
-                    "5M+ sq. ft. of constructed excellence",
-                    "100+ skilled civil engineers and supervisors",
-                    "ISO-standardized processes and safety protocols",
-                    "End-to-end design-to-delivery capability",
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-rr-gold shrink-0 mt-0.5" />
-                      <span className="text-foreground text-sm font-medium">{item}</span>
+                    { text: "25+ years of rich industry experience", icon: Award },
+                    { text: "500+ completed projects across 6 sectors", icon: Building2 },
+                    { text: "5M+ sq. ft. of constructed excellence", icon: Maximize },
+                    { text: "100+ skilled civil engineers and supervisors", icon: Users },
+                    { text: "ISO-standardized processes and safety protocols", icon: ShieldCheck },
+                    { text: "End-to-end design-to-delivery capability", icon: Layers },
+                  ].map((item) => {
+                    const Icon = item.icon;
+                    return (
+                    <div key={item.text} className="flex items-start gap-3">
+                      <Icon className="w-5 h-5 text-rr-gold shrink-0 mt-0.5" />
+                      <span className="text-foreground text-sm font-medium">{item.text}</span>
                     </div>
-                  ))}
+                  )})}
                 </div>
                 <div className="mt-8">
                   <Link to="/portfolio">
