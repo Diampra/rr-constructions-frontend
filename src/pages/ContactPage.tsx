@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { WhatsAppIcon } from "@/components/WhatsAppButton";
 
 interface ContactFormData {
   name: string;
@@ -33,18 +34,28 @@ const ContactPage = () => {
       icon: MapPin,
       title: "Registered Office",
       content: "No.216/1, 1st Floor, 5th Main, 4th Cross Road, Ganganagar, Bangalore-560032",
+      href: "https://maps.google.com/maps?q=Ganganagar+Bangalore+India",
     },
     {
       id: "2",
       icon: Phone,
       title: "Phone Lines",
       content: "+91 98450 78828\n080-49901901",
+      href: "tel:+919845078828",
+    },
+    {
+      id: "whatsapp",
+      icon: WhatsAppIcon,
+      title: "WhatsApp Chat",
+      content: "+91 99458 65862\nDirect Project Support",
+      href: "https://wa.me/919945865862?text=Hello%20RR%20Constructions,%20I%20would%20like%20to%20inquire%20about%20a%20project.",
     },
     {
       id: "3",
       icon: Mail,
       title: "Email & Web",
       content: "rrconstruct1709@gmail.com\ncontact@rrinfra.co.in",
+      href: "mailto:contact@rrinfra.co.in",
     },
     {
       id: "4",
@@ -122,7 +133,7 @@ const ContactPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="images/mudigere-Resort-Project/image-5.png"
+              src="images/mudigere-Resort-Project/image-5.webp"
               alt="Construction project"
               className="w-full h-full object-cover opacity-20"
             />
@@ -162,14 +173,25 @@ const ContactPage = () => {
                  <div className="grid sm:grid-cols-2 gap-4">
                    {contactInfoData.map((info) => {
                      const IconComponent = info.icon;
+                     const CardElement = info.href ? "a" : "div";
                      return (
-                       <div key={info.id} className="bg-white p-4 shadow-md rounded-xl">
+                       <CardElement 
+                         key={info.id} 
+                         {...(info.href ? {
+                           href: info.href,
+                           target: info.href.startsWith("http") ? "_blank" : undefined,
+                           rel: info.href.startsWith("http") ? "noopener noreferrer" : undefined,
+                         } : {})}
+                         className={`bg-white p-4 shadow-md rounded-xl transition-all duration-300 block ${
+                           info.href ? "hover:-translate-y-0.5 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none" : ""
+                         }`}
+                       >
                          <div className="w-9 h-9 rounded-full bg-gold/10 text-gold flex items-center justify-center mb-3 border border-gold/20">
                            <IconComponent className="w-4 h-4" />
                          </div>
                          <h4 className="font-serif text-sm font-bold text-foreground mb-1">{info.title}</h4>
                          <p className="text-muted-foreground text-xs leading-relaxed whitespace-pre-line">{info.content}</p>
-                       </div>
+                       </CardElement>
                      );
                    })}
                  </div>

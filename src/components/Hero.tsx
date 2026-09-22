@@ -27,8 +27,8 @@ const slides = [
     description:
       "State-of-the-art office towers and corporate hubs engineered for modern enterprises.",
     highlights: ["Business Parks", "IT Parks", "Corporate HQs"],
-    desktopImage: "/images/rr-hero-1.png",
-    mobileImage: "/images/rr-hero-1.png",
+    desktopImage: "/images/rr-hero-1.webp",
+    mobileImage: "/images/rr-hero-1.webp",
     alt: "Commercial building edifice",
     imageTransform: { scale: 1, x: 0, y: 0, kenBurns: false, kenBurnsScale: 1.06 },
   },
@@ -92,8 +92,8 @@ const slides = [
     description:
       "Hospitality developments combining scenic aesthetics with premium guest comfort.",
     highlights: ["Luxury Resorts - 35k Sq. Ft.", "Boutique Hotels", "Eco Hospitality"],
-    desktopImage: "/images/rr-hero-4.png",
-    mobileImage: "/images/rr-hero-4.png",
+    desktopImage: "/images/rr-hero-4.webp",
+    mobileImage: "/images/rr-hero-4.webp",
     alt: "Resort and hospitality landmark",
     imageTransform: { scale: 1.28, x: -242, y: 129, kenBurns: false, kenBurnsScale: 1.06 },
   },
@@ -365,6 +365,9 @@ const Hero = () => {
               key={`png-img-${slide.id}`}
               src={slide.mobileImage}
               alt={slide.alt}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className={`h-full drop-shadow-[0_30px_50px_rgba(0,0,0,0.45)] animate-cinematic-up ${isMobile ? 'w-full max-w-none object-cover object-center' : 'w-auto max-w-[86vw] object-contain object-bottom'}`}
               style={
                 t.kenBurns && !prefersReducedMotion

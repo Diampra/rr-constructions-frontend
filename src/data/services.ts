@@ -38,7 +38,11 @@ export const servicesData: ServiceSector[] = [
     ],
     badge: "Commercial Infrastructure",
     sectorHeroImage: "/images/Commercial-Complex.webp",
-    projectThumbnails: ["/images/Commercial-Complex.webp"],
+    projectThumbnails: [
+      "/images/Commercial-Complex.webp",
+      "/images/J-P-GROUP-BANGALORE/JP CORP - Sadashivanagar.webp",
+      "/images/J-P-GROUP-BANGALORE/JP Square - SADASHIVANAGAR.webp"
+    ],
   },
   {
     id: "2",
@@ -54,8 +58,8 @@ export const servicesData: ServiceSector[] = [
       { text: "Zero Compromise Quality", icon: Award }
     ],
     badge: "Residential Building",
-    sectorHeroImage: "/images/J-P-Enclave/image-1.png",
-    projectThumbnails: ["/images/J-P-Enclave/image-2.png", "/images/J-P-Enclave/image-3.png", "/images/J-P-Enclave/image-4.png"],
+    sectorHeroImage: "/images/J-P-Enclave/image-1.webp",
+    projectThumbnails: ["/images/J-P-Enclave/image-2.webp", "/images/J-P-Enclave/image-3.webp", "/images/J-P-Enclave/image-4.webp"],
   },
   {
     id: "3",
@@ -88,8 +92,8 @@ export const servicesData: ServiceSector[] = [
       { text: "Future Ready Labs", icon: Monitor }
     ],
     badge: "Educational Infrastructure",
-    sectorHeroImage: "/images/University-Building/image-1.png",
-    projectThumbnails: ["/images/University-Building/image-2.png", "/images/University-Building/image-3.png", "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-1.png"],
+    sectorHeroImage: "/images/University-Building/image-1.webp",
+    projectThumbnails: ["/images/University-Building/image-2.webp", "/images/University-Building/image-3.webp", "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-1.webp"],
   },
   // {
   //   id: "5",
@@ -122,7 +126,13 @@ export const servicesData: ServiceSector[] = [
       { text: "Turnkey Construction", icon: Key }
     ],
     badge: "Hospitality Development",
-    sectorHeroImage: "/images/mudigere-Resort-Project/image-1.png",
-    projectThumbnails: ["/images/mudigere-Resort-Project/image-2.png", "/images/mudigere-Resort-Project/image-3.png", "/images/mudigere-Resort-Project/image-4.png"],
+    sectorHeroImage: "/images/J-P-GROUP-BANGALORE/Fortune Select JP Cosmos - Bangalore.webp",
+    projectThumbnails: [
+      "/images/J-P-GROUP-BANGALORE/Fortune Select JP Cosmos - Bangalore.webp",
+      "/images/J-P-GROUP-BANGALORE/Fortune Park JP Celestial - Bangalore.webp",
+      "/images/J-P-GROUP-BANGALORE/MySpace Silverstar.webp",
+      "/images/mudigere-Resort-Project/image-1.webp",
+      "/images/mudigere-Resort-Project/image-2.webp"
+    ],
   }
 ];

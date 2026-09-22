@@ -37,37 +37,37 @@ const FLEET_ITEMS: FleetItem[] = [
   { 
     name: "Excavators", 
     category: "Earthmoving", 
-    image: "/images/equipment/excavator.jpg",
+    image: "/images/equipment/excavator.webp",
     tag: "High Tonnage"
   },
   { 
     name: "Transit Mixers", 
     category: "Concrete Logistics", 
-    image: "/images/equipment/transit_mixer.jpg",
+    image: "/images/equipment/transit_mixer.webp",
     tag: "Ready-Mix Fleet"
   },
   { 
     name: "Backhoe Loaders", 
     category: "Multi-Utility", 
-    image: "/images/equipment/backhoe_loader.jpg",
+    image: "/images/equipment/backhoe_loader.webp",
     tag: "Site Prep & Trenching"
   },
   { 
     name: "Road Rollers", 
     category: "Compaction", 
-    image: "/images/equipment/road_roller.jpg",
+    image: "/images/equipment/road_roller.webp",
     tag: "Precision Subgrade"
   },
   { 
     name: "Tower Cranes", 
     category: "Heavy Lifting", 
-    image: "/images/equipment/tower_crane.jpg",
+    image: "/images/equipment/tower_crane.webp",
     tag: "High-Rise Reach"
   },
   { 
     name: "Dump Trucks", 
     category: "Material Haulage", 
-    image: "/images/equipment/dump_truck.jpg",
+    image: "/images/equipment/dump_truck.webp",
     tag: "Heavy Payload"
   },
 ];
@@ -196,6 +196,7 @@ const InfrastructureSection = ({
                       alt={item.name} 
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
                       loading="lazy" 
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-rr-navy-deep/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
                     

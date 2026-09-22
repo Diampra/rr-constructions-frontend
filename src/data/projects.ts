@@ -35,15 +35,16 @@ export const projects: Project[] = [
   {
     id: "2",
     title: "AHS Building",
-    description: "Modern commercial building constructed to drive business operations with state-of-the-art architectural design and structural integrity.",
-    type: "Commercial Building",
-    builtUpArea: "75,000+ Sq. Ft.",
+    description: "Modern institutional and educational hostel campus building featuring multi-story residential facilities, state-of-the-art architectural design, and structural integrity.",
+    type: "Institutional & Hostel",
+    builtUpArea: "1,75,000+ Sq. Ft.",
     location: "Kolar, Karnataka",
     status: "Completed",
-    thumbnail: "/images/AHS-Building/image-1.png",
+    thumbnail: "/images/AHS-Building/ahs-hostel-block.jpg",
     images: [
-      { src: "/images/AHS-Building/image-1.png", alt: "AHS Building facade" },
-      { src: "/images/AHS-Building/image-2.png", alt: "AHS Building entrance" }
+      { src: "/images/AHS-Building/ahs-hostel-block.jpg", alt: "AHS Hostel Building" },
+      { src: "/images/AHS-Building/image-1.webp", alt: "AHS Building facade" },
+      { src: "/images/AHS-Building/image-2.webp", alt: "AHS Building entrance" }
     ],
   },
   {
@@ -54,12 +55,12 @@ export const projects: Project[] = [
     builtUpArea: "60,000+ Sq. Ft.",
     location: "Mysore, Karnataka",
     status: "Completed",
-    thumbnail: "/images/J-P-Enclave/image-1.png",
+    thumbnail: "/images/J-P-Enclave/image-1.webp",
     images: [
-      { src: "/images/J-P-Enclave/image-1.png", alt: "J P Enclave exterior" },
-      { src: "/images/J-P-Enclave/image-2.png", alt: "J P Enclave living area" },
-      { src: "/images/J-P-Enclave/image-3.png", alt: "J P Enclave bedroom" },
-      { src: "/images/J-P-Enclave/image-4.png", alt: "J P Enclave facilities" }
+      { src: "/images/J-P-Enclave/image-1.webp", alt: "J P Enclave exterior" },
+      { src: "/images/J-P-Enclave/image-2.webp", alt: "J P Enclave living area" },
+      { src: "/images/J-P-Enclave/image-3.webp", alt: "J P Enclave bedroom" },
+      { src: "/images/J-P-Enclave/image-4.webp", alt: "J P Enclave facilities" }
     ],
   },
   {
@@ -84,14 +85,14 @@ export const projects: Project[] = [
     builtUpArea: "35,000+ Sq. Ft.",
     location: "Madikeri,Coorg, Karnataka",
     status: "Completed",
-    thumbnail: "/images/mudigere-Resort-Project/image-1.png",
+    thumbnail: "/images/mudigere-Resort-Project/image-1.webp",
     images: [
-      { src: "/images/mudigere-Resort-Project/image-1.png", alt: "Resort main building" },
-      { src: "/images/mudigere-Resort-Project/image-2.png", alt: "Resort pool area" },
-      { src: "/images/mudigere-Resort-Project/image-3.png", alt: "Resort landscape" },
-      { src: "/images/mudigere-Resort-Project/image-4.png", alt: "Resort rooms" },
-      { src: "/images/mudigere-Resort-Project/image-5.png", alt: "Resort facilities" },
-      { src: "/images/mudigere-Resort-Project/image-6.png", alt: "Resort Top View" }
+      { src: "/images/mudigere-Resort-Project/image-1.webp", alt: "Resort main building" },
+      { src: "/images/mudigere-Resort-Project/image-2.webp", alt: "Resort pool area" },
+      { src: "/images/mudigere-Resort-Project/image-3.webp", alt: "Resort landscape" },
+      { src: "/images/mudigere-Resort-Project/image-4.webp", alt: "Resort rooms" },
+      { src: "/images/mudigere-Resort-Project/image-5.webp", alt: "Resort facilities" },
+      { src: "/images/mudigere-Resort-Project/image-6.webp", alt: "Resort Top View" }
     ],
   },
   {
@@ -102,13 +103,14 @@ export const projects: Project[] = [
     builtUpArea: "40,000+ Sq. Ft.",
     location: "Karnataka",
     status: "Completed",
-    thumbnail: "/images/University-Building/image-1.png",
+    thumbnail: "/images/University-Building/image-1.webp",
     images: [
-      { src: "/images/University-Building/image-1.png", alt: "Educational Building campus" },
-      { src: "/images/University-Building/image-2.png", alt: "Classroom interior" },
-      { src: "/images/University-Building/image-3.png", alt: "Laboratory facility" },
-      { src: "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-1.png", alt: "Boys Hostel Block" },
-      { src: "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-2.png", alt: "Hostel interior" }
+      { src: "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-1.jpg", alt: "Boys Hostel Tower Block" },
+      { src: "/images/University-Building/image-1.webp", alt: "Educational Building campus" },
+      { src: "/images/University-Building/image-2.webp", alt: "Classroom interior" },
+      { src: "/images/University-Building/image-3.webp", alt: "Laboratory facility" },
+      { src: "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-1.webp", alt: "Boys Hostel Block" },
+      { src: "/images/APJ-Abdul-kalam-Block-UG-Boys-Hostel/image-2.webp", alt: "Hostel interior" }
     ],
   },
   {
@@ -119,12 +121,12 @@ export const projects: Project[] = [
     builtUpArea: "TBA",
     location: "Doddaballapura, Karnataka",
     status: "Upcoming",
-    thumbnail: "/images/under-construction/image-1.jpeg",
+    thumbnail: "/images/under-construction/image-1.webp",
     images: [
-      { src: "/images/under-construction/image-1.jpeg", alt: "Under construction 1" },
-      { src: "/images/under-construction/image-2.jpeg", alt: "Under construction 2" },
-      { src: "/images/under-construction/image-3.jpeg", alt: "Under construction 3" },
-      { src: "/images/under-construction/image-4.jpeg", alt: "Under construction 4" }
+      { src: "/images/under-construction/image-1.webp", alt: "Under construction 1" },
+      { src: "/images/under-construction/image-2.webp", alt: "Under construction 2" },
+      { src: "/images/under-construction/image-3.webp", alt: "Under construction 3" },
+      { src: "/images/under-construction/image-4.webp", alt: "Under construction 4" }
     ],
   },
   {
@@ -149,9 +151,9 @@ export const projects: Project[] = [
     builtUpArea: "TBA",
     location: "Malleshwaram, Bangalore",
     status: "Completed",
-    thumbnail: "/images/Malleshwaram-enclave/Malleshwaram-enclave.jpeg",
+    thumbnail: "/images/Malleshwaram-enclave/Malleshwaram-enclave.webp",
     images: [
-      { src: "/images/Malleshwaram-enclave/Malleshwaram-enclave.jpeg", alt: "Malleshwaram Enclave exterior" }
+      { src: "/images/Malleshwaram-enclave/Malleshwaram-enclave.webp", alt: "Malleshwaram Enclave exterior" }
     ],
   },
   {
@@ -162,9 +164,9 @@ export const projects: Project[] = [
     builtUpArea: "TBA",
     location: "C B Pura, Bangalore",
     status: "Completed",
-    thumbnail: "/images/kalyanamantapa/kalyanamantapa-C-B-Pura.jpeg",
+    thumbnail: "/images/kalyanamantapa/kalyanamantapa-C-B-Pura.webp",
     images: [
-      { src: "/images/kalyanamantapa/kalyanamantapa-C-B-Pura.jpeg", alt: "Kalyanamantapa exterior" }
+      { src: "/images/kalyanamantapa/kalyanamantapa-C-B-Pura.webp", alt: "Kalyanamantapa exterior" }
     ],
   },
   {
@@ -175,9 +177,74 @@ export const projects: Project[] = [
     builtUpArea: "TBA",
     location: "R R Nagar, Bangalore",
     status: "Completed",
-    thumbnail: "/images/Ideal-Enclave/Ideal-Enclave-R-R-nagar.jpeg",
+    thumbnail: "/images/Ideal-Enclave/Ideal-Enclave-R-R-nagar.webp",
     images: [
-      { src: "/images/Ideal-Enclave/Ideal-Enclave-R-R-nagar.jpeg", alt: "Ideal Enclave exterior" }
+      { src: "/images/Ideal-Enclave/Ideal-Enclave-R-R-nagar.webp", alt: "Ideal Enclave exterior" }
+    ],
+  },
+  {
+    id: "12",
+    title: "Fortune Select JP Cosmos",
+    description: "A prestigious 4-star luxury business and leisure hotel development in Bangalore featuring upscale hospitality suites, grand banquet facilities, swimming pool, and premium structural finishes.",
+    type: "Hospitality Resort",
+    builtUpArea: "1,10,000+ Sq. Ft.",
+    location: "Cunningham Road, Bangalore",
+    status: "Completed",
+    thumbnail: "/images/J-P-GROUP-BANGALORE/Fortune Select JP Cosmos - Bangalore.webp",
+    images: [
+      { src: "/images/J-P-GROUP-BANGALORE/Fortune Select JP Cosmos - Bangalore.webp", alt: "Fortune Select JP Cosmos Bangalore exterior" }
+    ],
+  },
+  {
+    id: "13",
+    title: "Fortune Park JP Celestial",
+    description: "An iconic contemporary hotel situated near Race Course Road in Central Bangalore, built with modern architectural glazing, world-class guest amenities, and structural durability.",
+    type: "Hospitality Resort",
+    builtUpArea: "2,90,000+ Sq. Ft.",
+    location: "Race Course Road, Bangalore",
+    status: "Completed",
+    thumbnail: "/images/J-P-GROUP-BANGALORE/Fortune Park JP Celestial - Bangalore.webp",
+    images: [
+      { src: "/images/J-P-GROUP-BANGALORE/Fortune Park JP Celestial - Bangalore.webp", alt: "Fortune Park JP Celestial Bangalore facade" }
+    ],
+  },
+  {
+    id: "14",
+    title: "JP Corp",
+    description: "A landmark commercial corporate headquarters and showroom facility in prime Sadashivanagar, Bangalore, featuring high-performance curtain glass facades and state-of-the-art office spaces.",
+    type: "Commercial Building",
+    builtUpArea: "50,000+ Sq. Ft.",
+    location: "Sadashivanagar, Bangalore",
+    status: "Completed",
+    thumbnail: "/images/J-P-GROUP-BANGALORE/JP CORP - Sadashivanagar.webp",
+    images: [
+      { src: "/images/J-P-GROUP-BANGALORE/JP CORP - Sadashivanagar.webp", alt: "JP Corp Commercial Building Sadashivanagar" }
+    ],
+  },
+  {
+    id: "15",
+    title: "JP Square",
+    description: "A premier multi-level commercial and retail complex in Sadashivanagar, Bangalore, designed with distinctive curved architectural facades, retail spaces, and corporate office units.",
+    type: "Commercial Building",
+    builtUpArea: "45,000+ Sq. Ft.",
+    location: "Sadashivanagar, Bangalore",
+    status: "Completed",
+    thumbnail: "/images/J-P-GROUP-BANGALORE/JP Square - SADASHIVANAGAR.webp",
+    images: [
+      { src: "/images/J-P-GROUP-BANGALORE/JP Square - SADASHIVANAGAR.webp", alt: "JP Square Sadashivanagar Bangalore" }
+    ],
+  },
+  {
+    id: "16",
+    title: "MySpace Silverstar",
+    description: "A contemporary multi-storey hospitality and commercial property in Bangalore, constructed to deliver refined architectural aesthetics, modern guest amenities, and long-lasting structural quality.",
+    type: "Hospitality Resort",
+    builtUpArea: "40,000+ Sq. Ft.",
+    location: "Bangalore, Karnataka",
+    status: "Completed",
+    thumbnail: "/images/J-P-GROUP-BANGALORE/MySpace Silverstar.webp",
+    images: [
+      { src: "/images/J-P-GROUP-BANGALORE/MySpace Silverstar.webp", alt: "MySpace Silverstar Bangalore" }
     ],
   }
 ];

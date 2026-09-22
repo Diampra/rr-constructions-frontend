@@ -101,7 +101,7 @@ const ServicesPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/images/rr-hero-1.png"
+              src="/images/rr-hero-1.webp"
               alt="Construction project"
               className="w-full h-full object-cover opacity-20"
             />

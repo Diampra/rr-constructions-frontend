@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Linkedin, Youtube, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Building2 } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppButton";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -24,6 +25,7 @@ const Footer = () => {
   ];
 
   const socialLinks = [
+    { icon: WhatsAppIcon, href: "https://wa.me/919945865862?text=Hello%20RR%20Constructions,%20I%20would%20like%20to%20inquire%20about%20a%20project.", label: "WhatsApp" },
     { icon: Facebook, href: "#", label: "Facebook" },
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
@@ -35,7 +37,7 @@ const Footer = () => {
       {/* Background Image Overlay */}
       <div 
         className="absolute inset-x-0 bottom-0 top-0 pointer-events-none opacity-30 bg-bottom bg-no-repeat" 
-        style={{ backgroundImage: "url('/images/cityscape.png')", backgroundSize: "100% auto" }} 
+        style={{ backgroundImage: "url('/images/cityscape.webp')", backgroundSize: "100% auto" }} 
       />
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -125,6 +127,17 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-center gap-3">
+                <WhatsAppIcon className="w-5 h-5 text-[#25D366] shrink-0" />
+                <a 
+                  href="https://wa.me/919945865862?text=Hello%20RR%20Constructions,%20I%20would%20like%20to%20inquire%20about%20a%20project." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-rr-cream/60 text-sm hover:text-[#25D366] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#25D366] rounded-sm px-1 -ml-1"
+                >
+                  +91 99458 65862 (WhatsApp)
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-rr-gold shrink-0" />
                 <div className="flex flex-col gap-1 text-rr-cream/60 text-sm">
                   <a href="mailto:rrconstruct1709@gmail.com" className="hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 -ml-1">
@@ -150,6 +163,9 @@ const Footer = () => {
             </Link>
             <Link to="/terms-of-service" className="text-rr-cream/60 text-sm hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 inline-block">
               Terms of Service
+            </Link>
+            <Link to="/developer" className="text-rr-cream/40 text-sm hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 inline-block">
+              Credits
             </Link>
           </div>
         </div>

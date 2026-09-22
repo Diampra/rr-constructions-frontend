@@ -34,9 +34,9 @@ const PortfolioPage = () => {
         <title>Construction Projects in Bangalore & Karnataka | RR Infra Portfolio</title>
         <meta 
           name="description" 
-          content="Explore landmark construction projects by RR Infra across Bangalore and Karnataka: R L Jalappa Hospital (2,20,000+ Sq. Ft.), AHS Building, commercial towers, and premium residential enclaves." 
+          content="Explore landmark construction projects by RR Infra across Bangalore and Karnataka: R L Jalappa Hospital (2,20,000+ Sq. Ft.), Fortune Select JP Cosmos, JP Corp, Fortune Park JP Celestial, commercial towers, and premium residential enclaves." 
         />
-        <meta name="keywords" content="construction projects bangalore, civil construction portfolio karnataka, commercial buildings bangalore, hospital infrastructure projects bangalore" />
+        <meta name="keywords" content="construction projects bangalore, civil construction portfolio karnataka, commercial buildings bangalore, hospital infrastructure projects bangalore, fortune select jp cosmos, jp corp sadashivanagar" />
         <link rel="canonical" href="https://www.rrinfra.co.in/portfolio" />
       </Helmet>
 
@@ -47,9 +47,9 @@ const PortfolioPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <picture>
-              <source media="(min-width: 768px)" srcSet="images/mudigere-Resort-Project/image-5.png" />
+              <source media="(min-width: 768px)" srcSet="images/mudigere-Resort-Project/image-5.webp" />
               <img
-                src="/images/rr-hero-3.png"
+                src="/images/rr-hero-3.webp"
                 alt="Construction project"
                 className="w-full h-full object-cover opacity-20"
               />
@@ -174,6 +174,7 @@ const PortfolioPage = () => {
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
+                        decoding="async"
                       />
                     ) : (
                       <div className="w-full h-full bg-muted/50 flex items-center justify-center">

@@ -51,6 +51,7 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
             onClick={() => setActiveImage(service.sectorHeroImage)}
             className={`w-full h-full object-cover transition-transform duration-700 motion-reduce:transition-none group-hover:scale-[1.03] ${activeImage !== service.sectorHeroImage ? 'cursor-pointer' : ''}`}
             loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
@@ -91,6 +92,7 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
                     src={thumb}
                     alt={`${service.title} project ${i + 1}`}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover bg-white border-2 border-white shadow-md"
                   />
                 </button>

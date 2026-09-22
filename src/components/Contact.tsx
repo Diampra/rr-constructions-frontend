@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { WhatsAppIcon } from "./WhatsAppButton";
 
 interface FormData {
   name: string;
@@ -16,16 +17,25 @@ const contactInfo = [
     icon: MapPin,
     title: "Registered Office",
     content: "No.216/1, 1st Floor, 5th Main,\n4th Cross Road\nGanganagar, Bangalore-560032",
+    href: "https://maps.google.com/maps?q=Ganganagar+Bangalore+India",
   },
   {
     icon: Phone,
-    title: "Phone",
+    title: "Phone Lines",
     content: "+91 98450 78828\n080-49901901",
+    href: "tel:+919845078828",
+  },
+  {
+    icon: WhatsAppIcon,
+    title: "WhatsApp Chat",
+    content: "+91 99458 65862\nDirect Project Consultation",
+    href: "https://wa.me/919945865862?text=Hello%20RR%20Constructions,%20I%20would%20like%20to%20inquire%20about%20a%20project.",
   },
   {
     icon: Mail,
     title: "Email",
     content: "rrconstruct1709@gmail.com\ncontact@rrinfra.co.in",
+    href: "mailto:contact@rrinfra.co.in",
   },
   {
     icon: Clock,
@@ -99,19 +109,27 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
           {/* Contact Info (Left Side - Takes 2 cols) */}
-          <div className="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
-            {contactInfo.map((item) => (
-              <div
-                key={item.title}
-                className="group bg-rr-cream p-6 shadow-xl shadow-black/10 transition-all duration-300 rounded-[2px] flex flex-col justify-center"
-              >
-                <div className="w-12 h-12 rounded-full bg-rr-navy-deep/5 text-rr-navy-deep flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-rr-navy-deep group-hover:text-white transition-all duration-300">
-                  <item.icon className="w-5 h-5" />
-                </div>
-                <h4 className="font-sans text-sm font-bold tracking-wide text-rr-navy-deep mb-2">{item.title}</h4>
-                <p className="text-rr-navy-deep/70 text-sm whitespace-pre-line leading-relaxed font-light">{item.content}</p>
-              </div>
-            ))}
+          <div className="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-4">
+            {contactInfo.map((item) => {
+              const Element = item.href ? "a" : "div";
+              return (
+                <Element
+                  key={item.title}
+                  {...(item.href ? { 
+                    href: item.href, 
+                    target: item.href.startsWith("http") ? "_blank" : undefined, 
+                    rel: item.href.startsWith("http") ? "noopener noreferrer" : undefined 
+                  } : {})}
+                  className="group bg-rr-cream p-5 shadow-xl shadow-black/10 transition-all duration-300 rounded-[2px] flex flex-col justify-center hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rr-gold"
+                >
+                  <div className="w-10 h-10 rounded-full bg-rr-navy-deep/5 text-rr-navy-deep flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-rr-navy-deep group-hover:text-white transition-all duration-300">
+                    <item.icon className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-sans text-sm font-bold tracking-wide text-rr-navy-deep mb-1">{item.title}</h4>
+                  <p className="text-rr-navy-deep/70 text-xs md:text-sm whitespace-pre-line leading-relaxed font-light">{item.content}</p>
+                </Element>
+              );
+            })}
           </div>
 
           {/* Form (Right Side - Takes 3 cols) */}

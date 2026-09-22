@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, Users, Building2, Check, ArrowRight, Phone, Target, Compass, Maximize, ShieldCheck, Layers } from "lucide-react";
 import LeadershipSection from "@/components/LeadershipSection";
+import { WhatsAppIcon } from "@/components/WhatsAppButton";
 
 const stats = [
   { value: "25+", label: "Years Experience" },
@@ -73,7 +74,7 @@ const AboutPage = () => {
         <section className="relative py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="images/AHS-Building/image-2.png"
+              src="images/AHS-Building/image-2.webp"
               alt="Construction site"
               className="w-full h-full object-cover opacity-20"
             />
@@ -288,7 +289,7 @@ const AboutPage = () => {
               <div className="relative">
                 <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
                   <img
-                    src="/images/AHS-Building/image-2.png"
+                    src="/images/AHS-Building/image-2.webp"
                     alt="RR Constructions project"
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -322,14 +323,25 @@ const AboutPage = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact">
-                <Button variant="gold" size="lg" className="font-semibold">
+                <Button variant="gold" size="lg" className="font-semibold w-full sm:w-auto">
                   Start Your Project
                 </Button>
               </Link>
-              <a href="tel:+919845078828">
-                <Button variant="outline" size="lg" className="border-rr-cream/20 text-rr-cream hover:bg-rr-cream/10 font-semibold">
+              <a href="tel:+919845078828" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="border-rr-cream/20 text-rr-cream hover:bg-rr-cream/10 font-semibold w-full">
                   <Phone className="w-4 h-4 mr-2" />
                   Call +91 98450 78828
+                </Button>
+              </a>
+              <a 
+                href="https://wa.me/919945865862?text=Hello%20RR%20Constructions,%20I%20would%20like%20to%20inquire%20about%20a%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto"
+              >
+                <Button variant="outline" size="lg" className="border-[#5CB85C]/40 text-emerald-300 hover:bg-[#5CB85C]/10 font-semibold w-full">
+                  <WhatsAppIcon className="w-4 h-4 mr-2" />
+                  WhatsApp Us
                 </Button>
               </a>
             </div>
