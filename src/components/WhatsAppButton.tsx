@@ -30,7 +30,7 @@ const WhatsAppButton = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with RR Constructions on WhatsApp at +91 99458 65862"
-        className="relative flex items-center justify-center w-12 h-12 rounded-full shadow-[0_4px_14px_rgba(92,184,92,0.4)] hover:shadow-[0_6px_20px_rgba(92,184,92,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#5CB85C]"
+        className="relative flex items-center justify-center w-11 h-11 rounded-full shadow-[0_4px_14px_rgba(92,184,92,0.4)] hover:shadow-[0_6px_20px_rgba(92,184,92,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#5CB85C]"
       >
         {/* Pulse effect badge */}
         <span className="absolute -top-0.5 -right-0.5 flex h-3 w-3 z-10 pointer-events-none">

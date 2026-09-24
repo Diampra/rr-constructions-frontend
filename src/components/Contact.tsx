@@ -34,7 +34,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    content: "rrconstruct1709@gmail.com\ncontact@rrinfra.co.in",
+    content: "contact@rrinfra.co.in\nrrconstruct1709@gmail.com",
     href: "mailto:contact@rrinfra.co.in",
   },
   {
@@ -67,13 +67,52 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    toast({
-      title: "Inquiry Received Successfully",
-      description: "Thank you for reaching out to RR Constructions & RR Infra. Our team will contact you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", phone: "", segment: "", message: "" });
-    setIsSubmitting(false);
+    
+    try {
+      const bodyData = new FormData();
+      bodyData.append('name', formData.name);
+      bodyData.append('email', formData.email);
+      bodyData.append('phone', formData.phone);
+      bodyData.append('segment', formData.segment);
+      bodyData.append('message', formData.message);
+
+      let response = await fetch('/api/send-inquiry.php', {
+        method: 'POST',
+        body: bodyData,
+      });
+
+      if (!response.ok && response.status === 404) {
+        // Fallback to contact.php if send-inquiry.php isn't deployed yet
+        response = await fetch('/api/contact.php', {
+          method: 'POST',
+          body: bodyData,
+        });
+      }
+
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.success) {
+        toast({
+          title: "Inquiry Received Successfully",
+          description: "Thank you for reaching out to RR Constructions & RR Infra. Our team will contact you within 24 hours.",
+        });
+        setFormData({ name: "", email: "", phone: "", segment: "", message: "" });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Inquiry Submission Error",
+          description: result?.message || "Could not send inquiry. Please call us directly at +91 98450 78828 or use WhatsApp.",
+        });
+      }
+    } catch (err) {
+      toast({
+        variant: "destructive",
+        title: "Network Connection Error",
+        description: "Could not connect to the server. Please call us directly at +91 98450 78828 or reach out via WhatsApp.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (

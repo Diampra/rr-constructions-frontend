@@ -8,18 +8,18 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Index from "./pages/Index";
+import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import TemplePage from "./pages/TemplePage";
 import ContactPage from "./pages/ContactPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
-import AboutPage from "./pages/AboutPage";
-import NotFound from "./pages/NotFound";
 import TransformationsPage from "./pages/TransformationsPage";
 import DeveloperPage from "./pages/DeveloperPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
+import NotFound from "./pages/NotFound";
 
 const App = () => (
   <HelmetProvider>

@@ -71,14 +71,14 @@ const AboutPage = () => {
 
       <main className="pt-12">
         {/* Hero */}
-        <section className="relative py-24 bg-secondary overflow-hidden">
+        <section className="relative py-24 bg-rr-navy-deep text-white overflow-hidden">
           <div className="absolute inset-0">
             <img
               src="images/AHS-Building/image-2.webp"
               alt="Construction site"
               className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-secondary/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-rr-navy-deep via-rr-navy-deep/90 to-rr-navy-deep/60" />
           </div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl">
@@ -88,10 +88,10 @@ const AboutPage = () => {
                   About RR Constructions
                 </span>
               </div>
-              <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
+              <h1 className="font-serif text-4xl md:text-6xl font-bold text-white mb-6">
                 Building Excellence Through Experience
               </h1>
-              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
+              <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-8">
                 For over 25+ years, RR Constructions & RR Infra has been a trusted name in infrastructure development across Karnataka - delivering landmark projects in commercial, residential, healthcare, education, industrial, and hospitality sectors.
               </p>
               <Link to="/contact">

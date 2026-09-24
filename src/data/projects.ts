@@ -39,7 +39,7 @@ export const projects: Project[] = [
     type: "Institutional & Hostel",
     builtUpArea: "1,75,000+ Sq. Ft.",
     location: "Kolar, Karnataka",
-    status: "Completed",
+    status: "Upcoming",
     thumbnail: "/images/AHS-Building/ahs-hostel-block.jpg",
     images: [
       { src: "/images/AHS-Building/ahs-hostel-block.jpg", alt: "AHS Hostel Building" },

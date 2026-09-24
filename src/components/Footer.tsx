@@ -140,11 +140,11 @@ const Footer = () => {
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-rr-gold shrink-0" />
                 <div className="flex flex-col gap-1 text-rr-cream/60 text-sm">
-                  <a href="mailto:rrconstruct1709@gmail.com" className="hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 -ml-1">
-                    rrconstruct1709@gmail.com
-                  </a>
                   <a href="mailto:contact@rrinfra.co.in" className="hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 -ml-1">
                     contact@rrinfra.co.in
+                  </a>
+                  <a href="mailto:rrconstruct1709@gmail.com" className="hover:text-rr-gold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-rr-gold rounded-sm px-1 -ml-1">
+                    rrconstruct1709@gmail.com
                   </a>
                 </div>
               </li>

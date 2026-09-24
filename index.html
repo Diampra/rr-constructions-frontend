@@ -9,10 +9,13 @@
     <!-- Preload Critical LCP Hero Banner -->
     <link rel="preload" as="image" href="/images/rr-hero-1.webp" type="image/webp" fetchpriority="high" />
 
-    <!-- Barlow Condensed: architectural display font for Hero headlines -->
+    <!-- Barlow Condensed: architectural display font for Hero headlines (Non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" />
+    </noscript>
     
     <meta name="description" content="RR Constructions & RR Infra is a premier civil construction company in Bangalore with 25+ years of expertise. We build landmark commercial complexes, residential apartments, multi-specialty hospitals, and educational institutions across Bangalore and Karnataka." />
     <meta name="keywords" content="construction company in bangalore, best builders in bangalore, civil contractors bangalore, commercial building contractors bangalore, hospital construction company karnataka, residential construction bangalore, turnkey civil contractors karnataka, rr constructions bangalore, rr infra" />
@@ -50,7 +53,7 @@
       "image": "https://www.rrinfra.co.in/images/logo.webp",
       "description": "Leading civil construction and infrastructure development company in Bangalore, Karnataka with 25+ years of expertise in commercial, residential, hospital, educational, and hospitality sectors.",
       "telephone": "+91-9845078828",
-      "email": "rrconstruct1709@gmail.com",
+      "email": "contact@rrinfra.co.in",
       "priceRange": "$$$$",
       "address": {
         "@type": "PostalAddress",

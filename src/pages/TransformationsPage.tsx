@@ -47,7 +47,7 @@ const TransformationsPage = () => {
 
       <main className="pt-24">
         {/* Hero */}
-        <section className="py-20 bg-secondary text-center">
+        <section className="py-20 bg-rr-navy-deep text-white text-center">
           <div className="container mx-auto px-6">
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="w-12 h-px bg-gold" />
@@ -56,10 +56,10 @@ const TransformationsPage = () => {
               </span>
               <div className="w-12 h-px bg-gold" />
             </div>
-            <h1 className="font-serif text-4xl md:text-6xl mb-6 font-bold text-foreground">
+            <h1 className="font-serif text-4xl md:text-6xl mb-6 font-bold text-white">
               Landmark Construction Lifecycle
             </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+            <p className="text-white/80 max-w-2xl mx-auto text-lg leading-relaxed">
               From raw topography to world-class multi-specialty hospitals and commercial landmarks.
             </p>
           </div>

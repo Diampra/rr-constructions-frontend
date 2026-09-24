@@ -102,14 +102,14 @@ const TemplePage = () => {
       
       <main className="pt-24">
         {/* Hero Section */}
-        <section className="relative py-32 bg-secondary overflow-hidden">
+        <section className="relative py-32 bg-rr-navy-deep text-white overflow-hidden">
           <div className="absolute inset-0">
             <img 
               src={templeImage} 
               alt={t.templeDesign}
               className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/95 to-secondary/80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-rr-navy-deep via-rr-navy-deep/95 to-rr-navy-deep/80" />
           </div>
           
           <div className="container mx-auto px-6 relative">
@@ -120,11 +120,11 @@ const TemplePage = () => {
                   {t.divineCraftsmanship}
                 </span>
               </div>
-              <h1 className="font-serif text-4xl md:text-6xl text-foreground font-medium mb-6 leading-tight">
+              <h1 className="font-serif text-4xl md:text-6xl text-white font-medium mb-6 leading-tight">
                 {t.modernTempleDesign}
                 <span className="block text-gold">{t.forSacredSpaces}</span>
               </h1>
-              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+              <p className="text-white/80 text-lg mb-8 leading-relaxed">
                 {t.templeDescription}
               </p>
               <Link to="/contact">

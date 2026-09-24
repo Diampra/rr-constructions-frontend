@@ -49,7 +49,7 @@ const Index = () => {
 
       <div className="min-h-screen bg-background">
         <Header />
-        <main>
+        <main className="md:pt-24">
           <Hero />
           <Services />
           <LeadershipSection />

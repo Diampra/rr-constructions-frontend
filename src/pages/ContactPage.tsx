@@ -54,7 +54,7 @@ const ContactPage = () => {
       id: "3",
       icon: Mail,
       title: "Email & Web",
-      content: "rrconstruct1709@gmail.com\ncontact@rrinfra.co.in",
+      content: "contact@rrinfra.co.in\nrrconstruct1709@gmail.com",
       href: "mailto:contact@rrinfra.co.in",
     },
     {
@@ -104,15 +104,51 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 800));
-    
-    toast({
-      title: "Inquiry Received Successfully",
-      description: "Thank you for reaching out to RR Constructions & RR Infra. Our team will contact you within 24 hours.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", segment: "", message: "" });
-    setIsSubmitting(false);
+    try {
+      const bodyData = new FormData();
+      bodyData.append('name', formData.name);
+      bodyData.append('email', formData.email);
+      bodyData.append('phone', formData.phone);
+      bodyData.append('segment', formData.segment);
+      bodyData.append('message', formData.message);
+
+      let response = await fetch('/api/send-inquiry.php', {
+        method: 'POST',
+        body: bodyData,
+      });
+
+      if (!response.ok && response.status === 404) {
+        // Fallback to contact.php if send-inquiry.php isn't deployed yet
+        response = await fetch('/api/contact.php', {
+          method: 'POST',
+          body: bodyData,
+        });
+      }
+
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.success) {
+        toast({
+          title: "Inquiry Received Successfully",
+          description: "Thank you for reaching out to RR Constructions & RR Infra. Our team will contact you within 24 hours.",
+        });
+        setFormData({ name: "", email: "", phone: "", segment: "", message: "" });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Inquiry Submission Error",
+          description: result?.message || "Could not send inquiry. Please call us directly at +91 98450 78828 or use WhatsApp.",
+        });
+      }
+    } catch (err) {
+      toast({
+        variant: "destructive",
+        title: "Network Connection Error",
+        description: "Could not connect to the server. Please call us directly at +91 98450 78828 or reach out via WhatsApp.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -130,14 +166,14 @@ const ContactPage = () => {
       
       <main className="pt-12">
         {/* Hero Banner */}
-        <section className="relative py-24 bg-secondary overflow-hidden">
+        <section className="relative py-24 bg-rr-navy-deep text-white overflow-hidden">
           <div className="absolute inset-0">
             <img
               src="images/mudigere-Resort-Project/image-5.webp"
               alt="Construction project"
               className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-secondary/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-rr-navy-deep via-rr-navy-deep/90 to-rr-navy-deep/60" />
           </div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl">
@@ -147,10 +183,10 @@ const ContactPage = () => {
                   Get In Touch With Us
                 </span>
               </div>
-              <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
+              <h1 className="font-serif text-4xl md:text-6xl font-bold text-white mb-6">
                 Contact RR Constructions
               </h1>
-              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
+              <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-8">
                 We welcome the opportunity to work with you and build a better tomorrow together. Let's discuss your next landmark project.
               </p>
             </div>
@@ -236,7 +272,7 @@ const ContactPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-3">
                     <div>
-                      <label htmlFor="name" className="block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wider">
+                      <label htmlFor="name" className="block text-xs font-bold text-[#0A1B33] mb-1.5 uppercase tracking-wider">
                         Full Name *
                       </label>
                       <input
@@ -246,12 +282,12 @@ const ContactPage = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                        className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-[#D6D0C4] rounded-lg text-[#0A1B33] font-medium text-sm placeholder:text-[#8899A6] focus:bg-white focus:border-[#C99A46] focus:ring-2 focus:ring-[#C99A46]/20 outline-none transition-all"
                         placeholder="Enter your full name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wider">
+                      <label htmlFor="email" className="block text-xs font-bold text-[#0A1B33] mb-1.5 uppercase tracking-wider">
                         Email Address *
                       </label>
                       <input
@@ -261,7 +297,7 @@ const ContactPage = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                        className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-[#D6D0C4] rounded-lg text-[#0A1B33] font-medium text-sm placeholder:text-[#8899A6] focus:bg-white focus:border-[#C99A46] focus:ring-2 focus:ring-[#C99A46]/20 outline-none transition-all"
                         placeholder="info@company.com"
                       />
                     </div>
@@ -269,7 +305,7 @@ const ContactPage = () => {
 
                   <div className="grid sm:grid-cols-2 gap-3">
                     <div>
-                      <label htmlFor="phone" className="block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wider">
+                      <label htmlFor="phone" className="block text-xs font-bold text-[#0A1B33] mb-1.5 uppercase tracking-wider">
                         Phone Number
                       </label>
                       <input
@@ -278,12 +314,12 @@ const ContactPage = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                        className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-[#D6D0C4] rounded-lg text-[#0A1B33] font-medium text-sm placeholder:text-[#8899A6] focus:bg-white focus:border-[#C99A46] focus:ring-2 focus:ring-[#C99A46]/20 outline-none transition-all"
                         placeholder="Enter your phone number"
                       />
                     </div>
                     <div>
-                      <label htmlFor="segment" className="block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wider">
+                      <label htmlFor="segment" className="block text-xs font-bold text-[#0A1B33] mb-1.5 uppercase tracking-wider">
                         Project Segment
                       </label>
                       <select
@@ -291,7 +327,7 @@ const ContactPage = () => {
                         name="segment"
                         value={formData.segment}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm focus:ring-2 focus:ring-gold outline-none transition-all"
+                        className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-[#D6D0C4] rounded-lg text-[#0A1B33] font-medium text-sm focus:bg-white focus:border-[#C99A46] focus:ring-2 focus:ring-[#C99A46]/20 outline-none transition-all"
                       >
                         <option value="">Select project segment</option>
                         {segments.map((segment, idx) => (
@@ -304,7 +340,7 @@ const ContactPage = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wider">
+                    <label htmlFor="message" className="block text-xs font-bold text-[#0A1B33] mb-1.5 uppercase tracking-wider">
                       Project Specifications & Scope
                     </label>
                     <textarea
@@ -313,7 +349,7 @@ const ContactPage = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows={3}
-                      className="w-full px-3 py-2 bg-secondary border border-border rounded-lg text-foreground text-sm placeholder:text-muted-foreground focus:ring-2 focus:ring-gold outline-none transition-all resize-none"
+                      className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-[#D6D0C4] rounded-lg text-[#0A1B33] font-medium text-sm placeholder:text-[#8899A6] focus:bg-white focus:border-[#C99A46] focus:ring-2 focus:ring-[#C99A46]/20 outline-none transition-all resize-none"
                       placeholder="Tell us about built-up area, site location, timeline, and structural scope..."
                     />
                   </div>

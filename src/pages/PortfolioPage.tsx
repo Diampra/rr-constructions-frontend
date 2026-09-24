@@ -54,7 +54,7 @@ const PortfolioPage = () => {
                 className="w-full h-full object-cover opacity-20"
               />
             </picture>
-            <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-secondary/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-rr-navy-deep via-rr-navy-deep/90 to-rr-navy-deep/60" />
           </div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-3xl">
@@ -64,10 +64,10 @@ const PortfolioPage = () => {
                   Our Proven Track Record
                 </span>
               </div>
-              <h1 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
+              <h1 className="font-serif text-4xl md:text-6xl font-bold text-white mb-6">
                 Landmark Construction Projects
               </h1>
-              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
+              <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-8">
                 Building structures that stand the test of time - delivering over 5 Million+ Sq. Ft. of high-quality construction across Karnataka.
               </p>
               <Link to="/contact">
